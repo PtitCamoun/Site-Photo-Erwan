@@ -230,35 +230,37 @@ footer{
 <div class="gallery-info">
 <div id="txt-c">Calcul...</div>
 <div>
-<select class="select-tri">
-<option>Tri du plus récent au plus ancien</option>
-<option>Tri du plus ancien au plus récent</option>
-<option>Tri par prix croissant</option>
-<option>Tri par prix décroissant</option>
+<!-- Menu déroulant avec identifiant id="select-tri" pour le lier au script -->
+<select id="select-tri" class="select-tri">
+<option value="recent">Tri du plus récent au plus ancien</option>
+<option value="ancien">Tri du plus ancien au plus récent</option>
+<option value="prix-croissant">Tri par prix croissant</option>
+<option value="prix-decroissant">Tri par prix décroissant</option>
+<option value="alphabetique">Tri par ordre alphabétique</option>
 </select>
 </div>
 </div>
 
-<div class="products-grid">
+<div class="products-grid" id="products-container">
 
-<!-- Photo 1 -->
-<a href="produit-faon.html" class="product-card">
+<!-- Photo 1 : Faon (Date: 1, Prix min: 20, Titre: Faon...) -->
+<a href="produit-faon.html" class="product-card" data-date="1" data-price="20" data-title="Faon bord de lac">
 <div class="image-container">
 <img src="faon-lac.png" alt="Faon">
 </div>
 <div class="product-title">Faon bord de lac</div>
 </a>
 
-<!-- Photo 2 -->
-<a href="produit-cerf.html" class="product-card">
+<!-- Photo 2 : Cerf brame (Date: 2, Prix min: 25, Titre: Cerf qui brame) -->
+<a href="produit-cerf.html" class="product-card" data-date="2" data-price="25" data-title="Cerf qui brame">
 <div class="image-container">
 <img src="cerf-brame.JPG" alt="Cerf">
 </div>
 <div class="product-title">Cerf qui brame</div>
 </a>
 
-<!-- Photo 3 : Nouvel article -->
-<a href="produit-faon-cerf.html" class="product-card">
+<!-- Photo 3 : Faon avec Cerf (Date: 3, Prix min: 30, Titre: Faon avec Cerf) -->
+<a href="produit-faon-cerf.html" class="product-card" data-date="3" data-price="30" data-title="Faon avec Cerf">
 <div class="image-container">
 <img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf">
 </div>
@@ -290,11 +292,42 @@ Mentions Légales</a>
 </div>
 </footer>
 
+<!-- LE SCRIPT LOGIQUE INTERACTIF DE TRI CONTINU -->
 <script>
-document.addEventListener("DOMContentLoaded",function(){
-var n=document.querySelectorAll('.product-card').length;
-var txt=n<=1?" résultat affiché":" résultats affichés";
-document.getElementById('txt-c').textContent=n+txt;
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Gestion automatique du compteur de résultats
+    var conteneur = document.getElementById('products-container');
+    var photos = Array.from(conteneur.querySelectorAll('.product-card'));
+    var n = photos.length;
+    var txt = n <= 1 ? " résultat affiché" : " résultats affichés";
+    document.getElementById('txt-c').textContent = n + txt;
+
+    // 2. Logique réelle du système de tri
+    var selectTri = document.getElementById('select-tri');
+    
+    selectTri.addEventListener('change', function() {
+        var critere = this.value;
+        
+        photos.sort(function(a, b) {
+            if (critere === 'recent') {
+                return parseInt(b.getAttribute('data-date')) - parseInt(a.getAttribute('data-date'));
+            } else if (critere === 'ancien') {
+                return parseInt(a.getAttribute('data-date')) - parseInt(b.getAttribute('data-date'));
+            } else if (critere === 'prix-croissant') {
+                return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+            } else if (critere === 'prix-decroissant') {
+                return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
+            } else if (critere === 'alphabetique') {
+                return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
+            }
+            return 0;
+        });
+        
+        // Réinjecte les photos dans le nouvel ordre calculé
+        photos.forEach(function(photo) {
+            conteneur.appendChild(photo);
+        });
+    });
 });
 </script>
 </body>
