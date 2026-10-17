@@ -7,7 +7,6 @@ content="width=device-width, initial-scale=1.0">
 <title>Galerie</title>
 <link rel="icon" type="image/png" 
 href="favicon.png">
-<!-- Font Awesome pour l'icône exacte du panier -->
 <link rel="stylesheet" 
 href="https://cloudflare.com">
 <style>
@@ -65,7 +64,6 @@ nav a.active {
   border-bottom:1px solid #fff;
   padding-bottom:2px;
 }
-/* Style du Panier calqué sur l'image 1 */
 .cart-btn-fixed{
   display:flex;
   align-items:center;
@@ -120,22 +118,17 @@ main{
   outline:none;
   cursor:pointer;
 }
-/* Force l'affichage horizontal strict par 3 sur PC */
+/* Force STRICTEMENT les 3 colonnes horizontales */
 .products-grid{
   display:grid;
-  grid-template-cols:1fr;
+  grid-template-cols: 1fr 1fr 1fr !important;
   gap:40px;
   width:100%;
   align-items:start;
 }
-@media(min-width:768px){
+@media(max-w:768px){
   .products-grid{
-    grid-template-cols:1fr 1fr;
-  }
-}
-@media(min-width:1024px){
-  .products-grid{
-    grid-template-cols:1fr 1fr 1fr;
+    grid-template-cols:1fr !important;
   }
 }
 .product-card{
@@ -163,6 +156,7 @@ main{
   text-transform:uppercase;
   letter-spacing:1.5px;
   color:#57534e;
+  text-align:center;
 }
 footer{
   background:#000;
@@ -221,19 +215,15 @@ footer{
 <body>
 
 <header>
-<a href="index.html" 
-class="nav-logo-link">
-<img src="mon-logo.png" 
-alt="Logo">
+<a href="index.html" class="nav-logo-link">
+<img src="mon-logo.png" alt="Logo">
 </a>
 <nav>
 <a href="index.html">Accueil</a>
-<a href="galerie.html" 
-class="active">Galerie</a>
+<a href="galerie.html" class="active">Galerie</a>
 <a href="a-propos.html">À Propos</a>
 <a href="contact.html">Contact</a>
-<a href="panier.html" 
-class="cart-btn-fixed">
+<a href="panier.html" class="cart-btn-fixed">
 <span>0,00 €</span>
 <div class="cart-icon-container">
 <i class="fa-solid fa-shopping-bag"></i>
@@ -258,36 +248,35 @@ class="cart-btn-fixed">
 
 <div class="products-grid">
 
-<!-- Photo 1 -->
-<a href="produit-faon.html" 
-class="product-card">
+<!-- PHOTO 1 : LE FAON -->
+<a href="produit-faon.html" class="product-card">
 <div class="image-container">
-<img src="faon-lac.png" 
-alt="Faon">
+<img src="faon-lac.png" alt="Faon">
 </div>
-<div class="product-title">
-Faon bord de lac
-</div>
+<div class="product-title">Faon bord de lac</div>
 </a>
 
-<!-- Photo 2 -->
-<a href="produit-cerf.html" 
-class="product-card">
+<!-- PHOTO 2 : LE CERF QUI BRAME -->
+<a href="produit-cerf.html" class="product-card">
 <div class="image-container">
-<img src="cerf-brame.JPG" 
-alt="Cerf">
+<img src="cerf-brame.JPG" alt="Cerf">
 </div>
-<div class="product-title">
-Cerf qui brame
+<div class="product-title">Cerf qui brame</div>
+</a>
+
+<!-- PHOTO 3 : NOUVEAU PRODUIT POUR COMPLÉTER LA LIGNE -->
+<a href="produit-cerf-2.html" class="product-card">
+<div class="image-container">
+<img src="cerf-brame.JPG" alt="Cerf 2">
 </div>
+<div class="product-title">Cerf majestueux</div>
 </a>
 
 </div>
 </main>
 
 <footer>
-<a href="contact.html" 
-class="contact-link">
+<a href="contact.html" class="contact-link">
 <p>Une question sur un tirage ?</p>
 <p>Contacte-moi.</p>
 </a>
@@ -309,17 +298,10 @@ Mentions Légales</a>
 </footer>
 
 <script>
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-var n=document
-.querySelectorAll(
-'.product-card').length;
-var txt = n <= 1 ? 
-" résultat affiché" : 
-" résultats affichés";
-document.getElementById('txt-c')
-.textContent=n+txt;
+document.addEventListener("DOMContentLoaded",function(){
+var n=document.querySelectorAll('.product-card').length;
+var txt=n<=1?" résultat affiché":" résultats affichés";
+document.getElementById('txt-c').textContent=n+txt;
 });
 </script>
 </body>
