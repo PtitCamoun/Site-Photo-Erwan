@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erwan Gauriveau - Photographie</title>
+    <!-- Version ultra-rapide et corrigée de Tailwind CSS -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+        }
+        .signature-font {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between bg-black">
+
+    <!-- SECTION HÉRO -->
+    <section class="relative h-screen w-full flex items-center justify-center bg-cover bg-center" 
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('image-fond-cerf.jpg');">
+        
+        <div class="text-center z-10 px-4 flex flex-col items-center gap-6 max-w-xl">
+            <!-- Logo Cerf -->
+            <div class="w-20 h-20 opacity-90 mb-[-15px]">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full text-white">
+                    <path d="M50,85 L50,45 M50,45 C40,30 30,35 25,20 M50,45 C60,30 70,35 75,20 M35,32 C25,25 20,15 15,25 M65,32 C75,25 80,15 85,25" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- Nom -->
+            <h1 class="signature-font text-4xl md:text-5xl lg:text-6xl tracking-wide font-medium text-stone-100 drop-shadow-md">
+                Erwan Gauriveau
+            </h1>
+
+            <!-- Bouton Galerie -->
+            <a href="galerie.html" class="mt-4 px-6 py-2.5 text-xs tracking-[0.2em] uppercase border border-stone-400/60 rounded-full bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 ease-in-out">
+                Découvrir la Galerie
+            </a>
+        </div>
+
+    </section>
+
+    <!-- PIED DE PAGE -->
+    <footer class="bg-black text-stone-400 py-12 px-6 border-t border-stone-900 w-full flex flex-col items-center justify-center gap-8">
+        <div class="text-center">
+            <a href="contact.html" class="group block space-y-1">
+                <p class="text-sm font-light tracking-wide text-stone-300 group-hover:text-white transition-colors duration-200">Une question sur un tirage ?</p>
+                <p class="text-xs tracking-wider text-stone-400 group-hover:text-white transition-colors duration-200 underline underline-offset-4">Contacte-moi.</p>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-6 text-lg">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-white transition-colors duration-200" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+
+        <p class="text-[10px] tracking-widest text-stone-500 uppercase">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
+
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[11px] tracking-wider text-stone-500 pt-4 border-t border-stone-900/50 w-full max-w-2xl text-center">
+            <a href="politique-confidentialite.html" class="hover:text-stone-300 transition-colors duration-200">Politique de confidentialité</a>
+            <a href="mentions-legales.html" class="hover:text-stone-300 transition-colors duration-200">Mentions Légales</a>
+            <a href="cgv.html" class="hover:text-stone-300 transition-colors duration-200">Conditions Générales de Vente / CGV</a>
+        </div>
+    </footer>
+
+</body>
+</html>
