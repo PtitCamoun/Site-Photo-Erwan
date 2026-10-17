@@ -1,309 +1,251 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie - Erwan Gauriveau</title>
-    
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        header {
-            width: 100%;
-            background-color: #000000;
-            color: #ffffff;
-            padding: 12px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-        .nav-logo-link {
-            display: block;
-            height: 55px; 
-            max-width: 220px;
-            opacity: 0.95;
-            transition: opacity 0.2s;
-        }
-        .nav-logo-link img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-        nav a {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: #a8a29e;
-            transition: color 0.2s;
-        }
-        nav a:hover, nav a.active {
-            color: #ffffff;
-        }
-        nav a.active {
-            border-bottom: 1px solid #ffffff;
-            padding-bottom: 2px;
-        }
-        .cart-btn {
-            background-color: #1c1917;
-            padding: 6px 12px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #e7e5e4 !important;
-            font-weight: 500;
-        }
-        main {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px;
-            flex-grow: 1;
-        }
-        .gallery-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            color: #78716c;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #f5f5f4;
-            padding-bottom: 16px;
-        }
-        .select-tri-container {
-            position: relative;
-            display: inline-block;
-        }
-        .select-tri {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            color: #78716c;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            padding-right: 16px;
-            appearance: none;
-            -webkit-appearance: none;
-            outline: none;
-            letter-spacing: 1px;
-        }
-        .select-tri:hover {
-            color: #000000;
-        }
-        .select-tri-container::after {
-            content: "▾";
-            font-size: 10px;
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-55%);
-            color: #78716c;
-            pointer-events: none;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-cols: 1fr;
-            gap: 48px;
-            max-width: 900px;
-            margin: 0 auto;
-            align-items: start;
-        }
-        @media (min-width: 768px) {
-            .products-grid {
-                grid-template-cols: 1fr 1fr;
-                gap: 40px;
-            }
-        }
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #000000;
-            width: 100%;
-        }
-        .image-container {
-            width: 100%;
-            background-color: #f5f5f4;
-            overflow: hidden;
-            border: 1px solid #e7e5e4;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-        }
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-            transition: transform 0.4s ease-in-out;
-        }
-        .product-card:hover img {
-            transform: scale(1.02);
-        }
-        .product-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #57534e;
-            font-weight: 400;
-            text-align: center;
-        }
-        footer {
-            background-color: #000000;
-            color: #a8a29e;
-            padding: 48px 24px;
-            border-top: 1px solid #1c1917;
-            text-align: center;
-            width: 100%;
-        }
-        .contact-link {
-            text-decoration: none;
-            color: #d6d3d1;
-            display: block;
-            margin-bottom: 24px;
-        }
-        .contact-link p:first-child {
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        .contact-link p:last-child {
-            font-size: 12px;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-        .social-icons {
-            margin-bottom: 24px;
-        }
-        .social-icons a {
-            color: #a8a29e;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 0 12px;
-        }
-        .copyright {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #78716c;
-            margin-bottom: 24px;
-        }
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            padding-top: 16px;
-            border-top: 1px solid rgba(120, 113, 108, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .legal-links a {
-            font-size: 11px;
-            color: #78716c;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width">
+<title>Galerie</title>
+<link rel="icon" 
+type="image/png" 
+href="favicon.png">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-family:sans-serif;
+  background:#fff;
+  color:#000;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+header{
+  background:#000;
+  color:#fff;
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.nav-logo-link{
+  display:block;
+  height:75px; 
+}
+.nav-logo-link img{
+  height:100%;
+  object-fit:contain;
+}
+nav{
+  display:flex;
+  gap:15px;
+}
+nav a{
+  font-size:11px;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#a8a29e;
+}
+nav a:hover,
+nav a.active{
+  color:#fff;
+}
+.cart-btn{
+  background:#1c1917;
+  padding:4px 8px;
+  border-radius:4px;
+}
+main{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:30px 20px;
+  flex-grow:1;
+}
+.gallery-info{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:#78716c;
+  margin-bottom:30px;
+  border-bottom:1px solid #f5f5f4;
+  padding-bottom:10px;
+}
+.select-tri{
+  font-size:11px;
+  color:#78716c;
+  background:transparent;
+  border:none;
+  outline:none;
+}
+.products-grid{
+  display:grid;
+  grid-template-cols:1fr;
+  gap:30px;
+}
+@media(min-width:600px){
+  .products-grid{
+    grid-template-cols:1fr 1fr;
+  }
+}
+@media(min-width:1000px){
+  .products-grid{
+    grid-template-cols:1fr 1fr 1fr;
+  }
+}
+.product-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-decoration:none;
+  color:#000;
+}
+.image-container{
+  width:100%;
+  background:#f5f5f4;
+  border:1px solid #e7e5e4;
+  margin-bottom:10px;
+}
+.image-container img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.product-title{
+  font-size:11px;
+  text-transform:uppercase;
+}
+footer{
+  background:#000;
+  color:#a8a29e;
+  padding:40px 20px;
+  text-align:center;
+}
+.contact-link{
+  text-decoration:none;
+  color:#d6d3d1;
+  display:block;
+  margin-bottom:20px;
+}
+.social-icons{
+  margin-bottom:20px;
+}
+.social-icons a{
+  color:#a8a29e;
+  text-decoration:none;
+  margin:0 10px;
+}
+.copyright{
+  font-size:10px;
+  margin-bottom:20px;
+}
+.legal-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  padding-top:10px;
+  border-top:1px solid #222;
+}
+.legal-links a{
+  font-size:11px;
+  color:#78716c;
+  text-decoration:none;
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="nav-logo-link">
-            <img src="mon-logo.png" alt="Logo Erwan Gauriveau">
-        </a>
-        <nav>
-            <a href="index.html">Accueil</a>
-            <a href="galerie.html" class="active">Galerie</a>
-            <a href="a-propos.html">À Propos</a>
-            <a href="contact.html">Contact</a>
-            <a href="panier.html" class="cart-btn">0,00 €</a>
-        </nav>
-    </header>
+<header>
+<a href="index.html" 
+class="nav-logo-link">
+<img src="mon-logo.png" 
+alt="Logo">
+</a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="galerie.html" 
+class="active">Galerie</a>
+<a href="contact.html">Contact</a>
+<a href="panier.html" 
+class="cart-btn">0,00 €</a>
+</nav>
+</header>
 
-    <main>
-        <div class="gallery-info">
-            <div id="compteur-resultats">Chargement...</div>
-            <div class="select-tri-container">
-                <select class="select-tri">
-                    <option value="recent">Tri du plus récent au plus ancien</option>
-                    <option value="ancien">Tri du plus ancien au plus récent</option>
-                    <option value="prix-croissant">Tri par prix croissant</option>
-                    <option value="prix-decroissant">Tri par prix décroissant</option>
-                    <option value="alphabetique">Tri par ordre alphabétique</option>
-                </select>
-            </div>
-        </div>
+<main>
+<div class="gallery-info">
+<div id="txt-c">Calcul...</div>
+<div>
+<select class="select-tri">
+<option>Plus récent</option>
+<option>Prix croissant</option>
+<option>Prix décroissant</option>
+</select>
+</div>
+</div>
 
-        <div class="products-grid">
-            <a href="produit-faon.html" class="product-card">
-                <div class="image-container">
-                    <img src="faon-lac.png" alt="Faon bord de lac">
-                </div>
-                <div class="product-title">Faon bord de lac</div>
-            </a>
+<div class="products-grid">
 
-            <a href="produit-cerf.html" class="product-card">
-                <div class="image-container">
-                    <img src="cerf-brame.JPG" alt="Cerf qui brame">
-                </div>
-                <div class="product-title">Cerf qui brame</div>
-            </a>
-        </div>
-    </main>
+<a href="produit-faon.html" 
+class="product-card">
+<div class="image-container">
+<img src="faon-lac.png" 
+alt="Faon">
+</div>
+<div class="product-title">
+Faon bord de lac
+</div>
+</a>
 
-    <footer>
-        <a href="contact.html" class="contact-link">
-            <p>Une question sur un tirage ?</p>
-            <p>Contacte-moi.</p>
-        </a>
-        <div class="social-icons">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="#">Facebook</a>
-        </div>
-        <p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
-        <div class="legal-links">
-            <a href="politique-confidentialite.html">Politique de confidentialité</a>
-            <a href="mentions-legales.html">Mentions Légales</a>
-            <a href="cgv.html">Conditions Générales de Vente / CGV</a>
-        </div>
-    </footer>
+<a href="produit-cerf.html" 
+class="product-card">
+<div class="image-container">
+<img src="cerf-brame.JPG" 
+alt="Cerf">
+</div>
+<div class="product-title">
+Cerf qui brame
+</div>
+</a>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var p = document.querySelectorAll('.product-card').length;
-            var e = document.getElementById('compteur-resultats');
-            e.textContent = p + (p <= 1 ? " résultat affiché" : " résultats affichés");
-        });
-    </script>
+</div>
+</main>
 
+<footer>
+<a href="contact.html" 
+class="contact-link">
+<p>Une question ?</p>
+<p>Contacte-moi.</p>
+</a>
+<div class="social-icons">
+<a href="https://instagram.com"
+target="_blank">Instagram</a>
+</div>
+<p class="copyright">
+© 2026 Erwan Gauriveau.
+</p>
+<div class="legal-links">
+<a href="cgv.html">CGV</a>
+<a href="mentions.html">Mentions</a>
+</div>
+</footer>
+
+<script>
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+var n=document
+.querySelectorAll(
+'.product-card').length;
+document.getElementById('txt-c')
+.textContent=n+" résultats";
+});
+</script>
 </body>
 </html>
