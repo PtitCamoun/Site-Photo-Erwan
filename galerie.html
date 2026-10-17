@@ -44,10 +44,9 @@
             z-index: 50;
         }
         
-        /* Conteneur de votre logo officiel en haut à gauche */
         .nav-logo-link {
             display: block;
-            height: 35px; /* Hauteur ajustée pour la barre de menu */
+            height: 35px;
             max-width: 180px;
             opacity: 0.95;
             transition: opacity 0.2s;
@@ -118,6 +117,8 @@
             gap: 48px;
             max-width: 900px;
             margin: 0 auto;
+            /* Aligner les éléments par le haut si les tailles de photos diffèrent */
+            align-items: start;
         }
         @media (min-width: 768px) {
             .products-grid {
@@ -132,10 +133,12 @@
             align-items: center;
             text-decoration: none;
             color: #000000;
+            width: 100%;
         }
+        
+        /* MODIFICATION : Conteneur souple qui s'adapte au ratio original de la photo */
         .image-container {
             width: 100%;
-            aspect-ratio: 4 / 3;
             background-color: #f5f5f4;
             overflow: hidden;
             border: 1px solid #e7e5e4;
@@ -144,13 +147,15 @@
         }
         .image-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto; /* Laisse la hauteur naturelle s'ajuster */
+            display: block;
+            object-fit: contain;
             transition: transform 0.4s ease-in-out;
         }
         .product-card:hover img {
             transform: scale(1.02);
         }
+        
         .product-title {
             font-size: 11px;
             text-transform: uppercase;
@@ -231,7 +236,7 @@
 </head>
 <body>
 
-    <!-- 1. HEADER AVEC VOTRE COMPOSITION DE LOGO OFFICIEL -->
+    <!-- 1. HEADER AVEC VOTRE LOGO OFFICIEL -->
     <header>
         <a href="index.html" class="nav-logo-link">
             <img src="mon-logo.jpg" alt="Logo Erwan Gauriveau">
@@ -246,7 +251,7 @@
         </nav>
     </header>
 
-    <!-- 2. GRILLE DE PRODUITS UNIFORME -->
+    <!-- 2. GRILLE DE PRODUITS AUX RATIOS RESPECTÉS -->
     <main>
         <div class="gallery-info">
             <div>2 résultats affichés</div>
