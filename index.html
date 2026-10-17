@@ -5,94 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erwan Gauriveau - Photographie</title>
     
-    <!-- CDN Tailwind CSS stable -->
-    <link href="https://cloudflare.com" rel="stylesheet">
-    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
+    <!-- Style CSS Intégré (Aucun blocage externe possible) -->
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #000000;
+            color: #ffffff;
+            min-h-screen: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
         }
-        .signature-font {
+        
+        /* Section Principale Centrée */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('image-fond-cerf.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .center-content {
+            text-align: center;
+            z-index: 10;
+            padding: 0 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        /* Gestion stricte du Logo SVG */
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px auto;
+            opacity: 0.9;
+        }
+        .logo-container svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Titre Signature */
+        .main-title {
             font-family: 'Playfair Display', serif;
             font-style: italic;
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+            color: #f3f4f6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
-        .backdrop-blur-sm {
+        @media (max-w: 768px) {
+            .main-title { font-size: 2.5rem; }
+        }
+        
+        /* Bouton Arrondi */
+        .btn-galerie {
+            display: inline-block;
+            padding: 12px 32px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease-in-out;
         }
-        /* Fix strict pour empêcher le logo SVG de grossir indéfiniment */
-        .logo-fix {
-            width: 80px !important;
-            height: 80px !important;
-            max-width: 80px !important;
-            max-height: 80px !important;
+        .btn-galerie:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
         }
+
+        /* Pied de page */
+        footer {
+            background-color: #000000;
+            color: #a8a29e;
+            padding: 48px 24px;
+            border-top: 1px solid #1c1917;
+            text-align: center;
+            width: 100%;
+        }
+        .contact-link {
+            text-decoration: none;
+            color: #d6d3d1;
+            display: block;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .contact-link:hover { color: #ffffff; }
+        .contact-link p:first-child {
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .contact-link p:last-child {
+            font-size: 12px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        .social-icons {
+            margin-bottom: 24px;
+        }
+        .social-icons a {
+            color: #a8a29e;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 12px;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: #ffffff; }
+        .copyright {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #78716c;
+            margin-bottom: 24px;
+        }
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding-top: 16px;
+            border-top: 1px solid rgba(120, 113, 108, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .legal-links a {
+            font-size: 11px;
+            color: #78716c;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .legal-links a:hover { color: #d6d3d1; }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between bg-black">
+<body>
 
-    <!-- SECTION HÉRO -->
-    <section class="relative min-h-screen w-full flex items-center justify-center bg-cover bg-center py-20" 
-             style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('image-fond-cerf.jpg');">
-        
-        <div class="text-center z-10 px-4 flex flex-col items-center justify-center space-y-6 max-w-xl mx-auto w-full">
-            <!-- Logo Cerf avec taille strictement bloquée -->
-            <div class="logo-fix opacity-90 mx-auto">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full text-white">
+    <!-- SECTION PRINCIPALE -->
+    <section class="hero-section">
+        <div class="center-content">
+            <!-- Logo Cerf -->
+            <div class="logo-container">
+                <svg viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="1.5">
                     <path d="M50,85 L50,45 M50,45 C40,30 30,35 25,20 M50,45 C60,30 70,35 75,20 M35,32 C25,25 20,15 15,25 M65,32 C75,25 80,15 85,25" stroke-linecap="round"/>
                 </svg>
             </div>
 
             <!-- Nom -->
-            <h1 class="signature-font text-4xl md:text-5xl lg:text-6xl tracking-wide font-medium text-gray-100">
-                Erwan Gauriveau
-            </h1>
+            <h1 class="main-title">Erwan Gauriveau</h1>
 
-            <!-- Bouton Galerie -->
-            <div class="pt-2">
-                <a href="galerie.html" class="inline-block px-8 py-3 text-xs tracking-widest uppercase border border-gray-400 rounded-full bg-black bg-opacity-20 backdrop-blur-sm hover:bg-white hover:text-black hover:border-white transition duration-300 ease-in-out">
-                    Découvrir la Galerie
-                </a>
-            </div>
+            <!-- Bouton -->
+            <a href="galerie.html" class="btn-galerie">Découvrir la Galerie</a>
         </div>
-
     </section>
 
     <!-- PIED DE PAGE -->
-    <footer class="bg-black text-gray-400 py-12 px-6 border-t border-gray-900 w-full flex flex-col items-center justify-center space-y-8">
-        <div class="text-center">
-            <a href="contact.html" class="block space-y-1 hover:text-white transition-colors duration-200">
-                <p class="text-sm font-light tracking-wide text-gray-300">Une question sur un tirage ?</p>
-                <p class="text-xs tracking-wider text-gray-400 underline">Contacte-moi.</p>
-            </a>
+    <footer>
+        <a href="contact.html" class="contact-link">
+            <p>Une question sur un tirage ?</p>
+            <p>Contacte-moi.</p>
+        </a>
+
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="#">Facebook</a>
         </div>
 
-        <div class="flex items-center justify-center space-x-6 text-lg">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#" class="hover:text-white transition-colors duration-200" aria-label="Facebook">
-                <i class="fa-brands fa-facebook-f"></i>
-            </a>
-        </div>
+        <p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
 
-        <p class="text-[10px] tracking-widest text-gray-500 uppercase text-center">
-            © 2026 Erwan Gauriveau. Tous droits réservés.
-        </p>
-
-        <div class="flex flex-wrap justify-center space-x-6 text-[11px] tracking-wider text-gray-500 pt-4 border-t border-gray-900 w-full max-w-2xl text-center">
-            <a href="politique-confidentialite.html" class="hover:text-gray-300 transition-colors duration-200">Politique de confidentialité</a>
-            <a href="mentions-legales.html" class="hover:text-gray-300 transition-colors duration-200">Mentions Légales</a>
-            <a href="cgv.html" class="hover:text-gray-300 transition-colors duration-200">Conditions Générales de Vente / CGV</a>
+        <div class="legal-links">
+            <a href="politique-confidentialite.html">Politique de confidentialité</a>
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="cgv.html">Conditions Générales de Vente / CGV</a>
         </div>
     </footer>
 
