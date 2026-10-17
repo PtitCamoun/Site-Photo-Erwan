@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie - Erwan Gauriveau</title>
     
-    <!-- Favicon pour l'onglet -->
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Style CSS Intégré -->
     <style>
         * {
             margin: 0;
@@ -29,8 +26,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        
-        /* 1. Barre de navigation haute noire */
         header {
             width: 100%;
             background-color: #000000;
@@ -43,23 +38,18 @@
             top: 0;
             z-index: 50;
         }
-        
         .nav-logo-link {
             display: block;
-            height: 35px;
-            max-width: 180px;
+            height: 55px; 
+            max-width: 220px;
             opacity: 0.95;
             transition: opacity 0.2s;
-        }
-        .nav-logo-link:hover {
-            opacity: 1;
         }
         .nav-logo-link img {
             height: 100%;
             width: auto;
             object-fit: contain;
         }
-        
         nav {
             display: flex;
             align-items: center;
@@ -90,8 +80,6 @@
             color: #e7e5e4 !important;
             font-weight: 500;
         }
-
-        /* 2. Zone Galerie centrale */
         main {
             width: 100%;
             max-width: 1200px;
@@ -110,7 +98,36 @@
             border-bottom: 1px solid #f5f5f4;
             padding-bottom: 16px;
         }
-        
+        .select-tri-container {
+            position: relative;
+            display: inline-block;
+        }
+        .select-tri {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            color: #78716c;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding-right: 16px;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            letter-spacing: 1px;
+        }
+        .select-tri:hover {
+            color: #000000;
+        }
+        .select-tri-container::after {
+            content: "▾";
+            font-size: 10px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-55%);
+            color: #78716c;
+            pointer-events: none;
+        }
         .products-grid {
             display: grid;
             grid-template-cols: 1fr;
@@ -125,7 +142,6 @@
                 gap: 40px;
             }
         }
-        
         .product-card {
             display: flex;
             flex-direction: column;
@@ -134,7 +150,6 @@
             color: #000000;
             width: 100%;
         }
-        
         .image-container {
             width: 100%;
             background-color: #f5f5f4;
@@ -153,7 +168,6 @@
         .product-card:hover img {
             transform: scale(1.02);
         }
-        
         .product-title {
             font-size: 11px;
             text-transform: uppercase;
@@ -161,13 +175,7 @@
             color: #57534e;
             font-weight: 400;
             text-align: center;
-            transition: color 0.2s;
         }
-        .product-card:hover .product-title {
-            color: #000000;
-        }
-
-        /* 3. Pied de page noir */
         footer {
             background-color: #000000;
             color: #a8a29e;
@@ -181,9 +189,7 @@
             color: #d6d3d1;
             display: block;
             margin-bottom: 24px;
-            transition: color 0.2s;
         }
-        .contact-link:hover { color: #ffffff; }
         .contact-link p:first-child {
             font-size: 14px;
             font-weight: 300;
@@ -203,9 +209,7 @@
             text-decoration: none;
             font-size: 14px;
             margin: 0 12px;
-            transition: color 0.2s;
         }
-        .social-icons a:hover { color: #ffffff; }
         .copyright {
             font-size: 10px;
             letter-spacing: 2px;
@@ -227,19 +231,15 @@
             font-size: 11px;
             color: #78716c;
             text-decoration: none;
-            transition: color 0.2s;
         }
-        .legal-links a:hover { color: #d6d3d1; }
     </style>
 </head>
 <body>
 
-    <!-- 1. HEADER AVEC VOTRE LOGO CORRIGÉ EN .PNG -->
     <header>
         <a href="index.html" class="nav-logo-link">
             <img src="mon-logo.png" alt="Logo Erwan Gauriveau">
         </a>
-
         <nav>
             <a href="index.html">Accueil</a>
             <a href="galerie.html" class="active">Galerie</a>
@@ -249,15 +249,21 @@
         </nav>
     </header>
 
-    <!-- 2. GRILLE DE PRODUITS -->
     <main>
         <div class="gallery-info">
-            <div>2 résultats affichés</div>
-            <div>Tri du plus récent au plus ancien</div>
+            <div id="compteur-resultats">Chargement...</div>
+            <div class="select-tri-container">
+                <select class="select-tri">
+                    <option value="recent">Tri du plus récent au plus ancien</option>
+                    <option value="ancien">Tri du plus ancien au plus récent</option>
+                    <option value="prix-croissant">Tri par prix croissant</option>
+                    <option value="prix-decroissant">Tri par prix décroissant</option>
+                    <option value="alphabetique">Tri par ordre alphabétique</option>
+                </select>
+            </div>
         </div>
 
         <div class="products-grid">
-            <!-- Produit 1 : Faon bord de lac -->
             <a href="produit-faon.html" class="product-card">
                 <div class="image-container">
                     <img src="faon-lac.png" alt="Faon bord de lac">
@@ -265,7 +271,6 @@
                 <div class="product-title">Faon bord de lac</div>
             </a>
 
-            <!-- Produit 2 : Cerf qui brame -->
             <a href="produit-cerf.html" class="product-card">
                 <div class="image-container">
                     <img src="cerf-brame.JPG" alt="Cerf qui brame">
@@ -275,26 +280,30 @@
         </div>
     </main>
 
-    <!-- 3. FOOTER -->
     <footer>
         <a href="contact.html" class="contact-link">
             <p>Une question sur un tirage ?</p>
             <p>Contacte-moi.</p>
         </a>
-
         <div class="social-icons">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="#">Facebook</a>
         </div>
-
         <p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
-
         <div class="legal-links">
             <a href="politique-confidentialite.html">Politique de confidentialité</a>
             <a href="mentions-legales.html">Mentions Légales</a>
             <a href="cgv.html">Conditions Générales de Vente / CGV</a>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var p = document.querySelectorAll('.product-card').length;
+            var e = document.getElementById('compteur-resultats');
+            e.textContent = p + (p <= 1 ? " résultat affiché" : " résultats affichés");
+        });
+    </script>
 
 </body>
 </html>
