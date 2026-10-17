@@ -116,10 +116,11 @@ main{
   cursor:pointer;
 }
 
-/* BLOCAGE STRICT : Force 3 colonnes horizontales sans exception */
+/* VERROUILLAGE TOTAL : Ligne horizontale pure sans aucun retour à la ligne possible */
 .products-grid{
-  display:grid !important;
-  grid-template-cols: repeat(3, minmax(0, 1fr)) !important;
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
   gap:24px;
   width:100%;
   align-items:start;
@@ -131,7 +132,8 @@ main{
   align-items:center;
   text-decoration:none;
   color:#000;
-  width:100%;
+  flex:1 !important; /* Force chaque cadre à prendre exactement 1/3 de la largeur */
+  min-width: 0;
 }
 .image-container{
   width:100%;
