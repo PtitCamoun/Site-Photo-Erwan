@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
         
-        /* Section d'accueil principale avec correction de l'extension .JPG */
+        /* Section d'accueil principale avec le nom exact de votre fichier (avec les espaces) */
         .hero-section {
             position: relative;
             height: 100vh;
@@ -35,7 +35,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('image-fond-cerf.JPG');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image fond cerf.JPG');
             background-size: cover;
             background-position: center;
         }
@@ -43,19 +43,19 @@
             text-align: center;
             z-index: 10;
             padding: 0 20px;
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 32px;
+            gap: 24px;
         }
         
-        /* Conteneur du logo sans rond, tailles respectées fidèlement */
+        /* Conteneur du logo AGRANDI (Passé de 320px à 550px) */
         .logo-image-container {
             width: 100%;
-            max-width: 320px;
-            opacity: 0.95;
+            max-width: 550px;
+            opacity: 0.98;
         }
         .logo-image-container img {
             width: 100%;
@@ -66,18 +66,19 @@
         /* Bouton élégant calqué sur la maquette */
         .btn-galerie {
             display: inline-block;
-            padding: 10px 28px;
+            padding: 12px 36px;
             font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 50px;
             text-decoration: none;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             transition: all 0.3s ease-in-out;
+            margin-top: 8px;
         }
         .btn-galerie:hover {
             background-color: #ffffff;
@@ -155,7 +156,7 @@
     <!-- SECTION PRINCIPALE AVEC FOND ET LOGO CENTRÉS -->
     <section class="hero-section">
         <div class="center-content">
-            <!-- Votre logo officiel avec votre texte intégré -->
+            <!-- Votre logo officiel agrandi -->
             <div class="logo-image-container">
                 <img src="mon-logo.png" alt="Logo Erwan Gauriveau">
             </div>
