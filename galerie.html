@@ -4,131 +4,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie - Erwan Gauriveau</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://jsdelivr.net"></script>
-script src="https://tailwindcss.com"></script>
+    
+    <!-- Favicon pour l'onglet -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cloudflare.com">
     
+    <!-- Style CSS Intégré (Zéro blocage) -->
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* 1. Navbar Haute */
+        header {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .nav-logo-svg {
+            width: 28px;
+            height: 28px;
         }
         .signature-font {
             font-family: 'Playfair Display', serif;
             font-style: italic;
+            font-size: 18px;
+            letter-spacing: 1px;
         }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        nav a {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #a8a29e;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: #ffffff;
+        }
+        nav a.active {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 2px;
+        }
+        .cart-btn {
+            background-color: #1c1917;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e7e5e4 !important;
+            font-weight: 500;
+        }
+
+        /* 2. Section Galerie Centrale */
+        main {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            flex-grow: 1;
+        }
+        .gallery-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #78716c;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            border-b: 1px solid #f5f5f4;
+            padding-bottom: 16px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-cols: 1fr;
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-cols: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+        
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #000000;
+        }
+        .image-container {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background-color: #f5f5f4;
+            overflow: hidden;
+            border: 1px solid #e7e5e4;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
+        .product-card:hover img {
+            transform: scale(1.03);
+        }
+        .product-title {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: #44403c;
+            font-weight: 300;
+            text-align: center;
+            transition: color 0.2s;
+        }
+        .product-card:hover .product-title {
+            color: #000000;
+        }
+
+        /* 3. Pied de page */
+        footer {
+            background-color: #000000;
+            color: #a8a29e;
+            padding: 48px 24px;
+            border-top: 1px solid #1c1917;
+            text-align: center;
+            width: 100%;
+        }
+        .contact-link {
+            text-decoration: none;
+            color: #d6d3d1;
+            display: block;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .contact-link:hover { color: #ffffff; }
+        .contact-link p:first-child {
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .contact-link p:last-child {
+            font-size: 12px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        .social-icons {
+            margin-bottom: 24px;
+        }
+        .social-icons a {
+            color: #a8a29e;
+            text-decoration: none;
+            font-size: 11px;
+            margin: 0 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: #ffffff; }
+        .copyright {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #78716c;
+            margin-bottom: 24px;
+        }
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding-top: 16px;
+            border-top: 1px solid rgba(120, 113, 108, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .legal-links a {
+            font-size: 11px;
+            color: #78716c;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .legal-links a:hover { color: #d6d3d1; }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- 1. BARRE DE NAVIGATION (NAVBAR NOIRE) -->
-    <header class="w-full bg-black text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
-        
-        <!-- Gauche : Signature (Lien vers l'accueil) -->
-        <a href="index.html" class="flex flex-col items-start group">
-            <div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6 text-white">
-                    <path d="M50,85 L50,45 M50,45 C40,30 30,35 25,20 M50,45 C60,30 70,35 75,20 M35,32 C25,25 20,15 15,25 M65,32 C75,25 80,15 85,25" stroke-linecap="round"/>
-                </svg>
-                <span class="signature-font text-lg md:text-xl tracking-wide">Erwan Gauriveau</span>
-            </div>
+    <!-- 1. HEADER / NAVBAR HAUTE NOIRE -->
+    <header>
+        <a href="index.html" class="nav-left">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="2.5" class="nav-logo-svg">
+                <path d="M50,85 L50,45 M50,45 C40,30 30,35 25,20 M50,45 C60,30 70,35 75,20 M35,32 C25,25 20,15 15,25 M65,32 C75,25 80,15 85,25" stroke-linecap="round"/>
+            </svg>
+            <span class="signature-font">Erwan Gauriveau</span>
         </a>
 
-        <!-- Droite : Menu de navigation + Panier -->
-        <nav class="flex items-center gap-6 md:gap-8 text-xs uppercase tracking-widest font-medium">
-            <a href="index.html" class="text-stone-400 hover:text-white transition-colors">Accueil</a>
-            <a href="galerie.html" class="text-white transition-colors border-b border-white pb-1">Galerie</a>
-            <a href="a-propos.html" class="text-stone-400 hover:text-white transition-colors">À Propos</a>
-            <a href="contact.html" class="text-stone-400 hover:text-white transition-colors">Contact</a>
-            
-            <!-- Lien vers le panier -->
-            <a href="panier.html" class="flex items-center gap-2 hover:text-stone-300 transition-colors bg-stone-900/50 px-3 py-1.5 rounded-sm">
-                <span class="font-semibold text-stone-200">0,00 €</span>
-                <div class="relative">
-                    <i class="fa-solid fa-shopping-bag text-sm"></i>
-                    <span class="absolute -top-1.5 -right-2 bg-stone-700 text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">0</span>
-                </div>
-            </a>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="galerie.html" class="active">Galerie</a>
+            <a href="a-propos.html">À Propos</a>
+            <a href="contact.html">Contact</a>
+            <a href="panier.html" class="cart-btn">0,00 €</a>
         </nav>
     </header>
 
-    <!-- 2. SECTION CENTRALE : LES PRODUITS DE LA GALERIE -->
-    <main class="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 flex-grow">
-        
-        <!-- Barre d'infos -->
-        <div class="flex justify-between items-center text-xs text-stone-500 tracking-wide mb-12 border-b border-stone-100 pb-4">
+    <!-- 2. CONTENU DE LA GALERIE (FOND BLANC) -->
+    <main>
+        <div class="gallery-info">
             <div>2 résultats affichés</div>
-            <div class="flex items-center gap-1 cursor-pointer hover:text-black transition-colors">
-                <span>Tri du plus récent au plus ancien</span>
-                <i class="fa-solid fa-chevron-down text-[10px]"></i>
-            </div>
+            <div>Tri du plus récent au plus ancien</div>
         </div>
 
-        <!-- Grille des produits (Format horizontal 4/3 uniforme) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-4xl mx-auto">
-            
-            <!-- PRODUIT 1 : Faon bord de lac (LIEN ACTIF VERS produit-faon.html) -->
-            <a href="produit-faon.html" class="flex flex-col items-center group cursor-pointer">
-                <div class="w-full aspect-[4/3] bg-stone-50 overflow-hidden border border-stone-100 shadow-xs mb-4">
-                    <img src="faon-lac.jpg" alt="Faon bord de lac" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102">
+        <div class="products-grid">
+            <!-- Produit 1 : Faon bord de lac -->
+            <a href="produit-faon.html" class="product-card">
+                <div class="image-container">
+                    <img src="faon-lac.jpg" alt="Faon bord de lac">
                 </div>
-                <h3 class="text-xs tracking-wider text-stone-700 font-light group-hover:text-black transition-colors text-center">
-                    Faon bord de lac
-                </h3>
+                <div class="product-title">Faon bord de lac</div>
             </a>
 
-            <!-- PRODUIT 2 : Cerf qui brame (LIEN ACTIF VERS produit-cerf.html) -->
-            <a href="produit-cerf.html" class="flex flex-col items-center group cursor-pointer">
-                <div class="w-full aspect-[4/3] bg-stone-50 overflow-hidden border border-stone-100 shadow-xs mb-4">
-                    <img src="cerf-brame.jpg" alt="Cerf qui brame" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102">
+            <!-- Produit 2 : Cerf qui brame -->
+            <a href="produit-cerf.html" class="product-card">
+                <div class="image-container">
+                    <img src="cerf-brame.jpg" alt="Cerf qui brame">
                 </div>
-                <h3 class="text-xs tracking-wider text-stone-700 font-light group-hover:text-black transition-colors text-center">
-                    Cerf qui brame
-                </h3>
+                <div class="product-title">Cerf qui brame</div>
             </a>
-
         </div>
     </main>
 
-    <!-- 3. PIED DE PAGE (FOOTER NOIR IDENTIQUE EN TOUT POINT) -->
-    <footer class="bg-black text-stone-400 py-12 px-6 border-t border-stone-900 w-full flex flex-col items-center justify-center gap-8">
-        
-        <div class="text-center">
-            <a href="contact.html" class="group block space-y-1">
-                <p class="text-sm font-light tracking-wide text-stone-300 group-hover:text-white transition-colors duration-200">
-                    Une question sur un tirage ?
-                </p>
-                <p class="text-xs tracking-wider text-stone-400 group-hover:text-white transition-colors duration-200 underline underline-offset-4">
-                    Contacte-moi.
-                </p>
-            </a>
+    <!-- 3. FOOTER NOIR IDENTIQUE -->
+    <footer>
+        <a href="contact.html" class="contact-link">
+            <p>Une question sur un tirage ?</p>
+            <p>Contacte-moi.</p>
+        </a>
+
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="#">Facebook</a>
         </div>
 
-        <div class="flex items-center gap-6 text-lg">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#" class="hover:text-white transition-colors duration-200" aria-label="Facebook">
-                <i class="fa-brands fa-facebook-f"></i>
-            </a>
+        <p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
+
+        <div class="legal-links">
+            <a href="politique-confidentialite.html">Politique de confidentialité</a>
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="cgv.html">Conditions Générales de Vente / CGV</a>
         </div>
-
-        <p class="text-[10px] tracking-widest text-stone-500 uppercase">
-            © 2026 Erwan Gauriveau. Tous droits réservés.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[11px] tracking-wider text-stone-500 pt-4 border-t border-stone-900/50 w-full max-w-2xl text-center">
-            <a href="politique-confidentialite.html" class="hover:text-stone-300 transition-colors duration-200">Politique de confidentialité</a>
-            <a href="mentions-legales.html" class="hover:text-stone-300 transition-colors duration-200">Mentions Légales</a>
-            <a href="cgv.html" class="hover:text-stone-300 transition-colors duration-200">Conditions Générales de Vente / CGV</a>
-        </div>
-
     </footer>
 
 </body>
