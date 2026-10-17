@@ -117,7 +117,6 @@
             gap: 48px;
             max-width: 900px;
             margin: 0 auto;
-            /* Aligner les éléments par le haut si les tailles de photos diffèrent */
             align-items: start;
         }
         @media (min-width: 768px) {
@@ -136,7 +135,6 @@
             width: 100%;
         }
         
-        /* MODIFICATION : Conteneur souple qui s'adapte au ratio original de la photo */
         .image-container {
             width: 100%;
             background-color: #f5f5f4;
@@ -147,7 +145,7 @@
         }
         .image-container img {
             width: 100%;
-            height: auto; /* Laisse la hauteur naturelle s'ajuster */
+            height: auto;
             display: block;
             object-fit: contain;
             transition: transform 0.4s ease-in-out;
@@ -251,7 +249,7 @@
         </nav>
     </header>
 
-    <!-- 2. GRILLE DE PRODUITS AUX RATIOS RESPECTÉS -->
+    <!-- 2. GRILLE DE PRODUITS -->
     <main>
         <div class="gallery-info">
             <div>2 résultats affichés</div>
@@ -259,10 +257,10 @@
         </div>
 
         <div class="products-grid">
-            <!-- Produit 1 : Faon bord de lac -->
+            <!-- Produit 1 : Faon bord de lac (Modifié avec l'extension .png) -->
             <a href="produit-faon.html" class="product-card">
                 <div class="image-container">
-                    <img src="faon-lac.JPG" alt="Faon bord de lac">
+                    <img src="faon-lac.png" alt="Faon bord de lac">
                 </div>
                 <div class="product-title">Faon bord de lac</div>
             </a>
