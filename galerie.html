@@ -11,9 +11,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Style CSS Intégré (Zéro blocage) -->
+    <!-- Style CSS Intégré (Aucun blocage externe) -->
     <style>
         * {
             margin: 0;
@@ -30,12 +30,12 @@
             justify-content: space-between;
         }
         
-        /* 1. Navbar Haute */
+        /* 1. Barre de navigation haute noire */
         header {
             width: 100%;
             background-color: #000000;
             color: #ffffff;
-            padding: 16px 40px;
+            padding: 12px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,22 +43,22 @@
             top: 0;
             z-index: 50;
         }
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #ffffff;
+        
+        /* Conteneur de votre logo officiel en haut à gauche */
+        .nav-logo-link {
+            display: block;
+            height: 35px; /* Hauteur ajustée pour la barre de menu */
+            max-width: 180px;
+            opacity: 0.95;
+            transition: opacity 0.2s;
         }
-        .nav-logo-svg {
-            width: 28px;
-            height: 28px;
+        .nav-logo-link:hover {
+            opacity: 1;
         }
-        .signature-font {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 18px;
-            letter-spacing: 1px;
+        .nav-logo-link img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
         
         nav {
@@ -92,7 +92,7 @@
             font-weight: 500;
         }
 
-        /* 2. Section Galerie Centrale */
+        /* 2. Zone Galerie centrale (Fond blanc épuré) */
         main {
             width: 100%;
             max-width: 1200px;
@@ -108,7 +108,7 @@
             color: #78716c;
             letter-spacing: 1px;
             margin-bottom: 40px;
-            border-b: 1px solid #f5f5f4;
+            border-bottom: 1px solid #f5f5f4;
             padding-bottom: 16px;
         }
         
@@ -140,7 +140,7 @@
             overflow: hidden;
             border: 1px solid #e7e5e4;
             margin-bottom: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
         }
         .image-container img {
             width: 100%;
@@ -149,13 +149,14 @@
             transition: transform 0.4s ease-in-out;
         }
         .product-card:hover img {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
         .product-title {
-            font-size: 12px;
+            font-size: 11px;
+            text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #44403c;
-            font-weight: 300;
+            color: #57534e;
+            font-weight: 400;
             text-align: center;
             transition: color 0.2s;
         }
@@ -163,7 +164,7 @@
             color: #000000;
         }
 
-        /* 3. Pied de page */
+        /* 3. Pied de page noir standardisé */
         footer {
             background-color: #000000;
             color: #a8a29e;
@@ -197,10 +198,8 @@
         .social-icons a {
             color: #a8a29e;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 14px;
             margin: 0 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             transition: color 0.2s;
         }
         .social-icons a:hover { color: #ffffff; }
@@ -232,13 +231,10 @@
 </head>
 <body>
 
-    <!-- 1. HEADER / NAVBAR HAUTE NOIRE -->
+    <!-- 1. HEADER AVEC VOTRE COMPOSITION DE LOGO OFFICIEL -->
     <header>
-        <a href="index.html" class="nav-left">
-            <svg viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="2.5" class="nav-logo-svg">
-                <path d="M50,85 L50,45 M50,45 C40,30 30,35 25,20 M50,45 C60,30 70,35 75,20 M35,32 C25,25 20,15 15,25 M65,32 C75,25 80,15 85,25" stroke-linecap="round"/>
-            </svg>
-            <span class="signature-font">Erwan Gauriveau</span>
+        <a href="index.html" class="nav-logo-link">
+            <img src="mon-logo.jpg" alt="Logo Erwan Gauriveau">
         </a>
 
         <nav>
@@ -250,7 +246,7 @@
         </nav>
     </header>
 
-    <!-- 2. CONTENU DE LA GALERIE (FOND BLANC) -->
+    <!-- 2. GRILLE DE PRODUITS UNIFORME -->
     <main>
         <div class="gallery-info">
             <div>2 résultats affichés</div>
@@ -261,7 +257,7 @@
             <!-- Produit 1 : Faon bord de lac -->
             <a href="produit-faon.html" class="product-card">
                 <div class="image-container">
-                    <img src="faon-lac.jpg" alt="Faon bord de lac">
+                    <img src="faon-lac.JPG" alt="Faon bord de lac">
                 </div>
                 <div class="product-title">Faon bord de lac</div>
             </a>
@@ -269,14 +265,14 @@
             <!-- Produit 2 : Cerf qui brame -->
             <a href="produit-cerf.html" class="product-card">
                 <div class="image-container">
-                    <img src="cerf-brame.jpg" alt="Cerf qui brame">
+                    <img src="cerf-brame.JPG" alt="Cerf qui brame">
                 </div>
                 <div class="product-title">Cerf qui brame</div>
             </a>
         </div>
     </main>
 
-    <!-- 3. FOOTER NOIR IDENTIQUE -->
+    <!-- 3. FOOTER STANDARDISÉ NOIR -->
     <footer>
         <a href="contact.html" class="contact-link">
             <p>Une question sur un tirage ?</p>
