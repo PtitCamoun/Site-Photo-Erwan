@@ -27,7 +27,21 @@
             overflow-x: hidden;
         }
         
-        /* Section d'accueil principale avec effet de fond fixe */
+        /* TECHNIQUE ULTIME DE FLUIDITÉ : L'image est verrouillée en arrière-plan sans calculs lourds */
+        .bg-fixed-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image-fond-cerf.JPG');
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* Reste derrière tout le contenu */
+            will-change: transform; /* Optimisation carte graphique */
+        }
+        
+        /* Section d'accueil transparente pour laisser voir le fond */
         .hero-section {
             position: relative;
             height: 100vh;
@@ -35,11 +49,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image-fond-cerf.JPG');
-            background-size: cover;
-            background-position: center;
-            /* C'EST CETTE LIGNE QUI BLOQUE L'IMAGE DE FOND */
-            background-attachment: fixed; 
+            background: transparent;
         }
         .center-content {
             text-align: center;
@@ -53,7 +63,7 @@
             gap: 24px;
         }
         
-        /* Taille du logo réajustée */
+        /* Taille du logo */
         .logo-image-container {
             width: 100%;
             max-width: 420px;
@@ -65,6 +75,7 @@
             object-fit: contain;
         }
         
+        /* Bouton ENTIÈREMENT TRANSPARENT */
         .btn-galerie {
             display: inline-block;
             padding: 12px 36px;
@@ -72,12 +83,10 @@
             text-transform: uppercase;
             letter-spacing: 2.5px;
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6); /* Bordure blanche fine */
             border-radius: 50px;
             text-decoration: none;
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background-color: transparent; /* Zéro couleur de fond */
             transition: all 0.3s ease-in-out;
             margin-top: 8px;
         }
@@ -87,7 +96,7 @@
             border-color: #ffffff;
         }
 
-        /* Pied de page standardisé */
+        /* Pied de page standardisé qui remonte de façon fluide */
         footer {
             background-color: #000000;
             color: #a8a29e;
@@ -96,7 +105,7 @@
             text-align: center;
             width: 100%;
             position: relative;
-            z-index: 20; /* Assure que le footer passe au-dessus du fond fixe */
+            z-index: 20;
         }
         .contact-link {
             text-decoration: none;
@@ -156,6 +165,10 @@
 </head>
 <body>
 
+    <!-- Calque d'arrière-plan fixe et super fluide -->
+    <div class="bg-fixed-layer"></div>
+
+    <!-- SECTION PRINCIPALE -->
     <section class="hero-section">
         <div class="center-content">
             <div class="logo-image-container">
@@ -167,6 +180,7 @@
         </div>
     </section>
 
+    <!-- PIED DE PAGE -->
     <footer>
         <a href="contact.html" class="contact-link">
             <p>Une question sur un tirage ?</p>
