@@ -2,13 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" 
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galerie</title>
-<link rel="icon" type="image/png" 
-href="favicon.png">
-<link rel="stylesheet" 
-href="https://cloudflare.com">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://cloudflare.com">
 <style>
 *{
   margin:0;
@@ -118,19 +115,16 @@ main{
   outline:none;
   cursor:pointer;
 }
-/* Force STRICTEMENT les 3 colonnes horizontales */
+
+/* BLOCAGE STRICT : Force 3 colonnes horizontales sans exception */
 .products-grid{
-  display:grid;
-  grid-template-cols: 1fr 1fr 1fr !important;
-  gap:40px;
+  display:grid !important;
+  grid-template-cols: repeat(3, minmax(0, 1fr)) !important;
+  gap:24px;
   width:100%;
   align-items:start;
 }
-@media(max-w:768px){
-  .products-grid{
-    grid-template-cols:1fr !important;
-  }
-}
+
 .product-card{
   display:flex;
   flex-direction:column;
@@ -248,7 +242,7 @@ footer{
 
 <div class="products-grid">
 
-<!-- PHOTO 1 : LE FAON -->
+<!-- Photo 1 -->
 <a href="produit-faon.html" class="product-card">
 <div class="image-container">
 <img src="faon-lac.png" alt="Faon">
@@ -256,7 +250,7 @@ footer{
 <div class="product-title">Faon bord de lac</div>
 </a>
 
-<!-- PHOTO 2 : LE CERF QUI BRAME -->
+<!-- Photo 2 -->
 <a href="produit-cerf.html" class="product-card">
 <div class="image-container">
 <img src="cerf-brame.JPG" alt="Cerf">
@@ -264,7 +258,7 @@ footer{
 <div class="product-title">Cerf qui brame</div>
 </a>
 
-<!-- PHOTO 3 : NOUVEAU PRODUIT POUR COMPLÉTER LA LIGNE -->
+<!-- Photo 3 -->
 <a href="produit-cerf-2.html" class="product-card">
 <div class="image-container">
 <img src="cerf-brame.JPG" alt="Cerf 2">
