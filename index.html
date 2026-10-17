@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
         
-        /* Section d'accueil principale avec le nom exact de votre fichier (avec les espaces) */
+        /* Version ultra-sécurisée pour l'espace dans le nom du fichier image */
         .hero-section {
             position: relative;
             height: 100vh;
@@ -35,7 +35,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image fond cerf.JPG');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image%20fond%20cerf.JPG');
             background-size: cover;
             background-position: center;
         }
@@ -51,10 +51,10 @@
             gap: 24px;
         }
         
-        /* Conteneur du logo AGRANDI (Passé de 320px à 550px) */
+        /* Taille réajustée à 460px (juste milieu parfait) */
         .logo-image-container {
             width: 100%;
-            max-width: 550px;
+            max-width: 460px;
             opacity: 0.98;
         }
         .logo-image-container img {
@@ -63,7 +63,6 @@
             object-fit: contain;
         }
         
-        /* Bouton élégant calqué sur la maquette */
         .btn-galerie {
             display: inline-block;
             padding: 12px 36px;
@@ -86,7 +85,6 @@
             border-color: #ffffff;
         }
 
-        /* Pied de page standardisé */
         footer {
             background-color: #000000;
             color: #a8a29e;
@@ -153,35 +151,27 @@
 </head>
 <body>
 
-    <!-- SECTION PRINCIPALE AVEC FOND ET LOGO CENTRÉS -->
     <section class="hero-section">
         <div class="center-content">
-            <!-- Votre logo officiel agrandi -->
             <div class="logo-image-container">
                 <img src="mon-logo.png" alt="Logo Erwan Gauriveau">
             </div>
-
-            <!-- Bouton Découvrir -->
             <div>
                 <a href="galerie.html" class="btn-galerie">Découvrir la Galerie</a>
             </div>
         </div>
     </section>
 
-    <!-- PIED DE PAGE -->
     <footer>
         <a href="contact.html" class="contact-link">
             <p>Une question sur un tirage ?</p>
             <p>Contacte-moi.</p>
         </a>
-
         <div class="social-icons">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="#">Facebook</a>
         </div>
-
         <p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
-
         <div class="legal-links">
             <a href="politique-confidentialite.html">Politique de confidentialité</a>
             <a href="mentions-legales.html">Mentions Légales</a>
