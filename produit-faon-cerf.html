@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faon avec Cerf - Erwan Gauriveau</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://cloudflare.com">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-family:sans-serif;
+  background:#fff;
+  color:#000;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+header{
+  background:#000;
+  color:#fff;
+  padding:12px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.nav-logo-link{
+  display:block;
+  height:75px; 
+}
+.nav-logo-link img{
+  height:100%;
+  object-fit:contain;
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+nav a{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-decoration:none;
+  color:#a8a29e;
+  font-weight:500;
+}
+nav a:hover{
+  color:#fff;
+}
+.cart-btn-fixed{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(28,25,23,0.6);
+  padding:6px 12px;
+  border-radius:4px;
+  text-decoration:none;
+  color:#e7e5e4;
+}
+.cart-icon-container{
+  position:relative;
+}
+.cart-badge{
+  position:absolute;
+  top:-6px;
+  right:-8px;
+  background:#fff;
+  color:#000;
+  font-size:9px;
+  font-weight:bold;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+main{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:60px 24px;
+  flex-grow:1;
+  display:flex;
+  flex-direction:row;
+  gap:48px;
+}
+@media(max-width:768px){
+  main{
+    flex-direction:column;
+  }
+}
+.product-image-side{
+  flex:1;
+  background:#f5f5f4;
+  border:1px solid #e7e5e4;
+  box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);
+}
+.product-image-side img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.product-details-side{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.breadcrumb{
+  font-size:11px;
+  color:#78716c;
+  letter-spacing:1px;
+}
+.breadcrumb a{
+  color:#78716c;
+  text-decoration:none;
+}
+.breadcrumb a:hover{
+  color:#000;
+}
+.product-title-main{
+  font-size:24px;
+  font-weight:300;
+  letter-spacing:1px;
+  color:#1c1917;
+}
+.price-notice-box{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding-bottom:20px;
+  border-bottom:1px solid #f5f5f4;
+}
+.price-tag{
+  font-size:16px;
+  font-weight:600;
+  color:#000;
+}
+.notice-text{
+  font-size:11px;
+  color:#78716c;
+  line-height:1.5;
+}
+.notice-text i{
+  color:#f59e0b;
+  margin-right:4px;
+}
+.form-row{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.form-label{
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#44403c;
+}
+.select-size{
+  width:100%;
+  max-width:400px;
+  padding:10px;
+  font-size:12px;
+  border:1px solid #e7e5e4;
+  background:#fff;
+  outline:none;
+}
+.action-row{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:12px;
+}
+.input-qty{
+  width:50px;
+  height:40px;
+  text-align:center;
+  border:1px solid #e7e5e4;
+  font-size:12px;
+}
+.btn-submit-cart{
+  padding:12px 32px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#57534e;
+  border:1px solid #d6d3d1;
+  border-radius:50px;
+  background:transparent;
+  cursor:pointer;
+  transition:all 0.2s ease-in-out;
+}
+.btn-submit-cart:hover{
+  background:#000;
+  color:#fff;
+  border-color:#000;
+}
+footer{
+  background:#000;
+  color:#a8a29e;
+  padding:48px 24px;
+  text-align:center;
+  width:100%;
+}
+.contact-link{
+  text-decoration:none;
+  color:#d6d3d1;
+  display:block;
+  margin-bottom:24px;
+}
+.contact-link p:first-child {
+  font-size:14px;
+  font-weight:300;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+.contact-link p:last-child {
+  font-size:12px;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.social-icons{
+  margin-bottom:24px;
+}
+.social-icons a{
+  color:#a8a29e;
+  text-decoration:none;
+  margin:0 12px;
+  font-size:14px;
+}
+.copyright{
+  font-size:10px;
+  margin-bottom:24px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.legal-links{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-top:16px;
+  border-top:1px solid #1c1917;
+}
+.legal-links a{
+  font-size:11px;
+  color:#78716c;
+  text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="nav-logo-link">
+<img src="mon-logo.png" alt="Logo">
+</a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="galerie.html">Galerie</a>
+<a href="a-propos.html">À Propos</a>
+<a href="contact.html">Contact</a>
+<a href="panier.html" class="cart-btn-fixed">
+<span>0,00 €</span>
+<div class="cart-icon-container">
+<i class="fa-solid fa-shopping-bag"></i>
+<div class="cart-badge">0</div>
+</div>
+</a>
+</nav>
+</header>
+
+<main>
+<div class="product-image-side">
+<img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf">
+</div>
+
+<div class="product-details-side">
+<div class="breadcrumb">
+<a href="index.html">Accueil</a> / <a href="galerie.html">Galerie</a> / Faon avec Cerf
+</div>
+
+<h1 class="product-title-main">Faon avec Cerf</h1>
+
+<div class="price-notice-box">
+<div class="price-tag">20,00 € – 50,00 €</div>
+<div class="notice-text">
+<i class="fa-solid fa-triangle-exclamation"></i>
+Chaque tirage étant produit sur mesure à la commande, aucun retour, échange ni remboursement ne sera accepté.
+</div>
+</div>
+
+<form onsubmit="event.preventDefault();">
+<div class="form-row">
+<label class="form-label">Taille</label>
+<select class="select-size">
+<option value="">Choisir une option</option>
+<option value="1">20x30 cm — 20,00 €</option>
+<option value="2">30x45 cm — 35,00 €</option>
+<option value="3">40x60 cm — 50,00 €</option>
+</select>
+</div>
+
+<div class="action-row">
+<input type="number" class="input-qty" value="1" min="1">
+<button type="submit" class="btn-submit-cart">Ajouter Au Panier</button>
+</div>
+</form>
+</div>
+</main>
+
+<footer>
+<a href="contact.html" class="contact-link">
+<p>Une question sur un tirage ?</p>
+<p>Contacte-moi.</p>
+</a>
+<div class="social-icons">
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="#">Facebook</a>
+</div>
+<p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
+<div class="legal-links">
+<a href="politique-confidentialite.html">Politique de confidentialité</a>
+<a href="mentions-legales.html">Mentions Légales</a>
+<a href="cgv.html">CGV</a>
+</div>
+</footer>
+
+</body>
+</html>
