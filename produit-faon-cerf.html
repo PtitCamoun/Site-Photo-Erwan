@@ -176,31 +176,53 @@ main{
   color:#fff;
   border-color:#000;
 }
-footer{
-  background:#000;
-  color:#a8a29e;
+
+.product-footer{
+  background:#000 !important;
+  color:#a8a29e !important;
   padding:48px 24px;
+  border-top:1px solid #1c1917;
   text-align:center;
   width:100%;
 }
-.contact-link{
+.product-footer .contact-link{
   text-decoration:none;
-  color:#d6d3d1;
+  color:#d6d3d1 !important;
   display:block;
   margin-bottom:24px;
 }
-.social-icons{margin-bottom:24px;}
-.social-icons a{
-  color:#a8a29e;
-  text-decoration:none;
-  margin:0 12px;
+.product-footer .contact-link p:first-child{
   font-size:14px;
+  font-weight:300;
+  letter-spacing:1px;
+  margin-bottom:4px;
+  color:#e7e5e4 !important;
 }
+.product-footer .contact-link p:last-child{
+  font-size:12px;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  color:#a8a29e !important;
+}
+.product-footer .contact-link:hover p{
+  color:#fff !important;
+}
+.social-icons-svg{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  margin-bottom:24px;
+}
+.social-icons-svg a{color:#a8a29e !important;transition:color 0.2s;}
+.social-icons-svg a:hover{color:#fff !important;}
+.social-icons-svg svg{width:18px;height:18px;fill:currentColor;display:block;}
 .copyright{
   font-size:10px;
   margin-bottom:24px;
   letter-spacing:2px;
   text-transform:uppercase;
+  color:#78716c !important;
 }
 .legal-links{
   display:flex;
@@ -209,8 +231,16 @@ footer{
   flex-wrap:wrap;
   padding-top:16px;
   border-top:1px solid #1c1917;
+  max-width:600px;
+  margin:0 auto;
 }
-.legal-links a{font-size:11px;color:#78716c;text-decoration:none;}
+.legal-links a{
+  font-size:11px;
+  color:#78716c !important;
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.legal-links a:hover{color:#d6d3d1 !important;}
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -276,7 +306,7 @@ Ajouter Au Panier
 </div>
 </main>
 
-<footer>
+<footer class="product-footer">
 <a href="contact.html" class="contact-link">
 <p>Une question sur un tirage ?</p>
 <p>Contacte-moi.</p>
@@ -296,7 +326,6 @@ Ajouter Au Panier
 <a href="cgv.html">Conditions Générales de Vente / CGV</a>
 </div>
 </footer>
-
 
 <script>
 const box = document.getElementById('zoom-box');
