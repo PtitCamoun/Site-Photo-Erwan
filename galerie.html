@@ -5,212 +5,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galerie</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="https://cloudflare.com">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family:sans-serif;
-  background:#fff;
-  color:#000;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  font-family:sans-serif;background:#fff;color:#000;
+  min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
 }
 header{
-  background:#000;
-  color:#fff;
-  padding:12px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:50;
+  background:#000;color:#fff;padding:12px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:50;
 }
-.nav-logo-link{
-  display:block;
-  height:75px; 
-}
-.nav-logo-link img{
-  height:100%;
-  object-fit:contain;
-}
-nav{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
+.nav-logo-link{display:block;height:75px;}
+.nav-logo-link img{height:100%;object-fit:contain;}
+nav{display:flex;align-items:center;gap:28px;}
 nav a{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  text-decoration:none;
-  color:#a8a29e;
-  font-weight:500;
+  font-size:11px;text-transform:uppercase;letter-spacing:2px;
+  text-decoration:none;color:#a8a29e;font-weight:500;
 }
-nav a:hover,
-nav a.active{
-  color:#fff;
-}
-nav a.active {
-  border-bottom:1px solid #fff;
-  padding-bottom:2px;
-}
+nav a:hover,nav a.active{color:#fff;}
+nav a.active{border-bottom:1px solid #fff;padding-bottom:2px;}
 .cart-btn-fixed{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(28,25,23,0.6);
-  padding:6px 12px;
-  border-radius:4px;
-  text-decoration:none;
-  color:#e7e5e4;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(28,25,23,0.6);padding:6px 12px;
+  border-radius:4px;text-decoration:none;color:#e7e5e4;
 }
-.cart-icon-container{
-  position:relative;
-}
+.cart-icon-container{position:relative;}
 .cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-8px;
-  background:#fff;
-  color:#000;
-  font-size:9px;
-  font-weight:bold;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  position:absolute;top:-6px;right:-8px;background:#fff;color:#000;
+  font-size:9px;font-weight:bold;width:14px;height:14px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
 }
-main{
-  width:100%;
-  max-width:1400px;
-  margin:0 auto;
-  padding:40px 24px;
-  flex-grow:1;
-}
+main{width:100%;max-width:1400px;margin:0 auto;padding:40px 24px;flex-grow:1;}
 .gallery-info{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:11px;
-  color:#78716c;
-  margin-bottom:40px;
-  border-bottom:1px solid #f5f5f4;
-  padding-bottom:16px;
-  letter-spacing:1px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;color:#78716c;margin-bottom:40px;
+  border-bottom:1px solid #f5f5f4;padding-bottom:16px;letter-spacing:1px;
 }
-.select-tri{
-  font-size:11px;
-  color:#78716c;
-  background:transparent;
-  border:none;
-  outline:none;
-  cursor:pointer;
-}
+.select-tri{font-size:11px;color:#78716c;background:transparent;border:none;outline:none;cursor:pointer;}
 .products-grid{
-  display:flex !important;
-  flex-direction:row !important;
-  flex-wrap:nowrap !important;
-  gap:24px;
-  width:100%;
-  align-items:start;
+  display:flex !important;flex-direction:row !important;flex-wrap:nowrap !important;
+  gap:24px;width:100%;align-items:start;
 }
-.product-card{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-decoration:none;
-  color:#000;
-  flex:1 !important;
-  min-width: 0;
-}
-.image-container{
-  width:100%;
-  background:#f5f5f4;
-  border:1px solid #e7e5e4;
-  margin-bottom:16px;
-  box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);
-}
-.image-container img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-.product-title{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  color:#57534e;
-  text-align:center;
-}
+.product-card{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#000;flex:1 !important;min-width:0;}
+.image-container{width:100%;background:#f5f5f4;border:1px solid #e7e5e4;margin-bottom:16px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);}
+.image-container img{width:100%;height:auto;display:block;}
+.product-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#57534e;text-align:center;}
+
 footer{
-  background:#000;
-  color:#a8a29e;
-  padding:48px 24px;
-  text-align:center;
-  width:100%;
+  background:#000;color:#a8a29e;padding:48px 24px;
+  border-top:1px solid #1c1917;text-align:center;width:100%;
 }
-.contact-link{
-  text-decoration:none;
-  color:#d6d3d1;
-  display:block;
-  margin-bottom:24px;
-}
-.contact-link p:first-child {
-  font-size:14px;
-  font-weight:300;
-  letter-spacing:1px;
-  margin-bottom:4px;
-}
-.contact-link p:last-child {
-  font-size:12px;
-  text-decoration:underline;
-  text-underline-offset:4px;
-}
-.social-icons{
-  margin-bottom:24px;
-}
-.social-icons a{
-  color:#a8a29e;
-  text-decoration:none;
-  margin:0 12px;
-  font-size:14px;
-}
-.copyright{
-  font-size:10px;
-  margin-bottom:24px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
+.contact-link{text-decoration:none;color:#d6d3d1;display:block;margin-bottom:24px;}
+.contact-link p:first-child{font-size:14px;font-weight:300;letter-spacing:1px;margin-bottom:4px;}
+.contact-link p:last-child{font-size:12px;text-decoration:underline;text-underline-offset:4px;}
+.social-icons-svg{display:flex;justify-content:center;align-items:center;gap:24px;margin-bottom:24px;}
+.social-icons-svg a{color:#a8a29e;transition:color 0.2s;}
+.social-icons-svg a:hover{color:#fff;}
+.social-icons-svg svg{width:18px;height:18px;fill:currentColor;display:block;}
+.copyright{font-size:10px;margin-bottom:24px;letter-spacing:2px;text-transform:uppercase;color:#78716c;}
 .legal-links{
-  display:flex;
-  justify-content:center;
-  gap:24px;
-  flex-wrap:wrap;
-  padding-top:16px;
-  border-top:1px solid #1c1917;
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid #1c1917;
 }
-.legal-links a{
-  font-size:11px;
-  color:#78716c;
-  text-decoration:none;
-}
+.legal-links a{font-size:11px;color:#78716c;text-decoration:none;}
 </style>
 </head>
 <body>
-
 <header>
-<a href="index.html" class="nav-logo-link">
-<img src="mon-logo.png" alt="Logo">
-</a>
+<a href="index.html" class="nav-logo-link"><img src="mon-logo.png" alt="Logo"></a>
 <nav>
 <a href="index.html">Accueil</a>
 <a href="galerie.html" class="active">Galerie</a>
@@ -219,7 +82,7 @@ footer{
 <a href="panier.html" class="cart-btn-fixed">
 <span>0,00 €</span>
 <div class="cart-icon-container">
-<i class="fa-solid fa-shopping-bag"></i>
+<svg style="width:14px;height:14px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
 <div class="cart-badge">0</div>
 </div>
 </a>
@@ -230,7 +93,6 @@ footer{
 <div class="gallery-info">
 <div id="txt-c">Calcul...</div>
 <div>
-<!-- Menu déroulant avec identifiant id="select-tri" pour le lier au script -->
 <select id="select-tri" class="select-tri">
 <option value="recent">Tri du plus récent au plus ancien</option>
 <option value="ancien">Tri du plus ancien au plus récent</option>
@@ -240,33 +102,19 @@ footer{
 </select>
 </div>
 </div>
-
 <div class="products-grid" id="products-container">
-
-<!-- Photo 1 : Faon (Date: 1, Prix min: 20, Titre: Faon...) -->
 <a href="produit-faon.html" class="product-card" data-date="1" data-price="20" data-title="Faon bord de lac">
-<div class="image-container">
-<img src="faon-lac.png" alt="Faon">
-</div>
+<div class="image-container"><img src="faon-lac.png" alt="Faon"></div>
 <div class="product-title">Faon bord de lac</div>
 </a>
-
-<!-- Photo 2 : Cerf brame (Date: 2, Prix min: 25, Titre: Cerf qui brame) -->
 <a href="produit-cerf.html" class="product-card" data-date="2" data-price="25" data-title="Cerf qui brame">
-<div class="image-container">
-<img src="cerf-brame.JPG" alt="Cerf">
-</div>
+<div class="image-container"><img src="cerf-brame.JPG" alt="Cerf"></div>
 <div class="product-title">Cerf qui brame</div>
 </a>
-
-<!-- Photo 3 : Faon avec Cerf (Date: 3, Prix min: 30, Titre: Faon avec Cerf) -->
 <a href="produit-faon-cerf.html" class="product-card" data-date="3" data-price="30" data-title="Faon avec Cerf">
-<div class="image-container">
-<img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf">
-</div>
+<div class="image-container"><img src="Faon-avec-Cerf.JPG" alt="Faon"></div>
 <div class="product-title">Faon avec Cerf</div>
 </a>
-
 </div>
 </main>
 
@@ -275,58 +123,41 @@ footer{
 <p>Une question sur un tirage ?</p>
 <p>Contacte-moi.</p>
 </a>
-<div class="social-icons">
-<a href="https://instagram.com" 
-target="_blank" rel="noopener noreferrer">Instagram</a>
-<a href="#">Facebook</a>
+<div class="social-icons-svg">
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+</a>
+<a href="#" aria-label="Facebook">
+<svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
 </div>
-<p class="copyright">
-© 2026 Erwan Gauriveau. Tous droits réservés.
-</p>
+<p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
 <div class="legal-links">
-<a href="politique-confidentialite.html">
-Politique de confidentialité</a>
-<a href="mentions-legales.html">
-Mentions Légales</a>
-<a href="cgv.html">CGV</a>
+<a href="politique-confidentialite.html">Politique de confidentialité</a>
+<a href="mentions-legales.html">Mentions Légales</a>
+<a href="cgv.html">Conditions Générales de Vente / CGV</a>
 </div>
 </footer>
 
-<!-- LE SCRIPT LOGIQUE INTERACTIF DE TRI CONTINU -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Gestion automatique du compteur de résultats
     var conteneur = document.getElementById('products-container');
     var photos = Array.from(conteneur.querySelectorAll('.product-card'));
     var n = photos.length;
     var txt = n <= 1 ? " résultat affiché" : " résultats affichés";
     document.getElementById('txt-c').textContent = n + txt;
-
-    // 2. Logique réelle du système de tri
     var selectTri = document.getElementById('select-tri');
-    
     selectTri.addEventListener('change', function() {
         var critere = this.value;
-        
         photos.sort(function(a, b) {
-            if (critere === 'recent') {
-                return parseInt(b.getAttribute('data-date')) - parseInt(a.getAttribute('data-date'));
-            } else if (critere === 'ancien') {
-                return parseInt(a.getAttribute('data-date')) - parseInt(b.getAttribute('data-date'));
-            } else if (critere === 'prix-croissant') {
-                return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
-            } else if (critere === 'prix-decroissant') {
-                return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
-            } else if (critere === 'alphabetique') {
-                return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
-            }
+            if (critere === 'recent') return parseInt(b.getAttribute('data-date')) - parseInt(a.getAttribute('data-date'));
+            if (critere === 'ancien') return parseInt(a.getAttribute('data-date')) - parseInt(b.getAttribute('data-date'));
+            if (critere === 'prix-croissant') return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+            if (critere === 'prix-decroissant') return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
+            if (critere === 'alphabetique') return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
             return 0;
         });
-        
-        // Réinjecte les photos dans le nouvel ordre calculé
-        photos.forEach(function(photo) {
-            conteneur.appendChild(photo);
-        });
+        photos.forEach(function(photo) { conteneur.appendChild(photo); });
     });
 });
 </script>
