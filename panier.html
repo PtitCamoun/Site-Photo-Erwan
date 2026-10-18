@@ -42,16 +42,16 @@ nav a{
   font-weight:500;
 }
 nav a:hover,nav a.active{color:#ffffff;}
-nav a.active{border-bottom:1px solid #ffffff;padding-bottom:2px;}
 .cart-btn-fixed{
   display:flex;
   align-items:center;
   gap:8px;
-  background:rgba(28,25,23,0.6);
+  background:rgba(255,255,255,0.1);
   padding:6px 12px;
   border-radius:4px;
   text-decoration:none;
-  color:#e7e5e4;
+  color:#ffffff !important;
+  border-bottom:none !important;
 }
 .cart-icon-container{position:relative;}
 .cart-badge{
@@ -188,7 +188,7 @@ main{
   background:#1c1917;
 }
 footer{
-  background:#000;
+  background:#000000;
   color:#a8a29e;
   padding:48px 24px;
   border-top:1px solid #1c1917;
@@ -212,7 +212,7 @@ footer{
 .legal-links a{font-size:11px;color:#78716c;text-decoration:none;}
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <header>
 <a href="index.html" class="nav-logo-link">
@@ -223,7 +223,8 @@ footer{
 <a href="galerie.html">Galerie</a>
 <a href="a-propos.html">À Propos</a>
 <a href="contact.html">Contact</a>
-<a href="panier.html" class="active" class="cart-btn-fixed">
+<!-- Correction ici : fusion propre des classes pour l alignement fluide -->
+<a href="panier.html" class="cart-btn-fixed active">
 <span id="header-price">0,00 €</span>
 <div class="cart-icon-container">
 <svg style="width:14px;height:14px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
