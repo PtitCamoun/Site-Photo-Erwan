@@ -3,61 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galerie</title>
+<title>Galerie - Erwan Gauriveau</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family:'Montserrat', sans-serif;background:#fff;color:#000;
-  min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+  font-family:'Montserrat', sans-serif;
+  background:#ffffff;
+  color:#000000;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 header{
-  background:#000;color:#fff;padding:12px 40px;
-  display:flex;justify-content:space-between;align-items:center;
-  position:sticky;top:0;z-index:50;
+  background:#000000;
+  color:#ffffff;
+  padding:12px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
 }
 .nav-logo-link{display:block;height:75px;}
 .nav-logo-link img{height:100%;object-fit:contain;}
 nav{display:flex;align-items:center;gap:28px;}
 nav a{
-  font-size:11px;text-transform:uppercase;letter-spacing:2px;
-  text-decoration:none;color:#a8a29e;font-weight:500;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-decoration:none;
+  color:#a8a29e;
+  font-weight:500;
 }
-nav a:hover,nav a.active{color:#fff;}
-nav a.active{border-bottom:1px solid #fff;padding-bottom:2px;}
+nav a:hover,nav a.active{color:#ffffff;}
+nav a.active{border-bottom:1px solid #ffffff;padding-bottom:2px;}
 .cart-btn-fixed{
-  display:flex;align-items:center;gap:8px;
-  background:rgba(28,25,23,0.6);padding:6px 12px;
-  border-radius:4px;text-decoration:none;color:#e7e5e4;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(28,25,23,0.6);
+  padding:6px 12px;
+  border-radius:4px;
+  text-decoration:none;
+  color:#e7e5e4;
 }
 .cart-icon-container{position:relative;}
 .cart-badge{
-  position:absolute;top:-6px;right:-8px;background:#fff;color:#000;
-  font-size:9px;font-weight:bold;width:14px;height:14px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  position:absolute;
+  top:-6px;
+  right:-8px;
+  background:#ffffff;
+  color:#000000;
+  font-size:9px;
+  font-weight:bold;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-main{width:100%;max-width:1400px;margin:0 auto;padding:40px 24px;flex-grow:1;}
+main{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:40px 24px;
+  flex-grow:1;
+}
 .gallery-info{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:11px;color:#78716c;margin-bottom:40px;
-  border-bottom:1px solid #f5f5f4;padding-bottom:16px;letter-spacing:1px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:11px;
+  color:#78716c;
+  margin-bottom:40px;
+  border-bottom:1px solid #f5f5f4;
+  padding-bottom:16px;
+  letter-spacing:1px;
 }
-.select-tri{font-size:11px;color:#78716c;background:transparent;border:none;outline:none;cursor:pointer;}
+.select-tri{
+  font-family:'Montserrat', sans-serif;
+  font-size:11px;
+  color:#78716c;
+  background:transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
 .products-grid{
-  display:flex !important;flex-direction:row !important;flex-wrap:nowrap !important;
-  gap:24px;width:100%;align-items:start;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:32px;
+  width:100%;
+  align-items:start;
 }
-.product-card{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#000;flex:1 !important;min-width:0;}
-.image-container{width:100%;background:#f5f5f4;border:1px solid #e7e5e4;margin-bottom:16px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);}
-.image-container img{width:100%;height:auto;display:block;}
-.product-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#57534e;text-align:center;}
-
+.product-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-decoration:none;
+  color:#000000;
+  flex:1;
+  min-width:280px;
+  max-width:calc(33.333% - 22px);
+}
+@media(max-width:900px){
+  .product-card{
+    max-width:calc(50% - 16px);
+  }
+}
+@media(max-width:600px){
+  .product-card{
+    max-width:100%;
+  }
+}
+.image-container{
+  width:100%;
+  background:#f5f5f4;
+  border:1px solid #e7e5e4;
+  margin-bottom:16px;
+  overflow:hidden;
+}
+.image-container img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform 0.3s ease;
+}
+.product-card:hover .image-container img{
+  transform:scale(1.03);
+}
+.product-title{
+  font-family:'Playfair Display', serif;
+  font-size:16px;
+  color:#1c1917;
+  text-align:center;
+  margin-bottom:6px;
+}
+.product-price-range{
+  font-size:12px;
+  color:#78716c;
+  font-weight:300;
+}
 footer{
-  background:#000;color:#a8a29e;padding:48px 24px;
-  border-top:1px solid #1c1917;text-align:center;width:100%;
+  background:#000000;
+  color:#a8a29e;
+  padding:48px 24px;
+  border-top:1px solid #1c1917;
+  text-align:center;
+  width:100%;
 }
 .contact-link{text-decoration:none;display:block;margin-bottom:24px;}
 .contact-link p:first-child{font-size:14px;font-weight:300;letter-spacing:1px;color:#e7e5e4 !important;margin-bottom:4px;}
@@ -77,8 +178,11 @@ footer{
 </style>
 </head>
 <body>
+
 <header>
-<a href="index.html" class="nav-logo-link"><img src="mon-logo.png" alt="Logo"></a>
+<a href="index.html" class="nav-logo-link">
+<img src="mon-logo.png" alt="Logo">
+</a>
 <nav>
 <a href="index.html">Accueil</a>
 <a href="galerie.html" class="active">Galerie</a>
@@ -101,24 +205,28 @@ footer{
 <select id="select-tri" class="select-tri">
 <option value="recent">Tri du plus récent au plus ancien</option>
 <option value="ancien">Tri du plus ancien au plus récent</option>
-<option value="prix-croissant">Tri par prix croissant</option>
-<option value="prix-decroissant">Tri par prix décroissant</option>
 <option value="alphabetique">Tri par ordre alphabétique</option>
 </select>
 </div>
 </div>
+
 <div class="products-grid" id="products-container">
-<a href="produit-faon.html" class="product-card" data-date="1" data-price="20" data-title="Faon bord de lac">
+<a href="produit-faon.html" class="product-card" data-date="1" data-title="Faon bord de lac">
 <div class="image-container"><img src="faon-lac.png" alt="Faon"></div>
 <div class="product-title">Faon bord de lac</div>
+<div class="product-price-range">20,00 € – 50,00 €</div>
 </a>
-<a href="produit-cerf.html" class="product-card" data-date="2" data-price="25" data-title="Cerf qui brame">
+
+<a href="produit-cerf.html" class="product-card" data-date="2" data-title="Cerf qui brame">
 <div class="image-container"><img src="cerf-brame.JPG" alt="Cerf"></div>
 <div class="product-title">Cerf qui brame</div>
+<div class="product-price-range">20,00 € – 50,00 €</div>
 </a>
-<a href="produit-faon-cerf.html" class="product-card" data-date="3" data-price="30" data-title="Faon avec Cerf">
-<div class="image-container"><img src="Faon-avec-Cerf.JPG" alt="Faon"></div>
+
+<a href="produit-faon-cerf.html" class="product-card" data-date="3" data-title="Faon avec Cerf">
+<div class="image-container"><img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf"></div>
 <div class="product-title">Faon avec Cerf</div>
+<div class="product-price-range">20,00 € – 50,00 €</div>
 </a>
 </div>
 </main>
@@ -149,22 +257,22 @@ document.addEventListener("DOMContentLoaded", function() {
     var conteneur = document.getElementById('products-container');
     var photos = Array.from(conteneur.querySelectorAll('.product-card'));
     var n = photos.length;
-    var txt = n <= 1 ? " résultat affiché" : " résultats affichés";
+    var txt = n <= 1 ? " œuvre affichée" : " œuvres affichées";
     document.getElementById('txt-c').textContent = n + txt;
+    
     var selectTri = document.getElementById('select-tri');
     selectTri.addEventListener('change', function() {
         var critere = this.value;
         photos.sort(function(a, b) {
             if (critere === 'recent') return parseInt(b.getAttribute('data-date')) - parseInt(a.getAttribute('data-date'));
             if (critere === 'ancien') return parseInt(a.getAttribute('data-date')) - parseInt(b.getAttribute('data-date'));
-            if (critere === 'prix-croissant') return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
-            if (critere === 'prix-decroissant') return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
             if (critere === 'alphabetique') return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
             return 0;
         });
         photos.forEach(function(photo) { conteneur.appendChild(photo); });
     });
 });
-  <script src="panier.js"></script>
+</script>
+<script src="panier.js"></script>
 </body>
 </html>
