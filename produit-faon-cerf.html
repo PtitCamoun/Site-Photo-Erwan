@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faon avec Cerf - Erwan Gauriveau</title>
+<title>Faon avec Cerf</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cloudflare.com">
 <style>
@@ -86,13 +86,13 @@ nav a:hover{
 }
 main{
   width:100%;
-  max-width:1200px;
+  max-width:1400px;
   margin:0 auto;
-  padding:60px 24px;
+  padding:40px 24px;
   flex-grow:1;
   display:flex;
-  flex-direction:row;
   gap:48px;
+  align-items:start;
 }
 @media(max-width:768px){
   main{
@@ -100,15 +100,17 @@ main{
   }
 }
 .product-image-side{
-  flex:1;
-  background:#f5f5f4;
-  border:1px solid #e7e5e4;
-  box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);
+  flex:1.2;
+  overflow:hidden;
+  position:relative;
+  cursor:zoom-in;
 }
 .product-image-side img{
   width:100%;
   height:auto;
   display:block;
+  transition:transform 0.15s ease-out;
+  transform-origin:center center;
 }
 .product-details-side{
   flex:1;
@@ -124,9 +126,6 @@ main{
 .breadcrumb a{
   color:#78716c;
   text-decoration:none;
-}
-.breadcrumb a:hover{
-  color:#000;
 }
 .product-title-main{
   font-size:24px;
@@ -153,7 +152,7 @@ main{
 }
 .notice-text i{
   color:#f59e0b;
-  margin-right:4px;
+  margin-right:6px;
 }
 .form-row{
   display:flex;
@@ -219,17 +218,6 @@ footer{
   display:block;
   margin-bottom:24px;
 }
-.contact-link p:first-child {
-  font-size:14px;
-  font-weight:300;
-  letter-spacing:1px;
-  margin-bottom:4px;
-}
-.contact-link p:last-child {
-  font-size:12px;
-  text-decoration:underline;
-  text-underline-offset:4px;
-}
 .social-icons{
   margin-bottom:24px;
 }
@@ -260,7 +248,7 @@ footer{
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <header>
 <a href="index.html" class="nav-logo-link">
@@ -282,13 +270,15 @@ footer{
 </header>
 
 <main>
-<div class="product-image-side">
-<img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf">
+<div class="product-image-side" id="zoom-box">
+<img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf" id="zoom-img" draggable="false">
 </div>
 
 <div class="product-details-side">
 <div class="breadcrumb">
-<a href="index.html">Accueil</a> / <a href="galerie.html">Galerie</a> / Faon avec Cerf
+<a href="index.html">Accueil</a> / 
+<a href="galerie.html">Galerie</a> / 
+Faon avec Cerf
 </div>
 
 <h1 class="product-title-main">Faon avec Cerf</h1>
@@ -297,7 +287,8 @@ footer{
 <div class="price-tag">20,00 € – 50,00 €</div>
 <div class="notice-text">
 <i class="fa-solid fa-triangle-exclamation"></i>
-Chaque tirage étant produit sur mesure à la commande, aucun retour, échange ni remboursement ne sera accepté.
+Chaque tirage étant produit sur mesure à la commande, 
+aucun retour, échange ni remboursement ne sera accepté.
 </div>
 </div>
 
@@ -306,15 +297,17 @@ Chaque tirage étant produit sur mesure à la commande, aucun retour, échange n
 <label class="form-label">Taille</label>
 <select class="select-size">
 <option value="">Choisir une option</option>
-<option value="1">20x30 cm — 20,00 €</option>
-<option value="2">30x45 cm — 35,00 €</option>
-<option value="3">40x60 cm — 50,00 €</option>
+<option>20x30 cm — 20,00 €</option>
+<option>30x45 cm — 35,00 €</option>
+<option>40x60 cm — 50,00 €</option>
 </select>
 </div>
 
 <div class="action-row">
 <input type="number" class="input-qty" value="1" min="1">
-<button type="submit" class="btn-submit-cart">Ajouter Au Panier</button>
+<button type="submit" class="btn-submit-cart">
+Ajouter Au Panier
+</button>
 </div>
 </form>
 </div>
@@ -326,16 +319,34 @@ Chaque tirage étant produit sur mesure à la commande, aucun retour, échange n
 <p>Contacte-moi.</p>
 </a>
 <div class="social-icons">
-<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://instagram.com" 
+target="_blank" rel="noopener noreferrer">Instagram</a>
 <a href="#">Facebook</a>
 </div>
-<p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
+<p class="copyright">© 2026 Erwan Gauriveau.</p>
 <div class="legal-links">
-<a href="politique-confidentialite.html">Politique de confidentialité</a>
-<a href="mentions-legales.html">Mentions Légales</a>
+<a href="politique-confidentialite.html">Confidentialité</a>
+<a href="mentions-legales.html">Mentions</a>
 <a href="cgv.html">CGV</a>
 </div>
 </footer>
 
+<script>
+const box = document.getElementById('zoom-box');
+const img = document.getElementById('zoom-img');
+
+box.addEventListener('mousemove', (e) => {
+  const rect = box.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  
+  img.style.transformOrigin = `${x}px ${y}px`;
+  img.style.transform = 'scale(2.2)';
+});
+
+box.addEventListener('mouseleave', () => {
+  img.style.transform = 'scale(1)';
+});
+</script>
 </body>
 </html>
