@@ -1,154 +1,357 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cerf qui brame - Erwan Gauriveau</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://jsdelivr.net"></script>
-script src="https://tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
-        }
-        .signature-font {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width, initial-scale=1.0">
+<title>Cerf qui brame</title>
+<link rel="icon" type="image/png" 
+href="favicon.png">
+<link rel="stylesheet" 
+href="https://cloudflare.com">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-family:sans-serif;
+  background:#fff;
+  color:#000;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+header{
+  background:#000;
+  color:#fff;
+  padding:12px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.nav-logo-link{
+  display:block;
+  height:75px; 
+}
+.nav-logo-link img{
+  height:100%;
+  object-fit:contain;
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+nav a{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-decoration:none;
+  color:#a8a29e;
+  font-weight:500;
+}
+nav a:hover{
+  color:#fff;
+}
+.cart-btn-fixed{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(28,25,23,0.6);
+  padding:6px 12px;
+  border-radius:4px;
+  text-decoration:none;
+  color:#e7e5e4;
+}
+.cart-icon-container{
+  position:relative;
+}
+.cart-badge{
+  position:absolute;
+  top:-6px;
+  right:-8px;
+  background:#fff;
+  color:#000;
+  font-size:9px;
+  font-weight:bold;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+main{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:40px 24px;
+  flex-grow:1;
+  display:flex;
+  gap:48px;
+  align-items:start;
+}
+@media(max-width:768px){
+  main{
+    flex-direction:column;
+  }
+}
+/* Pas de cadre gris fixe, agrandissement HD */
+.product-image-side{
+  flex:1.2;
+  overflow:hidden;
+  position:relative;
+  cursor:zoom-in;
+}
+.product-image-side img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform 0.15s ease-out;
+  transform-origin:center center;
+}
+.product-details-side{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.breadcrumb{
+  font-size:11px;
+  color:#78716c;
+  letter-spacing:1px;
+}
+.breadcrumb a{
+  color:#78716c;
+  text-decoration:none;
+}
+.product-title-main{
+  font-size:24px;
+  font-weight:300;
+  letter-spacing:1px;
+  color:#1c1917;
+}
+.price-notice-box{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding-bottom:20px;
+  border-bottom:1px solid #f5f5f4;
+}
+.price-tag{
+  font-size:16px;
+  font-weight:600;
+  color:#000;
+}
+.notice-text{
+  font-size:11px;
+  color:#78716c;
+  line-height:1.5;
+}
+.notice-text i{
+  color:#f59e0b;
+  margin-right:6px;
+}
+.form-row{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.form-label{
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#44403c;
+}
+.select-size{
+  width:100%;
+  max-width:400px;
+  padding:10px;
+  font-size:12px;
+  border:1px solid #e7e5e4;
+  background:#fff;
+  outline:none;
+}
+.action-row{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:12px;
+}
+.input-qty{
+  width:50px;
+  height:40px;
+  text-align:center;
+  border:1px solid #e7e5e4;
+  font-size:12px;
+}
+.btn-submit-cart{
+  padding:12px 32px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#57534e;
+  border:1px solid #d6d3d1;
+  border-radius:50px;
+  background:transparent;
+  cursor:pointer;
+  transition:all 0.2s ease-in-out;
+}
+.btn-submit-cart:hover{
+  background:#000;
+  color:#fff;
+  border-color:#000;
+}
+footer{
+  background:#000;
+  color:#a8a29e;
+  padding:48px 24px;
+  text-align:center;
+  width:100%;
+}
+.contact-link{
+  text-decoration:none;
+  color:#d6d3d1;
+  display:block;
+  margin-bottom:24px;
+}
+.social-icons{
+  margin-bottom:24px;
+}
+.social-icons a{
+  color:#a8a29e;
+  text-decoration:none;
+  margin:0 12px;
+  font-size:14px;
+}
+.copyright{
+  font-size:10px;
+  margin-bottom:24px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.legal-links{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-top:16px;
+  border-top:1px solid #1c1917;
+}
+.legal-links a{
+  font-size:11px;
+  color:#78716c;
+  text-decoration:none;
+}
+</style>
 </head>
-<body class="bg-white text-black min-h-screen flex flex-col justify-between">
+<body oncontextmenu="return false;">
 
-    <!-- 1. BARRE DE NAVIGATION (NAVBAR NOIRE) -->
-    <header class="w-full bg-black text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
-        <!-- Gauche : Signature -->
-        <a href="index.html" class="flex flex-col items-start group">
-            <div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6 text-white">
-                    <path d="M50,85 L50,45 M50,45 C40,30 30,35 25,20 M50,45 C60,30 70,35 75,20 M35,32 C25,25 20,15 15,25 M65,32 C75,25 80,15 85,25" stroke-linecap="round"/>
-                </svg>
-                <span class="signature-font text-lg md:text-xl tracking-wide">Erwan Gauriveau</span>
-            </div>
-        </a>
+<header>
+<a href="index.html" class="nav-logo-link">
+<img src="mon-logo.png" alt="Logo">
+</a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="galerie.html">Galerie</a>
+<a href="a-propos.html">À Propos</a>
+<a href="contact.html">Contact</a>
+<a href="panier.html" class="cart-btn-fixed">
+<span>0,00 €</span>
+<div class="cart-icon-container">
+<i class="fa-solid fa-shopping-bag"></i>
+<div class="cart-badge">0</div>
+</div>
+</a>
+</nav>
+</header>
 
-        <!-- Droite : Menu -->
-        <nav class="flex items-center gap-6 md:gap-8 text-xs uppercase tracking-widest font-medium">
-            <a href="index.html" class="text-stone-400 hover:text-white transition-colors">Accueil</a>
-            <a href="galerie.html" class="text-stone-400 hover:text-white transition-colors">Galerie</a>
-            <a href="a-propos.html" class="text-stone-400 hover:text-white transition-colors">À Propos</a>
-            <a href="contact.html" class="text-stone-400 hover:text-white transition-colors">Contact</a>
-            
-            <a href="panier.html" class="flex items-center gap-2 hover:text-stone-300 transition-colors bg-stone-900/50 px-3 py-1.5 rounded-sm">
-                <span class="font-semibold text-stone-200">0,00 €</span>
-                <div class="relative">
-                    <i class="fa-solid fa-shopping-bag text-sm"></i>
-                    <span class="absolute -top-1.5 -right-2 bg-stone-700 text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">0</span>
-                </div>
-            </a>
-        </nav>
-    </header>
+<main>
+<div class="product-image-side" id="zoom-box">
+<img src="cerf-brame.JPG" alt="Cerf" id="zoom-img" draggable="false">
+</div>
 
-    <!-- 2. SECTION CENTRALE : DETAILS DU PRODUIT -->
-    <main class="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        
-        <!-- Colonne Gauche : Image du produit au format horizontal 4/3 -->
-        <div class="w-full aspect-[4/3] bg-stone-50 overflow-hidden border border-stone-100 shadow-xs">
-            <!-- Remplacez 'cerf-brame.jpg' par le fichier de votre photo -->
-            <img src="cerf-brame.jpg" alt="Cerf qui brame" class="w-full h-full object-cover">
-        </div>
+<div class="product-details-side">
+<div class="breadcrumb">
+<a href="index.html">Accueil</a> / 
+<a href="galerie.html">Galerie</a> / 
+Cerf qui brame
+</div>
 
-        <!-- Colonne Droite : Infos et Options d'achat -->
-        <div class="flex flex-col gap-6">
-            
-            <!-- Fil d'ariane -->
-            <nav class="text-[11px] text-stone-400 tracking-wide">
-                <a href="index.html" class="hover:text-black">Accueil</a> / 
-                <a href="galerie.html" class="hover:text-black">Cerf</a> / 
-                <span class="text-stone-600">Cerf qui brame</span>
-            </nav>
+<h1 class="product-title-main">Cerf qui brame</h1>
 
-            <!-- Titre du tirage -->
-            <h1 class="text-xl md:text-2xl font-light text-stone-900 tracking-wide">
-                Cerf qui brame
-            </h1>
+<div class="price-notice-box">
+<div class="price-tag">20,00 € – 50,00 €</div>
+<div class="notice-text">
+<i class="fa-solid fa-triangle-exclamation"></i>
+Chaque tirage étant produit sur mesure à la commande, 
+aucun retour, échange ni remboursement ne sera accepté.
+</div>
+</div>
 
-            <!-- Prix & Condition d'achat -->
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-xs tracking-wide">
-                <span class="text-stone-900 font-semibold text-sm">20,00 € – 50,00 €</span>
-                <span class="text-stone-500 flex items-center gap-1 font-light">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-500 text-[11px]"></i>
-                    Chaque tirage étant produit sur mesure à la commande, aucun retour, échange ni remboursement ne sera accepté.
-                </span>
-            </div>
+<form onsubmit="event.preventDefault();">
+<div class="form-row">
+<label class="form-label">Taille</label>
+<select class="select-size">
+<option value="">Choisir une option</option>
+<option>20x30 cm — 20,00 €</option>
+<option>30x45 cm — 35,00 €</option>
+<option>40x60 cm — 50,00 €</option>
+</select>
+</div>
 
-            <!-- Formulaire d'options d'achat -->
-            <form class="space-y-6 pt-4 border-t border-stone-100">
-                
-                <!-- Sélection de la taille -->
-                <div class="flex flex-col gap-2">
-                    <label for="taille" class="text-xs font-medium text-stone-700 tracking-wide">Taille</label>
-                    <div class="relative max-w-md w-full">
-                        <select id="taille" class="w-full bg-white border border-stone-200 text-xs px-4 py-2.5 rounded-sm appearance-none tracking-wide text-stone-600 focus:outline-none focus:border-stone-400 cursor-pointer">
-                            <option value="">Choisir une option</option>
-                            <option value="20x30">20x30 cm — 20,00 €</option>
-                            <option value="30x45">30x45 cm — 35,00 €</option>
-                            <option value="40x60">40x60 cm — 50,00 €</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-stone-400">
-                            <i class="fa-solid fa-chevron-down text-[10px]"></i>
-                        </div>
-                    </div>
-                </div>
+<div class="action-row">
+<input type="number" class="input-qty" value="1" min="1">
+<button type="submit" class="btn-submit-cart">
+Ajouter Au Panier
+</button>
+</div>
+</form>
+</div>
+</main>
 
-                <!-- Quantité et Bouton Ajouter au panier -->
-                <div class="flex items-center gap-4 pt-2">
-                    <!-- Sélecteur de quantité -->
-                    <div class="flex items-center border border-stone-200 rounded-sm bg-white h-10 px-2">
-                        <input type="number" id="quantite" min="1" value="1" class="w-12 text-center text-xs font-medium focus:outline-none text-stone-800">
-                    </div>
-                    
-                    <!-- Bouton Ajouter -->
-                    <button type="submit" class="flex-grow max-w-xs h-10 text-[11px] font-medium tracking-[0.2em] uppercase border border-stone-300 rounded-full text-stone-600 bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300 ease-in-out cursor-pointer">
-                        Ajouter Au Panier
-                    </button>
-                </div>
+<footer>
+<a href="contact.html" class="contact-link">
+<p>Une question sur un tirage ?</p>
+<p>Contacte-moi.</p>
+</a>
+<div class="social-icons">
+<a href="https://instagram.com" 
+target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="#">Facebook</a>
+</div>
+<p class="copyright">© 2026 Erwan Gauriveau.</p>
+<div class="legal-links">
+<a href="politique-confidentialite.html">Confidentialité</a>
+<a href="mentions-legales.html">Mentions</a>
+<a href="cgv.html">CGV</a>
+</div>
+</footer>
 
-            </form>
+<script>
+// EFFET LOUPE/ZOOM INTELLIGENT
+const box = document.getElementById('zoom-box');
+const img = document.getElementById('zoom-img');
 
-        </div>
-    </main>
+box.addEventListener('mousemove', (e) => {
+  const rect = box.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  
+  img.style.transformOrigin = `${x}px ${y}px`;
+  img.style.transform = 'scale(2.2)';
+});
 
-    <!-- 3. PIED DE PAGE (FOOTER NOIR) -->
-    <footer class="bg-black text-stone-400 py-12 px-6 border-t border-stone-900 w-full flex flex-col items-center justify-center gap-8">
-        <div class="text-center">
-            <a href="contact.html" class="group block space-y-1">
-                <p class="text-sm font-light tracking-wide text-stone-300 group-hover:text-white transition-colors duration-200">Une question sur un tirage ?</p>
-                <p class="text-xs tracking-wider text-stone-400 group-hover:text-white transition-colors duration-200 underline underline-offset-4">Contacte-moi.</p>
-            </a>
-        </div>
-
-        <div class="flex items-center gap-6 text-lg">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="hover:text-white transition-colors duration-200" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        </div>
-
-        <p class="text-[10px] tracking-widest text-stone-500 uppercase">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
-
-        <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[11px] tracking-wider text-stone-500 pt-4 border-t border-stone-900/50 w-full max-w-2xl text-center">
-            <a href="politique-confidentialite.html" class="hover:text-stone-300 transition-colors duration-200">Politique de confidentialité</a>
-            <a href="mentions-legales.html" class="hover:text-stone-300 transition-colors duration-200">Mentions Légales</a>
-            <a href="cgv.html" class="hover:text-stone-300 transition-colors duration-200">Conditions Générales de Vente / CGV</a>
-        </div>
-    </footer>
-
+box.addEventListener('mouseleave', () => {
+  img.style.transform = 'scale(1)';
+});
+</script>
 </body>
 </html>
