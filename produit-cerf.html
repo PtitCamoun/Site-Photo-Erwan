@@ -7,8 +7,6 @@ content="width=device-width, initial-scale=1.0">
 <title>Cerf qui brame</title>
 <link rel="icon" type="image/png" 
 href="favicon.png">
-<link rel="stylesheet" 
-href="https://cloudflare.com">
 <style>
 *{
   margin:0;
@@ -89,22 +87,22 @@ nav a:hover{
 }
 main{
   width:100%;
-  max-width:1400px;
+  max-width:1600px;
   margin:0 auto;
   padding:40px 24px;
   flex-grow:1;
   display:flex;
-  gap:48px;
+  gap:50px;
   align-items:start;
 }
-@media(max-width:768px){
+@media(max-width:900px){
   main{
     flex-direction:column;
   }
 }
-/* Pas de cadre gris fixe, agrandissement HD */
+/* Photo élargie à 65% de l'espace */
 .product-image-side{
-  flex:1.2;
+  flex: 1.6 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -116,8 +114,9 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* Texte réduit à 35% de l'espace */
 .product-details-side{
-  flex:1;
+  flex: 0.9 !important;
   display:flex;
   flex-direction:column;
   gap:24px;
@@ -154,9 +153,8 @@ main{
   color:#78716c;
   line-height:1.5;
 }
-.notice-text i{
-  color:#f59e0b;
-  margin-right:6px;
+.notice-text span{
+  margin-right:4px;
 }
 .form-row{
   display:flex;
@@ -266,7 +264,7 @@ footer{
 <a href="panier.html" class="cart-btn-fixed">
 <span>0,00 €</span>
 <div class="cart-icon-container">
-<i class="fa-solid fa-shopping-bag"></i>
+<svg style="width:14px;height:14px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
 <div class="cart-badge">0</div>
 </div>
 </a>
@@ -290,9 +288,7 @@ Cerf qui brame
 <div class="price-notice-box">
 <div class="price-tag">20,00 € – 50,00 €</div>
 <div class="notice-text">
-<i class="fa-solid fa-triangle-exclamation"></i>
-Chaque tirage étant produit sur mesure à la commande, 
-aucun retour, échange ni remboursement ne sera accepté.
+<span>⚠️</span>Chaque tirage étant produit sur mesure à la commande, aucun retour, échange ni remboursement ne sera accepté.
 </div>
 </div>
 
@@ -336,19 +332,15 @@ target="_blank" rel="noopener noreferrer">Instagram</a>
 </footer>
 
 <script>
-// EFFET LOUPE/ZOOM INTELLIGENT
 const box = document.getElementById('zoom-box');
 const img = document.getElementById('zoom-img');
-
 box.addEventListener('mousemove', (e) => {
   const rect = box.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
-  
   img.style.transformOrigin = `${x}px ${y}px`;
   img.style.transform = 'scale(2.2)';
 });
-
 box.addEventListener('mouseleave', () => {
   img.style.transform = 'scale(1)';
 });
