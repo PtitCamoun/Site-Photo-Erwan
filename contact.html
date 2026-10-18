@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{
   margin:0;
@@ -93,7 +93,7 @@ nav a.active {
 }
 main{
   width:100%;
-  max-width:600px;
+  max-width:650px;
   margin: 0 auto;
   padding: 60px 24px;
   flex-grow:1;
@@ -116,6 +116,7 @@ main{
   line-height:1.6;
   margin-top:-16px;
   font-weight:300;
+  width: 100%;
 }
 .form-group{
   display:flex;
@@ -247,26 +248,26 @@ footer{
 <h1 class="contact-title-main">Contact</h1>
 <p class="contact-subtitle">Une question sur une œuvre, un format de tirage spécifique ou un projet ? Laissez un message ici.</p>
 
-<!-- Remplacer l'action par votre système d'envoi d'email plus tard si besoin -->
-<form onsubmit="event.preventDefault(); alert('Message simulé avec succès !');">
+<!-- Votre lien Formspree officiel est maintenant configuré en dessous -->
+<form action="https://formspree.io/f/mqpejzqo" method="POST">
 <div class="form-group">
 <label class="form-label">Nom complet</label>
-<input type="text" class="input-field" placeholder="Votre nom et prénom" required>
+<input type="text" name="name" class="input-field" placeholder="Votre nom et prénom" required>
 </div>
 
 <div class="form-group">
 <label class="form-label">Adresse e-mail</label>
-<input type="email" class="input-field" placeholder="votre@email.com" required>
+<input type="email" name="_replyto" class="input-field" placeholder="votre@email.com" required>
 </div>
 
 <div class="form-group">
 <label class="form-label">Sujet</label>
-<input type="text" class="input-field" placeholder="Ex: Tirage sur mesure Cerf qui brame" required>
+<input type="text" name="subject" class="input-field" placeholder="Ex: Tirage sur mesure Cerf qui brame" required>
 </div>
 
 <div class="form-group">
 <label class="form-label">Votre message</label>
-<textarea class="textarea-field" placeholder="Écrivez votre message ici..." required></textarea>
+<textarea name="message" class="textarea-field" placeholder="Écrivez votre message ici..." required></textarea>
 </div>
 
 <button type="submit" class="btn-submit-contact">Envoyer</button>
