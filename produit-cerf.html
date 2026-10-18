@@ -87,12 +87,12 @@ nav a:hover{
 }
 main{
   width:100%;
-  max-width:1600px;
+  max-width:1800px;
   margin:0 auto;
-  padding:40px 24px;
+  padding:30px 24px;
   flex-grow:1;
   display:flex;
-  gap:50px;
+  gap:40px;
   align-items:start;
 }
 @media(max-width:900px){
@@ -100,9 +100,9 @@ main{
     flex-direction:column;
   }
 }
-/* Photo élargie à 65% de l'espace */
+/* Photo poussée à 78% de la page */
 .product-image-side{
-  flex: 1.6 !important;
+  flex: 3.5 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -114,12 +114,12 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* Texte réduit à 35% de l'espace */
+/* Texte restreint à 22% de la page */
 .product-details-side{
-  flex: 0.9 !important;
+  flex: 1 !important;
   display:flex;
   flex-direction:column;
-  gap:24px;
+  gap:20px;
 }
 .breadcrumb{
   font-size:11px;
@@ -170,7 +170,6 @@ main{
 }
 .select-size{
   width:100%;
-  max-width:400px;
   padding:10px;
   font-size:12px;
   border:1px solid #e7e5e4;
@@ -180,8 +179,8 @@ main{
 .action-row{
   display:flex;
   align-items:center;
-  gap:16px;
-  margin-top:12px;
+  gap:12px;
+  margin-top:8px;
 }
 .input-qty{
   width:50px;
@@ -191,16 +190,18 @@ main{
   font-size:12px;
 }
 .btn-submit-cart{
-  padding:12px 32px;
+  flex-grow:1;
+  padding:12px 20px;
   font-size:10px;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:1.5px;
   color:#57534e;
   border:1px solid #d6d3d1;
   border-radius:50px;
   background:transparent;
   cursor:pointer;
   transition:all 0.2s ease-in-out;
+  white-space:nowrap;
 }
 .btn-submit-cart:hover{
   background:#000;
