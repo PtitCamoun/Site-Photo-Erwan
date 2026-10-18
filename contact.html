@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Erwan Gauriveau</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-family:'Montserrat', sans-serif;
+  background:#ffffff;
+  color:#000000;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+header{
+  background:#000000;
+  color:#ffffff;
+  padding:12px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.nav-logo-link{
+  display:block;
+  height:75px; 
+}
+.nav-logo-link img{
+  height:100%;
+  object-fit:contain;
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+nav a{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-decoration:none;
+  color:#a8a29e;
+  font-weight:500;
+}
+nav a:hover,
+nav a.active{
+  color:#ffffff;
+}
+nav a.active {
+  border-bottom:1px solid #ffffff;
+  padding-bottom:2px;
+}
+.cart-btn-fixed{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(28,25,23,0.6);
+  padding:6px 12px;
+  border-radius:4px;
+  text-decoration:none;
+  color:#e7e5e4;
+}
+.cart-icon-container{
+  position:relative;
+}
+.cart-badge{
+  position:absolute;
+  top:-6px;
+  right:-8px;
+  background:#ffffff;
+  color:#000000;
+  font-size:9px;
+  font-weight:bold;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+main{
+  width:100%;
+  max-width:600px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  flex-grow:1;
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+.contact-title-main{
+  font-family: 'Playfair Display', serif;
+  font-size:32px;
+  font-weight:400;
+  letter-spacing:0.5px;
+  color:#000000;
+  text-align:center;
+}
+.contact-subtitle{
+  font-size:13px;
+  color:#57534e;
+  text-align:center;
+  line-height:1.6;
+  margin-top:-16px;
+  font-weight:300;
+}
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:20px;
+}
+.form-label{
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#44403c;
+}
+.input-field, .textarea-field{
+  width:100%;
+  padding:12px;
+  font-size:13px;
+  font-family:'Montserrat', sans-serif;
+  border:1px solid #e7e5e4;
+  background:#ffffff;
+  outline:none;
+  transition:border-color 0.2s;
+}
+.input-field:focus, .textarea-field:focus{
+  border-color:#000000;
+}
+.textarea-field{
+  height:150px;
+  resize:vertical;
+}
+.btn-submit-contact{
+  display:block;
+  width:100%;
+  max-width:200px;
+  margin:12px auto 0 auto;
+  padding:14px 24px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#57534e;
+  border:1px solid #d6d3d1;
+  border-radius:50px;
+  background:transparent;
+  cursor:pointer;
+  transition:all 0.2s ease-in-out;
+}
+.btn-submit-contact:hover{
+  background:#000000;
+  color:#ffffff;
+  border-color:#000000;
+}
+footer{
+  background:#000000;
+  color:#a8a29e;
+  padding:48px 24px;
+  text-align:center;
+  width:100%;
+}
+.contact-link{
+  text-decoration:none;
+  color:#d6d3d1;
+  display:block;
+  margin-bottom:24px;
+}
+.contact-link p:first-child {
+  font-size:14px;
+  font-weight:300;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+.contact-link p:last-child {
+  font-size:12px;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.social-icons{
+  margin-bottom:24px;
+}
+.social-icons a{
+  color:#a8a29e;
+  text-decoration:none;
+  margin:0 12px;
+  font-size:14px;
+}
+.copyright{
+  font-size:10px;
+  margin-bottom:24px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.legal-links{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-top:16px;
+  border-top:1px solid #1c1917;
+}
+.legal-links a{
+  font-size:11px;
+  color:#78716c;
+  text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="nav-logo-link">
+<img src="mon-logo.png" alt="Logo">
+</a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="galerie.html">Galerie</a>
+<a href="a-propos.html">À Propos</a>
+<a href="contact.html" class="active">Contact</a>
+<a href="panier.html" class="cart-btn-fixed">
+<span>0,00 €</span>
+<div class="cart-icon-container">
+<svg style="width:14px;height:14px;fill:currentColor;display:inline-block;vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
+<div class="cart-badge">0</div>
+</div>
+</a>
+</nav>
+</header>
+
+<main>
+<h1 class="contact-title-main">Contact</h1>
+<p class="contact-subtitle">Une question sur une œuvre, un format de tirage spécifique ou un projet ? Laissez un message ici.</p>
+
+<!-- Remplacer l'action par votre système d'envoi d'email plus tard si besoin -->
+<form onsubmit="event.preventDefault(); alert('Message simulé avec succès !');">
+<div class="form-group">
+<label class="form-label">Nom complet</label>
+<input type="text" class="input-field" placeholder="Votre nom et prénom" required>
+</div>
+
+<div class="form-group">
+<label class="form-label">Adresse e-mail</label>
+<input type="email" class="input-field" placeholder="votre@email.com" required>
+</div>
+
+<div class="form-group">
+<label class="form-label">Sujet</label>
+<input type="text" class="input-field" placeholder="Ex: Tirage sur mesure Cerf qui brame" required>
+</div>
+
+<div class="form-group">
+<label class="form-label">Votre message</label>
+<textarea class="textarea-field" placeholder="Écrivez votre message ici..." required></textarea>
+</div>
+
+<button type="submit" class="btn-submit-contact">Envoyer</button>
+</form>
+</main>
+
+<footer>
+<a href="contact.html" class="contact-link">
+<p>Une question sur un tirage ?</p>
+<p>Contacte-moi.</p>
+</a>
+<div class="social-icons">
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="#">Facebook</a>
+</div>
+<p class="copyright">© 2026 Erwan Gauriveau.</p>
+<div class="legal-links">
+<a href="politique-confidentialite.html">Confidentialité</a>
+<a href="mentions-legales.html">Mentions</a>
+<a href="cgv.html">CGV</a>
+</div>
+</footer>
+
+</body>
+</html>
