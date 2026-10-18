@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
             // Détermination du prix exact selon l'option choisie
             let itemPrice = 20.00;
             const optionText = selectSize.options[selectSize.selectedIndex].text;
-            const optionTaille = optionText.split('—')[0].trim(); // Récupère juste "20x30 cm"
+            // Récupère proprement la taille (ex: "20x30 cm")
+            const optionTaille = optionText.split('—')[0].trim(); 
             
             if (optionText.includes('35,00')) { itemPrice = 35.00; }
             else if (optionText.includes('50,00')) { itemPrice = 50.00; }
