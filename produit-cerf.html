@@ -2,17 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" 
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cerf qui brame</title>
-<link rel="icon" type="image/png" 
-href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:sans-serif;
   background:#fff;
@@ -33,19 +27,9 @@ header{
   top:0;
   z-index:50;
 }
-.nav-logo-link{
-  display:block;
-  height:75px; 
-}
-.nav-logo-link img{
-  height:100%;
-  object-fit:contain;
-}
-nav{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
+.nav-logo-link{display:block;height:75px;}
+.nav-logo-link img{height:100%;object-fit:contain;}
+nav{display:flex;align-items:center;gap:28px;}
 nav a{
   font-size:11px;
   text-transform:uppercase;
@@ -54,9 +38,7 @@ nav a{
   color:#a8a29e;
   font-weight:500;
 }
-nav a:hover{
-  color:#fff;
-}
+nav a:hover{color:#fff;}
 .cart-btn-fixed{
   display:flex;
   align-items:center;
@@ -67,9 +49,7 @@ nav a:hover{
   text-decoration:none;
   color:#e7e5e4;
 }
-.cart-icon-container{
-  position:relative;
-}
+.cart-icon-container{position:relative;}
 .cart-badge{
   position:absolute;
   top:-6px;
@@ -85,7 +65,6 @@ nav a:hover{
   align-items:center;
   justify-content:center;
 }
-/* Alignement parfait de la photo à gauche */
 main{
   width:100%;
   padding:30px 40px 30px 30px; 
@@ -95,13 +74,11 @@ main{
   align-items:start;
 }
 @media(max-width:900px){
-  main{
-    flex-direction:column;
-    padding:20px;
-  }
+  main{flex-direction:column;padding:20px;}
 }
+/* Taille de photo réduite pour un meilleur équilibre */
 .product-image-side{
-  flex: 3.5 !important;
+  flex: 1.4 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -114,7 +91,7 @@ main{
   transform-origin:center center;
 }
 .product-details-side{
-  flex: 1.2 !important;
+  flex: 1 !important;
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -125,10 +102,7 @@ main{
   color:#78716c;
   letter-spacing:1px;
 }
-.breadcrumb a{
-  color:#78716c;
-  text-decoration:none;
-}
+.breadcrumb a{color:#78716c;text-decoration:none;}
 .product-title-main{
   font-size:24px;
   font-weight:300;
@@ -142,24 +116,10 @@ main{
   padding-bottom:20px;
   border-bottom:1px solid #f5f5f4;
 }
-.price-tag{
-  font-size:16px;
-  font-weight:600;
-  color:#000;
-}
-.notice-text{
-  font-size:11px;
-  color:#78716c;
-  line-height:1.5;
-}
-.notice-text span{
-  margin-right:4px;
-}
-.form-row{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
+.price-tag{font-size:16px;font-weight:600;color:#000;}
+.notice-text{font-size:11px;color:#78716c;line-height:1.5;}
+.notice-text span{margin-right:4px;}
+.form-row{display:flex;flex-direction:column;gap:8px;}
 .form-label{
   font-size:11px;
   font-weight:600;
@@ -175,12 +135,7 @@ main{
   background:#fff;
   outline:none;
 }
-.action-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:8px;
-}
+.action-row{display:flex;align-items:center;gap:12px;margin-top:8px;}
 .input-qty{
   width:50px;
   height:40px;
@@ -220,9 +175,7 @@ footer{
   display:block;
   margin-bottom:24px;
 }
-.social-icons{
-  margin-bottom:24px;
-}
+.social-icons{margin-bottom:24px;}
 .social-icons a{
   color:#a8a29e;
   text-decoration:none;
@@ -243,11 +196,7 @@ footer{
   padding-top:16px;
   border-top:1px solid #1c1917;
 }
-.legal-links a{
-  font-size:11px;
-  color:#78716c;
-  text-decoration:none;
-}
+.legal-links a{font-size:11px;color:#78716c;text-decoration:none;}
 </style>
 </head>
 <body oncontextmenu="return false;">
