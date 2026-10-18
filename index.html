@@ -1,205 +1,107 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erwan Gauriveau </title>
-    
-    <!-- Ligne à ajouter sous la balise <title> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erwan Gauriveau - Photographie</title>
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Montserrat', sans-serif;
+  background:#000;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow-x:hidden;
+}
+.bg-fixed-layer{
+  position:fixed;
+  top:0;left:0;width:100vw;height:100vh;
+  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('image-fond-cerf.jpg');
+  background-size:cover;background-position:center;
+  z-index:-1;will-change:transform;
+}
+.hero-section{
+  position:relative;height:100vh;width:100%;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;
+}
+.center-content{
+  text-align:center;z-index:10;padding:0 20px;
+  max-width:800px;width:100%;
+  display:flex;flex-direction:column;align-items:center;gap:24px;
+}
+.logo-image-container{width:100%;max-width:420px;opacity:0.98;}
+.logo-image-container img{width:100%;height:auto;object-fit:contain;}
+.btn-galerie{
+  display:inline-block;padding:12px 36px;font-size:10px;
+  text-transform:uppercase;letter-spacing:2.5px;color:#fff;
+  border:1px solid rgba(255,255,255,0.6);border-radius:50px;
+  text-decoration:none;background-color:transparent;
+  transition:all 0.3s ease-in-out;margin-top:8px;
+}
+.btn-galerie:hover{background:#fff;color:#000;border-color:#fff;}
 
-    <!-- Google Fonts pour le bouton -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow-x: hidden;
-        }
-        
-        /* TECHNIQUE ULTIME DE FLUIDITÉ : L'image est verrouillée en arrière-plan sans calculs lourds */
-        .bg-fixed-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('image-fond-cerf.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: -1; /* Reste derrière tout le contenu */
-            will-change: transform; /* Optimisation carte graphique */
-        }
-        
-        /* Section d'accueil transparente pour laisser voir le fond */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-        }
-        .center-content {
-            text-align: center;
-            z-index: 10;
-            padding: 0 20px;
-            max-width: 800px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-        
-        /* Taille du logo */
-        .logo-image-container {
-            width: 100%;
-            max-width: 420px;
-            opacity: 0.98;
-        }
-        .logo-image-container img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-        
-        /* Bouton ENTIÈREMENT TRANSPARENT */
-        .btn-galerie {
-            display: inline-block;
-            padding: 12px 36px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.6); /* Bordure blanche fine */
-            border-radius: 50px;
-            text-decoration: none;
-            background-color: transparent; /* Zéro couleur de fond */
-            transition: all 0.3s ease-in-out;
-            margin-top: 8px;
-        }
-        .btn-galerie:hover {
-            background-color: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-
-        /* Pied de page standardisé qui remonte de façon fluide */
-        footer {
-            background-color: #000000;
-            color: #a8a29e;
-            padding: 48px 24px;
-            border-top: 1px solid #1c1917;
-            text-align: center;
-            width: 100%;
-            position: relative;
-            z-index: 20;
-        }
-        .contact-link {
-            text-decoration: none;
-            color: #d6d3d1;
-            display: block;
-            margin-bottom: 24px;
-            transition: color 0.2s;
-        }
-        .contact-link:hover { color: #ffffff; }
-        .contact-link p:first-child {
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        .contact-link p:last-child {
-            font-size: 12px;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-        .social-icons {
-            margin-bottom: 24px;
-        }
-        .social-icons a {
-            color: #a8a29e;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 0 12px;
-            transition: color 0.2s;
-        }
-        .social-icons a:hover { color: #ffffff; }
-        .copyright {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #78716c;
-            margin-bottom: 24px;
-        }
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            padding-top: 16px;
-            border-top: 1px solid rgba(120, 113, 108, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .legal-links a {
-            font-size: 11px;
-            color: #78716c;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .legal-links a:hover { color: #d6d3d1; }
-    </style>
+/* LE FOOTER OFFICIEL COMMUN (FOND NOIR) */
+footer{
+  background:#000;color:#a8a29e;padding:48px 24px;
+  border-top:1px solid #1c1917;text-align:center;
+  width:100%;position:relative;z-index:20;
+}
+.contact-link{text-decoration:none;color:#d6d3d1;display:block;margin-bottom:24px;}
+.contact-link p:first-child{font-size:14px;font-weight:300;letter-spacing:1px;margin-bottom:4px;}
+.contact-link p:last-child{font-size:12px;text-decoration:underline;text-underline-offset:4px;}
+.social-icons-svg{
+  display:flex;justify-content:center;align-items:center;
+  gap:24px;margin-bottom:24px;
+}
+.social-icons-svg a{color:#a8a29e;transition:color 0.2s;}
+.social-icons-svg a:hover{color:#fff;}
+.social-icons-svg svg{width:18px;height:18px;fill:currentColor;display:block;}
+.copyright{font-size:10px;margin-bottom:24px;letter-spacing:2px;text-transform:uppercase;color:#78716c;}
+.legal-links{
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid rgba(120,113,108,0.1);
+  max-width:600px;margin:0 auto;
+}
+.legal-links a{font-size:11px;color:#78716c;text-decoration:none;transition:color 0.2s;}
+.legal-links a:hover{color:#d6d3d1;}
+</style>
 </head>
 <body>
+<div class="bg-fixed-layer"></div>
+<section class="hero-section">
+<div class="center-content">
+<div class="logo-image-container"><img src="mon-logo.png" alt="Logo"></div>
+<div><a href="galerie.html" class="btn-galerie">Découvrir la Galerie</a></div>
+</div>
+</section>
 
-    <!-- Calque d'arrière-plan fixe et super fluide -->
-    <div class="bg-fixed-layer"></div>
-
-    <!-- SECTION PRINCIPALE -->
-    <section class="hero-section">
-        <div class="center-content">
-            <div class="logo-image-container">
-                <img src="mon-logo.png" alt="Logo Erwan Gauriveau">
-            </div>
-            <div>
-                <a href="galerie.html" class="btn-galerie">Découvrir la Galerie</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PIED DE PAGE -->
-    <footer>
-        <a href="contact.html" class="contact-link">
-            <p>Une question sur un tirage ?</p>
-            <p>Contacte-moi.</p>
-        </a>
-        <div class="social-icons">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="#">Facebook</a>
-        </div>
-        <p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
-        <div class="legal-links">
-            <a href="politique-confidentialite.html">Politique de confidentialité</a>
-            <a href="mentions-legales.html">Mentions Légales</a>
-            <a href="cgv.html">Conditions Générales de Vente / CGV</a>
-        </div>
-    </footer>
-
+<footer>
+<a href="contact.html" class="contact-link">
+<p>Une question sur un tirage ?</p>
+<p>Contacte-moi.</p>
+</a>
+<div class="social-icons-svg">
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+</a>
+<a href="#" aria-label="Facebook">
+<svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
+</div>
+<p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
+<div class="legal-links">
+<a href="politique-confidentialite.html">Politique de confidentialité</a>
+<a href="mentions-legales.html">Mentions Légales</a>
+<a href="cgv.html">Conditions Générales de Vente / CGV</a>
+</div>
+</footer>
 </body>
 </html>
