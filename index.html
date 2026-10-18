@@ -12,29 +12,22 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Montserrat', sans-serif;
-  background:#000;
-  color:#fff;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  overflow-x:hidden;
+  background:#000;color:#fff;min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:space-between;overflow-x:hidden;
 }
 .bg-fixed-layer{
-  position:fixed;
-  top:0;left:0;width:100vw;height:100vh;
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
   background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('image-fond-cerf.jpg');
   background-size:cover;background-position:center;
   z-index:-1;will-change:transform;
 }
 .hero-section{
   position:relative;height:100vh;width:100%;
-  display:flex;align-items:center;justify-content:center;
-  background:transparent;
+  display:flex;align-items:center;justify-content:center;background:transparent;
 }
 .center-content{
-  text-align:center;z-index:10;padding:0 20px;
-  max-width:800px;width:100%;
+  text-align:center;z-index:10;padding:0 20px;max-width:800px;width:100%;
   display:flex;flex-direction:column;align-items:center;gap:24px;
 }
 .logo-image-container{width:100%;max-width:420px;opacity:0.98;}
@@ -48,27 +41,22 @@ body{
 }
 .btn-galerie:hover{background:#fff;color:#000;border-color:#fff;}
 
-/* LE FOOTER OFFICIEL COMMUN (FOND NOIR) */
+/* LE FOOTER UNIFORMISÉ (SANS SOULIGNÉ) */
 footer{
   background:#000;color:#a8a29e;padding:48px 24px;
-  border-top:1px solid #1c1917;text-align:center;
-  width:100%;position:relative;z-index:20;
+  border-top:1px solid #1c1917;text-align:center;width:100%;position:relative;z-index:20;
 }
-.contact-link{text-decoration:none;color:#d6d3d1;display:block;margin-bottom:24px;}
-.contact-link p:first-child{font-size:14px;font-weight:300;letter-spacing:1px;margin-bottom:4px;}
-.contact-link p:last-child{font-size:12px;text-decoration:underline;text-underline-offset:4px;}
-.social-icons-svg{
-  display:flex;justify-content:center;align-items:center;
-  gap:24px;margin-bottom:24px;
-}
+.contact-link{text-decoration:none;color:#d6d3d1;display:inline-block;margin-bottom:24px;}
+.contact-link p{font-size:14px;font-weight:300;letter-spacing:1px;color:#e7e5e4 !important;}
+.contact-link:hover p{color:#fff !important;}
+.social-icons-svg{display:flex;justify-content:center;align-items:center;gap:24px;margin-bottom:24px;}
 .social-icons-svg a{color:#a8a29e;transition:color 0.2s;}
 .social-icons-svg a:hover{color:#fff;}
 .social-icons-svg svg{width:18px;height:18px;fill:currentColor;display:block;}
 .copyright{font-size:10px;margin-bottom:24px;letter-spacing:2px;text-transform:uppercase;color:#78716c;}
 .legal-links{
   display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
-  padding-top:16px;border-top:1px solid rgba(120,113,108,0.1);
-  max-width:600px;margin:0 auto;
+  padding-top:16px;border-top:1px solid rgba(120,113,108,0.1);max-width:600px;margin:0 auto;
 }
 .legal-links a{font-size:11px;color:#78716c;text-decoration:none;transition:color 0.2s;}
 .legal-links a:hover{color:#d6d3d1;}
@@ -85,8 +73,7 @@ footer{
 
 <footer>
 <a href="contact.html" class="contact-link">
-<p>Une question sur un tirage ?</p>
-<p>Contacte-moi.</p>
+<p>Une question sur un tirage ? Contacte-moi.</p>
 </a>
 <div class="social-icons-svg">
 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
