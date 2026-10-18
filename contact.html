@@ -9,226 +9,76 @@
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
 <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family:'Montserrat', sans-serif;
-  background:#ffffff;
-  color:#000000;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  font-family:'Montserrat', sans-serif;background:#ffffff;color:#000000;
+  min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
 }
 header{
-  background:#000000;
-  color:#ffffff;
-  padding:12px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:50;
+  background:#000000;color:#ffffff;padding:12px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:50;
 }
-.nav-logo-link{
-  display:block;
-  height:75px; 
-}
-.nav-logo-link img{
-  height:100%;
-  object-fit:contain;
-}
-nav{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
+.nav-logo-link{display:block;height:75px;}
+.nav-logo-link img{height:100%;object-fit:contain;}
+nav{display:flex;align-items:center;gap:28px;}
 nav a{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  text-decoration:none;
-  color:#a8a29e;
-  font-weight:500;
+  font-size:11px;text-transform:uppercase;letter-spacing:2px;
+  text-decoration:none;color:#a8a29e;font-weight:500;
 }
-nav a:hover,
-nav a.active{
-  color:#ffffff;
-}
-nav a.active {
-  border-bottom:1px solid #ffffff;
-  padding-bottom:2px;
-}
+nav a:hover,nav a.active{color:#ffffff;}
+nav a.active{border-bottom:1px solid #ffffff;padding-bottom:2px;}
 .cart-btn-fixed{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(28,25,23,0.6);
-  padding:6px 12px;
-  border-radius:4px;
-  text-decoration:none;
-  color:#e7e5e4;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(28,25,23,0.6);padding:6px 12px;
+  border-radius:4px;text-decoration:none;color:#e7e5e4;
 }
-.cart-icon-container{
-  position:relative;
-}
+.cart-icon-container{position:relative;}
 .cart-badge{
-  position:absolute;
-  top:-6px;
-  right:-8px;
-  background:#ffffff;
-  color:#000000;
-  font-size:9px;
-  font-weight:bold;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  position:absolute;top:-6px;right:-8px;background:#ffffff;color:#000000;
+  font-size:9px;font-weight:bold;width:14px;height:14px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
 }
-main{
-  width:100%;
-  max-width:650px;
-  margin: 0 auto;
-  padding: 60px 24px;
-  flex-grow:1;
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-}
-.contact-title-main{
-  font-family: 'Playfair Display', serif;
-  font-size:32px;
-  font-weight:400;
-  letter-spacing:0.5px;
-  color:#000000;
-  text-align:center;
-}
-.contact-subtitle{
-  font-size:13px;
-  color:#57534e;
-  text-align:center;
-  line-height:1.6;
-  margin-top:-16px;
-  font-weight:300;
-  width: 100%;
-}
-.form-group{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  margin-bottom:20px;
-}
-.form-label{
-  font-size:11px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:#44403c;
-}
+main{width:100%;max-width:650px;margin:0 auto;padding:60px 24px;flex-grow:1;display:flex;flex-direction:column;gap:32px;}
+.contact-title-main{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;letter-spacing:0.5px;color:#000000;text-align:center;}
+.contact-subtitle{font-size:13px;color:#57534e;text-align:center;line-height:1.6;margin-top:-16px;font-weight:300;width:100%;}
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.form-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#44403c;}
 .input-field, .textarea-field{
-  width:100%;
-  padding:12px;
-  font-size:13px;
-  font-family:'Montserrat', sans-serif;
-  border:1px solid #e7e5e4;
-  background:#ffffff;
-  outline:none;
-  transition:border-color 0.2s;
+  width:100%;padding:12px;font-size:13px;font-family:'Montserrat',sans-serif;
+  border:1px solid #e7e5e4;background:#ffffff;outline:none;transition:border-color 0.2s;
 }
-.input-field:focus, .textarea-field:focus{
-  border-color:#000000;
-}
-.textarea-field{
-  height:150px;
-  resize:vertical;
-}
+.input-field:focus,.textarea-field:focus{border-color:#000000;}
+.textarea-field{height:150px;resize:vertical;}
 .btn-submit-contact{
-  display:block;
-  width:100%;
-  max-width:200px;
-  margin:12px auto 0 auto;
-  padding:14px 24px;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  color:#57534e;
-  border:1px solid #d6d3d1;
-  border-radius:50px;
-  background:transparent;
-  cursor:pointer;
-  transition:all 0.2s ease-in-out;
+  display:block;width:100%;max-width:200px;margin:12px auto 0 auto;padding:14px 24px;
+  font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#57534e;
+  border:1px solid #d6d3d1;border-radius:50px;background:transparent;cursor:pointer;transition:all 0.2s ease-in-out;
 }
-.btn-submit-contact:hover{
-  background:#000000;
-  color:#ffffff;
-  border-color:#000000;
-}
+.btn-submit-contact:hover{background:#000000;color:#ffffff;border-color:#000000;}
+
 footer{
-  background:#000000;
-  color:#a8a29e;
-  padding:48px 24px;
-  text-align:center;
-  width:100%;
+  background:#000;color:#a8a29e;padding:48px 24px;
+  border-top:1px solid #1c1917;text-align:center;width:100%;
 }
-.contact-link{
-  text-decoration:none;
-  color:#d6d3d1;
-  display:block;
-  margin-bottom:24px;
-}
-.contact-link p:first-child {
-  font-size:14px;
-  font-weight:300;
-  letter-spacing:1px;
-  margin-bottom:4px;
-}
-.contact-link p:last-child {
-  font-size:12px;
-  text-decoration:underline;
-  text-underline-offset:4px;
-}
-.social-icons{
-  margin-bottom:24px;
-}
-.social-icons a{
-  color:#a8a29e;
-  text-decoration:none;
-  margin:0 12px;
-  font-size:14px;
-}
-.copyright{
-  font-size:10px;
-  margin-bottom:24px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
+.contact-link{text-decoration:none;color:#d6d3d1;display:block;margin-bottom:24px;}
+.contact-link p:first-child{font-size:14px;font-weight:300;letter-spacing:1px;margin-bottom:4px;}
+.contact-link p:last-child{font-size:12px;text-decoration:underline;text-underline-offset:4px;}
+.social-icons-svg{display:flex;justify-content:center;align-items:center;gap:24px;margin-bottom:24px;}
+.social-icons-svg a{color:#a8a29e;transition:color 0.2s;}
+.social-icons-svg a:hover{color:#fff;}
+.social-icons-svg svg{width:18px;height:18px;fill:currentColor;display:block;}
+.copyright{font-size:10px;margin-bottom:24px;letter-spacing:2px;text-transform:uppercase;color:#78716c;}
 .legal-links{
-  display:flex;
-  justify-content:center;
-  gap:24px;
-  flex-wrap:wrap;
-  padding-top:16px;
-  border-top:1px solid #1c1917;
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid #1c1917;
 }
-.legal-links a{
-  font-size:11px;
-  color:#78716c;
-  text-decoration:none;
-}
+.legal-links a{font-size:11px;color:#78716c;text-decoration:none;}
 </style>
 </head>
 <body>
-
 <header>
-<a href="index.html" class="nav-logo-link">
-<img src="mon-logo.png" alt="Logo">
-</a>
+<a href="index.html" class="nav-logo-link"><img src="mon-logo.png" alt="Logo"></a>
 <nav>
 <a href="index.html">Accueil</a>
 <a href="galerie.html">Galerie</a>
@@ -247,29 +97,23 @@ footer{
 <main>
 <h1 class="contact-title-main">Contact</h1>
 <p class="contact-subtitle">Une question sur une œuvre, un format de tirage spécifique ou un projet ? Laissez un message ici.</p>
-
-<!-- Votre lien Formspree officiel est maintenant configuré en dessous -->
-<form action="https://formspree.io/f/mqpejzqo" method="POST">
+<form action="https://formspree.io" method="POST">
 <div class="form-group">
 <label class="form-label">Nom complet</label>
 <input type="text" name="name" class="input-field" placeholder="Votre nom et prénom" required>
 </div>
-
 <div class="form-group">
 <label class="form-label">Adresse e-mail</label>
 <input type="email" name="_replyto" class="input-field" placeholder="votre@email.com" required>
 </div>
-
 <div class="form-group">
 <label class="form-label">Sujet</label>
 <input type="text" name="subject" class="input-field" placeholder="Ex: Tirage sur mesure Cerf qui brame" required>
 </div>
-
 <div class="form-group">
 <label class="form-label">Votre message</label>
 <textarea name="message" class="textarea-field" placeholder="Écrivez votre message ici..." required></textarea>
 </div>
-
 <button type="submit" class="btn-submit-contact">Envoyer</button>
 </form>
 </main>
@@ -279,17 +123,20 @@ footer{
 <p>Une question sur un tirage ?</p>
 <p>Contacte-moi.</p>
 </a>
-<div class="social-icons">
-<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-<a href="#">Facebook</a>
+<div class="social-icons-svg">
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+</a>
+<a href="#" aria-label="Facebook">
+<svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
 </div>
-<p class="copyright">© 2026 Erwan Gauriveau.</p>
+<p class="copyright">© 2026 Erwan Gauriveau. Tous droits réservés.</p>
 <div class="legal-links">
-<a href="politique-confidentialite.html">Confidentialité</a>
-<a href="mentions-legales.html">Mentions</a>
-<a href="cgv.html">CGV</a>
+<a href="politique-confidentialite.html">Politique de confidentialité</a>
+<a href="mentions-legales.html">Mentions Légales</a>
+<a href="cgv.html">Conditions Générales de Vente / CGV</a>
 </div>
 </footer>
-
 </body>
 </html>
