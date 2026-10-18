@@ -5,12 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faon avec Cerf</title>
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:sans-serif;
   background:#fff;
@@ -31,19 +30,9 @@ header{
   top:0;
   z-index:50;
 }
-.nav-logo-link{
-  display:block;
-  height:75px; 
-}
-.nav-logo-link img{
-  height:100%;
-  object-fit:contain;
-}
-nav{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
+.nav-logo-link{display:block;height:75px;}
+.nav-logo-link img{height:100%;object-fit:contain;}
+nav{display:flex;align-items:center;gap:28px;}
 nav a{
   font-size:11px;
   text-transform:uppercase;
@@ -52,9 +41,7 @@ nav a{
   color:#a8a29e;
   font-weight:500;
 }
-nav a:hover{
-  color:#fff;
-}
+nav a:hover{color:#fff;}
 .cart-btn-fixed{
   display:flex;
   align-items:center;
@@ -65,9 +52,7 @@ nav a:hover{
   text-decoration:none;
   color:#e7e5e4;
 }
-.cart-icon-container{
-  position:relative;
-}
+.cart-icon-container{position:relative;}
 .cart-badge{
   position:absolute;
   top:-6px;
@@ -85,21 +70,17 @@ nav a:hover{
 }
 main{
   width:100%;
-  max-width:1600px;
-  margin:0 auto;
-  padding:40px 24px;
+  padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:50px;
+  gap:40px;
   align-items:start;
 }
 @media(max-width:900px){
-  main{
-    flex-direction:column;
-  }
+  main{flex-direction:column;padding:20px;}
 }
 .product-image-side{
-  flex: 1.6 !important;
+  flex: 1.4 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -112,51 +93,47 @@ main{
   transform-origin:center center;
 }
 .product-details-side{
-  flex: 0.9 !important;
+  flex: 1 !important;
   display:flex;
   flex-direction:column;
-  gap:24px;
+  gap:20px;
+  padding-top:10px;
 }
 .breadcrumb{
   font-size:11px;
   color:#78716c;
   letter-spacing:1px;
 }
-.breadcrumb a{
-  color:#78716c;
-  text-decoration:none;
-}
+.breadcrumb a{color:#78716c;text-decoration:none;}
 .product-title-main{
-  font-size:24px;
-  font-weight:300;
-  letter-spacing:1px;
-  color:#1c1917;
+  font-family: 'Playfair Display', serif;
+  font-size:32px;
+  font-weight:400;
+  letter-spacing:0.5px;
+  color:#000;
 }
 .price-notice-box{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:16px;
   padding-bottom:20px;
   border-bottom:1px solid #f5f5f4;
 }
 .price-tag{
-  font-size:16px;
+  font-size:20px;
   font-weight:600;
   color:#000;
 }
 .notice-text{
-  font-size:11px;
-  color:#78716c;
-  line-height:1.5;
+  font-size:13px;
+  color:#44403c;
+  line-height:1.6;
 }
 .notice-text span{
   margin-right:4px;
+  font-size:14px;
 }
-.form-row{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
+.form-row{display:flex;flex-direction:column;gap:8px;}
 .form-label{
   font-size:11px;
   font-weight:600;
@@ -166,19 +143,13 @@ main{
 }
 .select-size{
   width:100%;
-  max-width:400px;
   padding:10px;
   font-size:12px;
   border:1px solid #e7e5e4;
   background:#fff;
   outline:none;
 }
-.action-row{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin-top:12px;
-}
+.action-row{display:flex;align-items:center;gap:12px;margin-top:8px;}
 .input-qty{
   width:50px;
   height:40px;
@@ -187,16 +158,18 @@ main{
   font-size:12px;
 }
 .btn-submit-cart{
-  padding:12px 32px;
+  flex-grow:1;
+  padding:12px 20px;
   font-size:10px;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:1.5px;
   color:#57534e;
   border:1px solid #d6d3d1;
   border-radius:50px;
   background:transparent;
   cursor:pointer;
   transition:all 0.2s ease-in-out;
+  white-space:nowrap;
 }
 .btn-submit-cart:hover{
   background:#000;
@@ -216,9 +189,7 @@ footer{
   display:block;
   margin-bottom:24px;
 }
-.social-icons{
-  margin-bottom:24px;
-}
+.social-icons{margin-bottom:24px;}
 .social-icons a{
   color:#a8a29e;
   text-decoration:none;
@@ -239,11 +210,7 @@ footer{
   padding-top:16px;
   border-top:1px solid #1c1917;
 }
-.legal-links a{
-  font-size:11px;
-  color:#78716c;
-  text-decoration:none;
-}
+.legal-links a{font-size:11px;color:#78716c;text-decoration:none;}
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -311,7 +278,7 @@ Ajouter Au Panier
 
 <footer>
 <a href="contact.html" class="contact-link">
-<p>Une question sur un tirage ?</p>
+<p>Une question on un tirage ?</p>
 <p>Contacte-moi.</p>
 </a>
 <div class="social-icons">
