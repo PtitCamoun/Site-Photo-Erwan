@@ -85,22 +85,21 @@ nav a:hover{
   align-items:center;
   justify-content:center;
 }
+/* Alignement parfait de la photo à gauche */
 main{
   width:100%;
-  max-width:1800px;
-  margin:0 auto;
-  padding:30px 24px;
+  padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:40px;
+  gap:50px;
   align-items:start;
 }
 @media(max-width:900px){
   main{
     flex-direction:column;
+    padding:20px;
   }
 }
-/* Photo poussée à 78% de la page */
 .product-image-side{
   flex: 3.5 !important;
   overflow:hidden;
@@ -114,12 +113,12 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* Texte restreint à 22% de la page */
 .product-details-side{
-  flex: 1 !important;
+  flex: 1.2 !important;
   display:flex;
   flex-direction:column;
   gap:20px;
+  padding-top:10px;
 }
 .breadcrumb{
   font-size:11px;
