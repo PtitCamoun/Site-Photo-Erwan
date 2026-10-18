@@ -187,7 +187,6 @@ main{
 }
 .product-footer .contact-link{
   text-decoration:none;
-  color:#d6d3d1 !important;
   display:block;
   margin-bottom:24px;
 }
@@ -200,11 +199,12 @@ main{
 }
 .product-footer .contact-link p:last-child{
   font-size:12px;
-  text-decoration:underline;
-  text-underline-offset:4px;
   color:#a8a29e !important;
 }
-.product-footer .contact-link:hover p{
+.product-footer .contact-link:hover p:first-child{
+  color:#fff !important;
+}
+.product-footer .contact-link:hover p:last-child{
   color:#fff !important;
 }
 .social-icons-svg{
@@ -238,9 +238,7 @@ main{
   font-size:11px;
   color:#78716c !important;
   text-decoration:none;
-  transition:color 0.2s;
 }
-.legal-links a:hover{color:#d6d3d1 !important;}
 </style>
 </head>
 <body oncontextmenu="return false;">
