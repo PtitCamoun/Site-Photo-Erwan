@@ -281,42 +281,6 @@ Valider la commande
 </div>
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    function chargerPanierReel() {
-        var qty = parseInt(localStorage.getItem('panierQuantite') || 0);
-        var total = parseFloat(localStorage.getItem('panierTotal') || 0).toFixed(2);
-        var totalFormate = total.replace('.', ',') + ' €';
-        
-        document.getElementById('header-badge').textContent = qty;
-        document.getElementById('header-price').textContent = totalFormate;
-        
-        document.getElementById('subtotal-display').textContent = totalFormate;
-        document.getElementById('total-display').textContent = totalFormate;
-        
-        var itemsArea = document.getElementById('dynamic-items');
-        if (qty === 0) {
-            itemsArea.innerHTML = '<p style="font-size:13px;color:#78716c;">Votre panier est actuellement vide.</p>';
-            return;
-        }
-        
-        var htmlContent = '';
-        htmlContent += '<div class="cart-item">';
-        htmlContent += '<div class="item-details">';
-        htmlContent += '<span class="item-name">Sélection de Tirages d Art</span>';
-        htmlContent += '<span class="item-meta">Quantité totale d œuvres : ' + qty + '</span>';
-        htmlContent += '<button class="btn-remove" id="btn-clear">Vider le panier</button>';
-        htmlContent += '</div>';
-        htmlContent += '<div class="item-price">' + totalFormate + '</div>';
-        htmlContent += '</div>';
-        
-        itemsArea.innerHTML = htmlContent;
-        
-        document.getElementById('btn-clear').addEventListener('click', function() {
-            localStorage.removeItem('panierQuantite');
-            localStorage.removeItem('panierTotal');
-            chargerPanierReel();
-        });
-    }
-
-    document.getElementById('btn-order').addEventListener('click', function(e) {
+<script src="panier.js"></script>
+</body>
+</html>
