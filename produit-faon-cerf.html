@@ -10,7 +10,7 @@
 <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-   /* Positionnement et style de la flèche de retour */
+/* Positionnement et style de la flèche de retour */
 .top-action-bar {
   position: relative;
   width: 100%;
@@ -112,8 +112,9 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
+/* MODIFICATION : Agrandissement de l'image de 1.4 à 2 */
 .product-image-side{
-  flex: 1.4 !important;
+  flex: 2 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -125,8 +126,9 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* MODIFICATION : Réduction proportionnelle de la zone texte */
 .product-details-side{
-  flex: 1 !important;
+  flex: 0.8 !important;
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -174,15 +176,25 @@ main{
   letter-spacing:1px;
   color:#44403c;
 }
+/* MODIFICATION : Limitation de la largeur maximale pour le sélecteur */
 .select-size{
   width:100%;
+  max-width:280px;
   padding:10px;
   font-size:12px;
   border:1px solid #e7e5e4;
   background:#fff;
   outline:none;
 }
-.action-row{display:flex;align-items:center;gap:12px;margin-top:8px;}
+/* MODIFICATION : Alignement à gauche de la ligne de boutons pour éviter l'étirement */
+.action-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
+  width:100%;
+  max-width:280px;
+}
 .input-qty{
   width:50px;
   height:40px;
@@ -190,6 +202,7 @@ main{
   border:1px solid #e7e5e4;
   font-size:12px;
 }
+/* MODIFICATION : Le bouton épouse proprement la largeur maximale définie par action-row */
 .btn-submit-cart{
   flex-grow:1;
   padding:12px 20px;
@@ -367,20 +380,31 @@ Ajouter Au Panier
 </div>
 </footer>
 
-<script>
-const box = document.getElementById('zoom-box');
-const img = document.getElementById('zoom-img');
-box.addEventListener('mousemove', (e) => {
-  const rect = box.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  img.style.transformOrigin = `${x}px ${y}px`;
-  img.style.transform = 'scale(2.2)';
-});
-box.addEventListener('mouseleave', () => {
-  img.style.transform = 'scale(1)';
-});
-</script>
 <script src="panier.js"></script>
+
+<script>
+const zoomBox = document.getElementById('zoom-box');
+const zoomImg = document.getElementById('zoom-img');
+
+if (zoomBox && zoomImg) {
+  zoomBox.addEventListener('mousemove', (e) => {
+    const rect = zoomBox.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+    
+    zoomImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    zoomImg.style.transform = 'scale(1.5)';
+  });
+  
+  zoomBox.addEventListener('mouseleave', () => {
+    zoomImg.style.transform = 'scale(1)';
+    zoomImg.style.transformOrigin = 'center center';
+  });
+}
+</script>
+
 </body>
 </html>
