@@ -32,14 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
             
-            // Détection automatique du nom du produit et de son image
             const nomProduit = document.querySelector('.product-title-main').textContent.trim();
             const srcImage = document.querySelector('.product-image-side img').getAttribute('src');
             
-            // Détermination du prix exact selon l'option choisie
             let itemPrice = 20.00;
             const optionText = selectSize.options[selectSize.selectedIndex].text;
-            // Récupère proprement la taille (ex: "20x30 cm")
             const optionTaille = optionText.split('—')[0].trim(); 
             
             if (optionText.includes('35,00')) { itemPrice = 35.00; }
@@ -47,10 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
             
             const qty = qtyInput ? parseInt(qtyInput.value) : 1;
             
-            // Sauvegarde dans la liste des articles
             let articles = JSON.parse(localStorage.getItem('listeArticles') || "[]");
             
-            // Si l'article avec la même taille existe déjà, on augmente sa quantité
             const articleExistant = articles.find(item => item.nom === nomProduit && item.taille === optionTaille);
             if (articleExistant) {
                 articleExistant.quantite += qty;
@@ -66,13 +61,11 @@ document.addEventListener("DOMContentLoaded", function() {
             
             localStorage.setItem('listeArticles', JSON.stringify(articles));
             
-            // Animation du bouton en vert
             formBtn.style.background = '#22c55e';
             formBtn.style.color = '#fff';
             formBtn.style.borderColor = '#22c55e';
             formBtn.textContent = 'Ajouté ! ✓';
             
-            // Effet sur la navbar
             const headerCart = document.querySelector('.cart-btn-fixed');
             if (headerCart) {
                 headerCart.style.transform = 'scale(1.08)';
@@ -110,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
             var htmlContent = '';
             var prixCalculéTotal = 0;
             
-            // Boucle pour construire le HTML de CHAQUE vrai produit ajouté
             articles.forEach((item, index) => {
                 var sousTotalItem = item.prix * item.quantite;
                 prixCalculéTotal += sousTotalItem;
@@ -132,12 +124,11 @@ document.addEventListener("DOMContentLoaded", function() {
             if (subtotalDisp) subtotalDisp.textContent = totalFormate;
             if (totalDisp) totalDisp.textContent = totalFormate;
             
-            // Rendre fonctionnels les boutons individuels "Supprimer"
             const removeButtons = itemsArea.querySelectorAll('.btn-remove');
             removeButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const idx = parseInt(this.getAttribute('data-index'));
-                    articles.splice(idx, 1); // Retire l'élément de la liste
+                    articles.splice(idx, 1);
                     localStorage.setItem('listeArticles', JSON.stringify(articles));
                     chargerPanierReel();
                     actualiserBarreNavigation();
@@ -156,17 +147,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     return;
                 }
 
-                // 1. Préparation de la liste textuelle pour l'e-mail
                 let listeCommande = "";
                 let total = 0;
 
-                articles.forEach((item, index) => {
+                articles.forEach((item) => {
                     let sousTotalItem = item.prix * item.quantite;
                     listeCommande += `- ${item.nom} (Format: ${item.taille}) x${item.quantite} : ${sousTotalItem.toFixed(2)} €<br>`;
                     total += sousTotalItem;
                 });
 
-                // 2. Demande des coordonnées à l'acheteur
                 let nomClient = prompt("Veuillez entrer votre Nom et Prénom pour valider la commande :");
                 let emailClient = prompt("Veuillez entrer votre adresse e-mail :");
 
@@ -182,13 +171,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     total: total.toFixed(2)
                 };
 
-                // 3. Envoi invisible via EmailJS
-                // N'oublie pas de remplacer les deux clés ci-dessous par tes vrais IDs
+                // Envoi invisible via EmailJS avec tes identifiants exacts
                 emailjs.send('service_7i80t2v', 'template_k5xiuqm', templateParams)
                     .then(function(response) {
                         alert("✨ Merci ! Erwan a bien reçu votre commande. Il va vous recontacter par e-mail pour finaliser le paiement.");
-                        localStorage.removeItem('listeArticles'); // Vide le panier
-                        window.location.reload(); // Rafraîchit la page
+                        localStorage.removeItem('listeArticles');
+                        window.location.reload();
                     }, function(error) {
                         alert("Une erreur est survenue lors de l'envoi de la commande. Veuillez réessayer.");
                         console.log('FAILED...', error);
