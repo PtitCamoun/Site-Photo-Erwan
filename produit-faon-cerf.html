@@ -125,10 +125,10 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Largeur maximale fixée sur toute la colonne de texte pour stopper les boutons net à la fin de la phrase */
+/* CORRECTION : Largeur augmentée à 620px pour que la phrase tienne en entier et que le bouton s'aligne sur sa fin */
 .product-details-side{
   flex: 1 !important;
-  max-width: 380px; 
+  max-width: 620px; 
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -163,6 +163,7 @@ main{
   font-size:13px;
   color:#44403c;
   line-height:1.6;
+  white-space: nowrap; /* Empêche le texte de sauter à la ligne */
 }
 .notice-text span{
   margin-right:4px;
