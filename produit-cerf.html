@@ -68,15 +68,43 @@ nav a:hover{color:#fff;}
   align-items:center;
   justify-content:center;
 }
+
+/* Style de la flèche de retour haut gauche */
+.back-arrow-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #78716c;
+  transition: color 0.2s ease;
+  width: fit-content;
+  padding: 20px 0 0 30px;
+}
+.back-arrow-container svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.back-arrow-container span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.back-arrow-container:hover {
+  color: #000;
+}
+
 main{
   width:100%;
-  padding:30px 40px 30px 30px; 
+  padding:15px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
   gap:50px;
   align-items:start;
 }
 @media(max-width:900px){
+  .back-arrow-container { padding: 20px 20px 0 20px; }
   main{flex-direction:column;padding:20px;}
 }
 .product-image-side{
@@ -228,14 +256,9 @@ main{
   color:#78716c !important;
 }
 .legal-links{
-  display:flex;
-  justify-content:center;
-  gap:24px;
-  flex-wrap:wrap;
-  padding-top:16px;
-  border-top:1px solid #1c1917;
-  max-width:600px;
-  margin:0 auto;
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid #1c1917;
+  max-width:600px;margin:0 auto;
 }
 .legal-links a{
   font-size:11px;
@@ -264,6 +287,12 @@ main{
 </a>
 </nav>
 </header>
+
+<!-- Flèche de retour en haut à gauche -->
+<a href="galerie.html" class="back-arrow-container">
+  <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+  <span>Retour à la galerie</span>
+</a>
 
 <main>
 <div class="product-image-side" id="zoom-box">
@@ -328,20 +357,6 @@ Ajouter Au Panier
 </div>
 </footer>
 
-<script>
-const box = document.getElementById('zoom-box');
-const img = document.getElementById('zoom-img');
-box.addEventListener('mousemove', (e) => {
-  const rect = box.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  img.style.transformOrigin = `${x}px ${y}px`;
-  img.style.transform = 'scale(2.2)';
-});
-box.addEventListener('mouseleave', () => {
-  img.style.transform = 'scale(1)';
-});
-</script>
-  <script src="panier.js"></script>
+<script src="panier.js"></script>
 </body>
 </html>
