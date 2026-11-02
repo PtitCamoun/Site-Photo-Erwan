@@ -112,8 +112,9 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
+/* MODIFICATION : Taille de la photo réduite à 1.5 pour qu'elle prenne moins de place */
 .product-image-side{
-  flex: 1.8 !important;
+  flex: 1.5 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -125,9 +126,9 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Largeur augmentée à 620px pour que la phrase tienne en entier et que le bouton s'aligne sur sa fin */
+/* MODIFICATION : Ajustement de l'espace de la colonne de texte */
 .product-details-side{
-  flex: 1 !important;
+  flex: 1.2 !important;
   max-width: 620px; 
   display:flex;
   flex-direction:column;
@@ -163,7 +164,7 @@ main{
   font-size:13px;
   color:#44403c;
   line-height:1.6;
-  white-space: nowrap; /* Empêche le texte de sauter à la ligne */
+  white-space: nowrap; 
 }
 .notice-text span{
   margin-right:4px;
