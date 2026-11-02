@@ -106,15 +106,15 @@ main{
   padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:50px;
+  gap:30px;
   align-items:start;
 }
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* CORRECTION : L'image prend exactement la moitié de l'espace (50%) */
+/* CORRECTION : L'image passe à 58% pour être visiblement plus grande */
 .product-image-side{
-  width: 50% !important;
+  width: 58% !important;
   flex-shrink: 0;
   overflow:hidden;
   position:relative;
@@ -127,7 +127,6 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Le bloc texte prend la moitié restante et s'aligne bien */
 .product-details-side{
   flex: 1 !important;
   max-width: 600px;
