@@ -112,7 +112,6 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* MODIFICATION : Image un poil plus petite (1.8 au lieu de 2) */
 .product-image-side{
   flex: 1.8 !important;
   overflow:hidden;
@@ -126,8 +125,10 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* CORRECTION : Largeur maximale fixée sur toute la colonne de texte pour stopper les boutons net à la fin de la phrase */
 .product-details-side{
   flex: 1 !important;
+  max-width: 380px; 
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -175,7 +176,6 @@ main{
   letter-spacing:1px;
   color:#44403c;
 }
-/* MODIFICATION : Le sélecteur reprend toute la largeur de sa colonne */
 .select-size{
   width:100%;
   padding:10px;
@@ -184,7 +184,6 @@ main{
   background:#fff;
   outline:none;
 }
-/* MODIFICATION : La ligne d'action reprend sa pleine largeur */
 .action-row{
   display:flex;
   align-items:center;
@@ -199,7 +198,6 @@ main{
   border:1px solid #e7e5e4;
   font-size:12px;
 }
-/* MODIFICATION : Le bouton redevient long jusqu'au bout de la ligne */
 .btn-submit-cart{
   flex-grow:1;
   padding:12px 20px;
