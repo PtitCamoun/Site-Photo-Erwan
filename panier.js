@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let itemPrice = 20.00;
             const optionText = selectSize.options[selectSize.selectedIndex].text;
             
-            // Correction définitive de l'extraction textuelle de la taille
+            // CORRECTION FINALE : Extraction sécurisée du texte de la taille
             let segments = optionText.split('—');
             let optionTaille = segments[0] ? segments[0].trim() : optionText.trim(); 
             
