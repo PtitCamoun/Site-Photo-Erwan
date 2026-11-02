@@ -112,11 +112,10 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* CORRECTION : On bloque la largeur max en pixels pour forcer une vraie baisse de taille */
+/* CORRECTION : L'image fait exactement 42% de la page (juste au milieu) */
 .product-image-side{
-  flex: 1 !important;
-  width: 100%;
-  max-width: 440px;
+  width: 42% !important;
+  flex-shrink: 0;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -128,9 +127,9 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Alignement fluide sur le reste de la page */
+/* CORRECTION : Le bloc texte prend le reste sans écraser la photo */
 .product-details-side{
-  flex: 1.2 !important;
+  flex: 1 !important;
   max-width: 600px;
   display:flex;
   flex-direction:column;
