@@ -147,15 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     return;
                 }
 
-                let listeCommande = "";
-                let total = 0;
-
-                articles.forEach((item) => {
-                    let sousTotalItem = item.prix * item.quantite;
-                    listeCommande += `- ${item.nom} (Format: ${item.taille}) x${item.quantite} : ${sousTotalItem.toFixed(2)} €<br>`;
-                    total += sousTotalItem;
-                });
-
                 let nomClient = prompt("Veuillez entrer votre Nom et Prénom pour valider la commande :");
                 let emailClient = prompt("Veuillez entrer votre adresse e-mail :");
 
@@ -164,23 +155,47 @@ document.addEventListener("DOMContentLoaded", function() {
                     return;
                 }
 
-                let templateParams = {
-                    nom: nomClient,
-                    email: emailClient,
-                    liste_commande: listeCommande,
-                    total: total.toFixed(2)
-                };
+                // Changement de texte sur le bouton pour faire patienter proprement le client
+                btnOrder.textContent = "Envoi en cours...";
+                btnOrder.style.pointerEvents = "none";
+                btnOrder.style.opacity = "0.6";
 
-                // Envoi invisible via EmailJS avec tes identifiants exacts
-                emailjs.send('service_7i80t2v', 'template_k5xiuqm', templateParams)
-                    .then(function(response) {
-                        alert("✨ Merci ! Erwan a bien reçu votre commande. Il va vous recontacter par e-mail pour finaliser le paiement.");
-                        localStorage.removeItem('listeArticles');
-                        window.location.reload();
-                    }, function(error) {
-                        alert("Une erreur est survenue lors de l'envoi de la commande. Veuillez réessayer.");
-                        console.log('FAILED...', error);
+                // Création et injection dynamique de la bibliothèque EmailJS à la volée pour éviter toute lenteur au chargement de la page
+                const script = document.createElement('script');
+                script.src = 'https://jsdelivr.net';
+                script.onload = function() {
+                    emailjs.init("bNP0Ps83sWOMz1T-3");
+
+                    let listeCommande = "";
+                    let total = 0;
+
+                    articles.forEach((item) => {
+                        let sousTotalItem = item.prix * item.quantite;
+                        listeCommande += `- ${item.nom} (Format: ${item.taille}) x${item.quantite} : ${sousTotalItem.toFixed(2)} €<br>`;
+                        total += sousTotalItem;
                     });
+
+                    let templateParams = {
+                        nom: nomClient,
+                        email: emailClient,
+                        liste_commande: listeCommande,
+                        total: total.toFixed(2)
+                    };
+
+                    emailjs.send('service_7i80t2v', 'template_k5xiuqm', templateParams)
+                        .then(function() {
+                            alert("✨ Merci ! Erwan a bien reçu votre commande. Il va vous recontacter par e-mail pour finaliser le paiement.");
+                            localStorage.removeItem('listeArticles');
+                            window.location.reload();
+                        }, function(error) {
+                            alert("Une erreur est survenue lors de l'envoi de la commande. Veuillez réessayer.");
+                            btnOrder.textContent = "Valider la commande";
+                            btnOrder.style.pointerEvents = "auto";
+                            btnOrder.style.opacity = "1";
+                            console.log('FAILED...', error);
+                        });
+                };
+                document.head.appendChild(script);
             });
         }
         
