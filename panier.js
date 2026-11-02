@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             let itemPrice = 20.00;
             const optionText = selectSize.options[selectSize.selectedIndex].text;
-            const optionTaille = optionText.split('—')[0].trim(); 
+            const optionTaille = optionText.split('—').trim(); 
             
             if (optionText.includes('35,00')) { itemPrice = 35.00; }
             else if (optionText.includes('50,00')) { itemPrice = 50.00; }
@@ -92,13 +92,17 @@ document.addEventListener("DOMContentLoaded", function() {
             
             const subtotalDisp = document.getElementById('subtotal-display');
             const totalDisp = document.getElementById('total-display');
+            const formCoordonnees = document.getElementById('form-coordonnees');
             
             if (articles.length === 0) {
                 itemsArea.innerHTML = '<p style="font-size:13px;color:#78716c;padding:20px 0;">Votre panier est actuellement vide.</p>';
                 if (subtotalDisp) subtotalDisp.textContent = '0,00 €';
                 if (totalDisp) totalDisp.textContent = '0,00 €';
+                if (formCoordonnees) formCoordonnees.style.display = 'none';
                 return;
             }
+            
+            if (formCoordonnees) formCoordonnees.style.display = 'flex';
             
             var htmlContent = '';
             var prixCalculéTotal = 0;
@@ -124,6 +128,18 @@ document.addEventListener("DOMContentLoaded", function() {
             if (subtotalDisp) subtotalDisp.textContent = totalFormate;
             if (totalDisp) totalDisp.textContent = totalFormate;
             
+            // Injection automatique des données de la liste de commande dans le formulaire masqué
+            let listeTexteCommande = "";
+            articles.forEach((item) => {
+                let sousTotalItem = item.prix * item.quantite;
+                listeTexteCommande += `[Photo: ${item.nom} | Taille: ${item.taille} | Qte: ${item.quantite} | Total: ${sousTotalItem.toFixed(2)}€] // `;
+            });
+
+            const hiddenCart = document.getElementById('hidden-cart-data');
+            const hiddenTotal = document.getElementById('hidden-total-data');
+            if (hiddenCart) hiddenCart.value = listeTexteCommande;
+            if (hiddenTotal) hiddenTotal.value = totalFormate;
+
             const removeButtons = itemsArea.querySelectorAll('.btn-remove');
             removeButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -136,66 +152,19 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        const btnOrder = document.getElementById('btn-order');
-        if (btnOrder) {
-            btnOrder.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                let articles = JSON.parse(localStorage.getItem('listeArticles') || "[]");
-                if(articles.length === 0) {
-                    alert("Votre panier est vide.");
-                    return;
+        // Intercepte la validation Formspree pour nettoyer proprement le localStorage
+        const formCoordonnees = document.getElementById('form-coordonnees');
+        if (formCoordonnees) {
+            formCoordonnees.addEventListener('submit', function() {
+                const btnOrder = document.getElementById('btn-order');
+                if (btnOrder) {
+                    btnOrder.textContent = "Envoi en cours...";
+                    btnOrder.style.pointerEvents = "none";
+                    btnOrder.style.opacity = "0.6";
                 }
-
-                let nomClient = prompt("Veuillez entrer votre Nom et Prénom pour valider la commande :");
-                let emailClient = prompt("Veuillez entrer votre adresse e-mail :");
-
-                if (!nomClient || !emailClient) {
-                    alert("Commande annulée : les informations de contact sont obligatoires.");
-                    return;
-                }
-
-                // Changement de texte sur le bouton pour faire patienter proprement le client
-                btnOrder.textContent = "Envoi en cours...";
-                btnOrder.style.pointerEvents = "none";
-                btnOrder.style.opacity = "0.6";
-
-                // Création et injection dynamique de la bibliothèque EmailJS à la volée pour éviter toute lenteur au chargement de la page
-                const script = document.createElement('script');
-                script.src = 'https://jsdelivr.net';
-                script.onload = function() {
-                    emailjs.init("bNP0Ps83sWOMz1T-3");
-
-                    let listeCommande = "";
-                    let total = 0;
-
-                    articles.forEach((item) => {
-                        let sousTotalItem = item.prix * item.quantite;
-                        listeCommande += `- ${item.nom} (Format: ${item.taille}) x${item.quantite} : ${sousTotalItem.toFixed(2)} €<br>`;
-                        total += sousTotalItem;
-                    });
-
-                    let templateParams = {
-                        nom: nomClient,
-                        email: emailClient,
-                        liste_commande: listeCommande,
-                        total: total.toFixed(2)
-                    };
-
-                    emailjs.send('service_7i80t2v', 'template_k5xiuqm', templateParams)
-                        .then(function() {
-                            alert("✨ Merci ! Erwan a bien reçu votre commande. Il va vous recontacter par e-mail pour finaliser le paiement.");
-                            localStorage.removeItem('listeArticles');
-                            window.location.reload();
-                        }, function(error) {
-                            alert("Une erreur est survenue lors de l'envoi de la commande. Veuillez réessayer.");
-                            btnOrder.textContent = "Valider la commande";
-                            btnOrder.style.pointerEvents = "auto";
-                            btnOrder.style.opacity = "1";
-                            console.log('FAILED...', error);
-                        });
-                };
-                document.head.appendChild(script);
+                setTimeout(() => {
+                    localStorage.removeItem('listeArticles');
+                }, 100);
             });
         }
         
