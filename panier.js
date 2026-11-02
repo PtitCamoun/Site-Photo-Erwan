@@ -149,12 +149,50 @@ document.addEventListener("DOMContentLoaded", function() {
         if (btnOrder) {
             btnOrder.addEventListener('click', function(e) {
                 e.preventDefault();
+                
                 let articles = JSON.parse(localStorage.getItem('listeArticles') || "[]");
                 if(articles.length === 0) {
                     alert("Votre panier est vide.");
                     return;
                 }
-                alert("Commande simulée avec succès !");
+
+                // 1. Préparation de la liste textuelle pour l'e-mail
+                let listeCommande = "";
+                let total = 0;
+
+                articles.forEach((item, index) => {
+                    let sousTotalItem = item.prix * item.quantite;
+                    listeCommande += `- ${item.nom} (Format: ${item.taille}) x${item.quantite} : ${sousTotalItem.toFixed(2)} €<br>`;
+                    total += sousTotalItem;
+                });
+
+                // 2. Demande des coordonnées à l'acheteur
+                let nomClient = prompt("Veuillez entrer votre Nom et Prénom pour valider la commande :");
+                let emailClient = prompt("Veuillez entrer votre adresse e-mail :");
+
+                if (!nomClient || !emailClient) {
+                    alert("Commande annulée : les informations de contact sont obligatoires.");
+                    return;
+                }
+
+                let templateParams = {
+                    nom: nomClient,
+                    email: emailClient,
+                    liste_commande: listeCommande,
+                    total: total.toFixed(2)
+                };
+
+                // 3. Envoi invisible via EmailJS
+                // N'oublie pas de remplacer les deux clés ci-dessous par tes vrais IDs
+                emailjs.send('service_7i80t2v', 'template_k5xiuqm', templateParams)
+                    .then(function(response) {
+                        alert("✨ Merci ! Erwan a bien reçu votre commande. Il va vous recontacter par e-mail pour finaliser le paiement.");
+                        localStorage.removeItem('listeArticles'); // Vide le panier
+                        window.location.reload(); // Rafraîchit la page
+                    }, function(error) {
+                        alert("Une erreur est survenue lors de l'envoi de la commande. Veuillez réessayer.");
+                        console.log('FAILED...', error);
+                    });
             });
         }
         
