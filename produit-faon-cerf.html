@@ -112,13 +112,12 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* CORRECTION : Taille maximale de l'image bloquée pour la réduire proprement */
+/* CORRECTION : L'image passe à 1.2 (un poil plus petite que l'originale de 1.4) */
 .product-image-side{
-  flex: 1.4 !important;
+  flex: 1.2 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
-  max-width: 500px;
 }
 .product-image-side img{
   width:100%;
@@ -127,10 +126,9 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Largeur parfaite pour la phrase entière et les boutons alignés */
+/* CORRECTION : Le bloc texte prend le reste de l'espace de manière fluide */
 .product-details-side{
   flex: 1 !important;
-  max-width: 480px; 
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -161,6 +159,7 @@ main{
   font-weight:600;
   color:#000;
 }
+/* CORRECTION : On force la phrase d'avertissement à rester sur une seule ligne */
 .notice-text{
   font-size:13px;
   color:#44403c;
@@ -179,20 +178,25 @@ main{
   letter-spacing:1px;
   color:#44403c;
 }
+/* CORRECTION : Le sélecteur s'aligne automatiquement sur la fin de la phrase */
 .select-size{
   width:100%;
+  max-width: fit-content;
+  min-width: 320px;
   padding:10px;
   font-size:12px;
   border:1px solid #e7e5e4;
   background:#fff;
   outline:none;
 }
+/* CORRECTION : Les boutons s'alignent automatiquement sur la fin de la phrase */
 .action-row{
   display:flex;
   align-items:center;
   gap:12px;
   margin-top:8px;
   width:100%;
+  max-width: fit-content;
 }
 .input-qty{
   width:50px;
