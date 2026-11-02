@@ -7,10 +7,10 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-  /* Positionnement et style de la flèche de retour */
+/* Positionnement et style de la flèche de retour */
 .top-action-bar {
   position: relative;
   width: 100%;
@@ -43,7 +43,6 @@
 @media(max-width:900px){
   .top-action-bar { padding: 20px 20px 0 20px; }
 }
-
 body{
   font-family:'Montserrat', sans-serif;
   background:#fff;
@@ -107,14 +106,15 @@ main{
   padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:40px;
+  gap:35px;
   align-items:start;
 }
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
 .product-image-side{
-  flex: 1.4 !important;
+  width: 67% !important;
+  flex-shrink: 0;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -126,6 +126,7 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* CORRECTION : max-width supprimé pour laisser la colonne et ses boutons s'étirer librement jusqu'au bout */
 .product-details-side{
   flex: 1 !important;
   display:flex;
@@ -162,6 +163,7 @@ main{
   font-size:13px;
   color:#44403c;
   line-height:1.6;
+  white-space: nowrap; 
 }
 .notice-text span{
   margin-right:4px;
@@ -183,7 +185,13 @@ main{
   background:#fff;
   outline:none;
 }
-.action-row{display:flex;align-items:center;gap:12px;margin-top:8px;}
+.action-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
+  width:100%;
+}
 .input-qty{
   width:50px;
   height:40px;
@@ -193,7 +201,8 @@ main{
 }
 .btn-submit-cart{
   flex-grow:1;
-  padding:12px 20px;
+  height:40px;
+  padding:0 20px;
   font-size:10px;
   text-transform:uppercase;
   letter-spacing:1.5px;
@@ -279,8 +288,6 @@ main{
 </head>
 <body oncontextmenu="return false;">
 
-
-
 <header>
 <a href="index.html" class="nav-logo-link">
 <img src="mon-logo.png" alt="Logo">
@@ -308,7 +315,6 @@ main{
 </div>
 
 <main>
-
 <div class="product-image-side" id="zoom-box">
 <img src="cerf-brame.JPG" alt="Cerf qui brame" id="zoom-img" draggable="false">
 </div>
@@ -350,7 +356,6 @@ Ajouter Au Panier
 </div>
 </main>
 
-
 <footer class="product-footer">
 <a href="contact.html" class="contact-link">
 <p>Une question sur un tirage ?</p>
@@ -372,20 +377,31 @@ Ajouter Au Panier
 </div>
 </footer>
 
-<script>
-const box = document.getElementById('zoom-box');
-const img = document.getElementById('zoom-img');
-box.addEventListener('mousemove', (e) => {
-  const rect = box.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  img.style.transformOrigin = `${x}px ${y}px`;
-  img.style.transform = 'scale(2.2)';
-});
-box.addEventListener('mouseleave', () => {
-  img.style.transform = 'scale(1)';
-});
-</script>
 <script src="panier.js"></script>
+
+<script>
+const zoomBox = document.getElementById('zoom-box');
+const zoomImg = document.getElementById('zoom-img');
+
+if (zoomBox && zoomImg) {
+  zoomBox.addEventListener('mousemove', (e) => {
+    const rect = zoomBox.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+    
+    zoomImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    zoomImg.style.transform = 'scale(1.5)';
+  });
+  
+  zoomBox.addEventListener('mouseleave', () => {
+    zoomImg.style.transform = 'scale(1)';
+    zoomImg.style.transformOrigin = 'center center';
+  });
+}
+</script>
+
 </body>
 </html>
