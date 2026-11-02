@@ -106,18 +106,19 @@ main{
   padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:50px;
+  gap:40px;
   align-items:start;
 }
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* MODIFICATION : Équilibre parfait entre l'image et la colonne de texte */
+/* CORRECTION : Taille maximale de l'image bloquée pour la réduire proprement */
 .product-image-side{
-  flex: 1 !important;
+  flex: 1.4 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
+  max-width: 500px;
 }
 .product-image-side img{
   width:100%;
@@ -126,10 +127,10 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* MODIFICATION : Largeur maximale resserrée à 550px pour empêcher le texte d'aller trop à droite */
+/* CORRECTION : Largeur parfaite pour la phrase entière et les boutons alignés */
 .product-details-side{
   flex: 1 !important;
-  max-width: 550px; 
+  max-width: 480px; 
   display:flex;
   flex-direction:column;
   gap:20px;
