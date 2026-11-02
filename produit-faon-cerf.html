@@ -112,9 +112,9 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* CORRECTION : L'image fait exactement 42% de la page (juste au milieu) */
+/* CORRECTION : L'image prend exactement la moitié de l'espace (50%) */
 .product-image-side{
-  width: 42% !important;
+  width: 50% !important;
   flex-shrink: 0;
   overflow:hidden;
   position:relative;
@@ -127,7 +127,7 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Le bloc texte prend le reste sans écraser la photo */
+/* CORRECTION : Le bloc texte prend la moitié restante et s'aligne bien */
 .product-details-side{
   flex: 1 !important;
   max-width: 600px;
