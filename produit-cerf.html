@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cerf qui brame</title>
+<title>Cerf brame</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com" rel="stylesheet">
+<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
@@ -68,46 +68,15 @@ nav a:hover{color:#fff;}
   align-items:center;
   justify-content:center;
 }
-
-.top-action-bar {
-  position: relative;
-  width: 100%;
-  padding: 20px 40px 0 30px;
-}
-.back-arrow-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #78716c;
-  transition: color 0.2s ease;
-  width: fit-content;
-}
-.back-arrow-container svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
-.back-arrow-container span {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-}
-.back-arrow-container:hover {
-  color: #000;
-}
-
 main{
   width:100%;
   padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:50px;
+  gap:40px;
   align-items:start;
 }
 @media(max-width:900px){
-  .top-action-bar { padding: 20px 20px 0 20px; }
   main{flex-direction:column;padding:20px;}
 }
 .product-image-side{
@@ -258,9 +227,14 @@ main{
   color:#78716c !important;
 }
 .legal-links{
-  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
-  padding-top:16px;border-top:1px solid #1c1917;
-  max-width:600px;margin:0 auto;
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-top:16px;
+  border-top:1px solid #1c1917;
+  max-width:600px;
+  margin:0 auto;
 }
 .legal-links a{
   font-size:11px;
@@ -290,26 +264,19 @@ main{
 </nav>
 </header>
 
-<div class="top-action-bar">
-  <a href="galerie.html" class="back-arrow-container">
-    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-    <span>Retour à la galerie</span>
-  </a>
-</div>
-
 <main>
 <div class="product-image-side" id="zoom-box">
-<img src="cerf-brame.JPG" alt="Cerf" id="zoom-img" draggable="false">
+<img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf" id="zoom-img" draggable="false">
 </div>
 
 <div class="product-details-side">
 <div class="breadcrumb">
 <a href="index.html">Accueil</a> / 
 <a href="galerie.html">Galerie</a> / 
-Cerf qui brame
+Faon avec Cerf
 </div>
 
-<h1 class="product-title-main">Cerf qui brame</h1>
+<h1 class="product-title-main">Faon avec Cerf</h1>
 
 <div class="price-notice-box">
 <div class="price-tag">20,00 € – 50,00 €</div>
@@ -360,31 +327,20 @@ Ajouter Au Panier
 </div>
 </footer>
 
-<script src="panier.js"></script>
-
 <script>
-const zoomBox = document.getElementById('zoom-box');
-const zoomImg = document.getElementById('zoom-img');
-
-if (zoomBox && zoomImg) {
-  zoomBox.addEventListener('mousemove', (e) => {
-    const rect = zoomBox.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const xPercent = (x / rect.width) * 100;
-    const yPercent = (y / rect.height) * 100;
-    
-    zoomImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-    zoomImg.style.transform = 'scale(1.5)';
-  });
-  
-  zoomBox.addEventListener('mouseleave', () => {
-    zoomImg.style.transform = 'scale(1)';
-    zoomImg.style.transformOrigin = 'center center';
-  });
-}
+const box = document.getElementById('zoom-box');
+const img = document.getElementById('zoom-img');
+box.addEventListener('mousemove', (e) => {
+  const rect = box.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  img.style.transformOrigin = `${x}px ${y}px`;
+  img.style.transform = 'scale(2.2)';
+});
+box.addEventListener('mouseleave', () => {
+  img.style.transform = 'scale(1)';
+});
 </script>
-
+<script src="panier.js"></script>
 </body>
 </html>
