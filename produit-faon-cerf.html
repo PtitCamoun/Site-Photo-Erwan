@@ -106,15 +106,17 @@ main{
   padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:40px;
+  gap:50px;
   align-items:start;
 }
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* CORRECTION : L'image s'adaptera fluidement par rapport à la taille fixe du texte */
+/* CORRECTION : On bloque la largeur max en pixels pour forcer une vraie baisse de taille */
 .product-image-side{
-  flex: 1.2 !important;
+  flex: 1 !important;
+  width: 100%;
+  max-width: 440px;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -126,10 +128,10 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* CORRECTION : Largeur maximale réduite à 530px pour forcer l'image à devenir un poil plus petite */
+/* CORRECTION : Alignement fluide sur le reste de la page */
 .product-details-side{
-  flex: 1 !important;
-  max-width: 530px;
+  flex: 1.2 !important;
+  max-width: 600px;
   display:flex;
   flex-direction:column;
   gap:20px;
