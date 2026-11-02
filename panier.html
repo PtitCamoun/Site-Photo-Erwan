@@ -8,6 +8,16 @@
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
 <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Script d'intégration officiel EmailJS -->
+<script type="text/javascript" src="https://jsdelivr.net"></script>
+<script type="text/javascript">
+   (function(){
+      // Remplacer "VOTRE_PUBLIC_KEY" par la clé publique trouvée dans ton compte EmailJS (Account -> API Keys)
+      emailjs.init("bNP0Ps83sWOMz1T-3");
+   })();
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
@@ -223,7 +233,6 @@ footer{
 <a href="galerie.html">Galerie</a>
 <a href="a-propos.html">À Propos</a>
 <a href="contact.html">Contact</a>
-<!-- Correction ici : fusion propre des classes pour l alignement fluide -->
 <a href="panier.html" class="cart-btn-fixed active">
 <span id="header-price">0,00 €</span>
 <div class="cart-icon-container">
@@ -282,6 +291,8 @@ Valider la commande
 </div>
 </footer>
 
+<!-- Inclusion du script de gestion du panier -->
 <script src="panier.js"></script>
+
 </body>
 </html>
