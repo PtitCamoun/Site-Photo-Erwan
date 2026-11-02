@@ -169,7 +169,6 @@ main{
   color:#000000;
 }
 
-/* Zone du Formulaire Formspree */
 .checkout-form-container {
   display: flex;
   flex-direction: column;
@@ -285,8 +284,7 @@ footer{
 <span id="total-display">0,00 €</span>
 </div>
 
-<!-- FORMULAIRE FORMSPREE CONFIGURÉ AVEC TON LIEN EN DIRECT -->
-<form action="https://formspree.io/f/mjyypbrl" method="POST" class="checkout-form-container" id="form-coordonnees">
+<form action="https://formspree.io" method="POST" class="checkout-form-container" id="form-coordonnees">
   <div>
     <label for="client-name">Nom & Prénom</label>
     <input type="text" name="Nom" id="client-name" required placeholder="Ex: Jean Dupont">
@@ -296,7 +294,6 @@ footer{
     <input type="email" name="_replyto" id="client-email" required placeholder="Ex: jean.dupont@gmail.com">
   </div>
   
-  <!-- Champs cachés complétés dynamiquement par panier.js -->
   <input type="hidden" name="Commande" id="hidden-cart-data">
   <input type="hidden" name="Total Prix" id="hidden-total-data">
 
