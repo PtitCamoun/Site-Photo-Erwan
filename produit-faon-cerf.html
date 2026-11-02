@@ -106,15 +106,15 @@ main{
   padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
-  gap:40px;
+  gap:50px;
   align-items:start;
 }
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* MODIFICATION : Taille de la photo encore réduite à 1.2 */
+/* MODIFICATION : Équilibre parfait entre l'image et la colonne de texte */
 .product-image-side{
-  flex: 1.2 !important;
+  flex: 1 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -126,9 +126,10 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* MODIFICATION : Largeur maximale resserrée à 550px pour empêcher le texte d'aller trop à droite */
 .product-details-side{
   flex: 1 !important;
-  max-width: 620px; 
+  max-width: 550px; 
   display:flex;
   flex-direction:column;
   gap:20px;
