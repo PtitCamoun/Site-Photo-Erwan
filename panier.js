@@ -37,8 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
             let itemPrice = 20.00;
             const optionText = selectSize.options[selectSize.selectedIndex].text;
-            // CORRECTION ICI : Récupère proprement la taille sans faire planter le script
-            const optionTaille = optionText.split('—')[0].trim(); 
+            
+            // Correction syntaxique de la taille pour éviter les plantages JS
+            let optionTaille = optionText.split('—')[0].trim(); 
             
             if (optionText.includes('35,00')) { itemPrice = 35.00; }
             else if (optionText.includes('50,00')) { itemPrice = 50.00; }
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (subtotalDisp) subtotalDisp.textContent = totalFormate;
             if (totalDisp) totalDisp.textContent = totalFormate;
             
+            // Préparation des données textuelles pour Formspree
             let listeTexteCommande = "";
             articles.forEach((item) => {
                 let sousTotalItem = item.prix * item.quantite;
@@ -152,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
+        // Nettoyage automatique du stockage une fois le formulaire envoyé
         const formCoordonnees = document.getElementById('form-coordonnees');
         if (formCoordonnees) {
             formCoordonnees.addEventListener('submit', function() {
