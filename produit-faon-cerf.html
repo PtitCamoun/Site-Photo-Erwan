@@ -112,9 +112,9 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* CORRECTION : Image réduite encore d'un micro poil (1.35 au lieu de 1.45) */
+/* CORRECTION : L'image s'adaptera fluidement par rapport à la taille fixe du texte */
 .product-image-side{
-  flex: 1.35 !important;
+  flex: 1.2 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -126,9 +126,10 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* CORRECTION : Largeur maximale réduite à 530px pour forcer l'image à devenir un poil plus petite */
 .product-details-side{
   flex: 1 !important;
-  max-width: 600px;
+  max-width: 530px;
   display:flex;
   flex-direction:column;
   gap:20px;
