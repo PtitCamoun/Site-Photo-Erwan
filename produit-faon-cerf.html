@@ -126,9 +126,9 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
+/* CORRECTION : max-width supprimé pour laisser la colonne et ses boutons s'étirer librement jusqu'au bout */
 .product-details-side{
   flex: 1 !important;
-  max-width: 600px;
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -177,7 +177,6 @@ main{
   letter-spacing:1px;
   color:#44403c;
 }
-/* CORRECTION : Le sélecteur prend désormais 100% de la largeur disponible */
 .select-size{
   width:100%;
   padding:10px;
@@ -186,7 +185,6 @@ main{
   background:#fff;
   outline:none;
 }
-/* CORRECTION : La ligne d'action prend 100% de la largeur disponible */
 .action-row{
   display:flex;
   align-items:center;
@@ -201,7 +199,6 @@ main{
   border:1px solid #e7e5e4;
   font-size:12px;
 }
-/* CORRECTION : Le bouton d'ajout s'étend de tout son long jusqu'au bout de la ligne */
 .btn-submit-cart{
   flex-grow:1;
   height:40px;
