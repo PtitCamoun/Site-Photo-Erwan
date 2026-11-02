@@ -146,7 +146,7 @@ main{
   padding:32px 24px;
   display:flex;
   flex-direction:column;
-  gap:24px;
+  gap:20px;
   height:fit-content;
 }
 .summary-title{
@@ -168,6 +168,36 @@ main{
   font-size:15px;
   color:#000000;
 }
+
+/* Zone du Formulaire Formspree */
+.checkout-form-container {
+  display: flex;
+  flex-direction: column;
+  gap:12px;
+  margin-top: 10px;
+  border-top: 1px dashed #e7e5e4;
+  padding-top: 16px;
+}
+.checkout-form-container label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  color: #57534e;
+}
+.checkout-form-container input {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  border: 1px solid #d6d3d1;
+  background: #ffffff;
+  outline: none;
+}
+.checkout-form-container input:focus {
+  border-color: #000000;
+}
+
 .btn-checkout{
   display:block;
   width:100%;
@@ -183,6 +213,7 @@ main{
   text-align:center;
   text-decoration:none;
   transition:background 0.2s;
+  margin-top: 10px;
 }
 .btn-checkout:hover{
   background:#1c1917;
@@ -253,9 +284,27 @@ footer{
 <span>Total</span>
 <span id="total-display">0,00 €</span>
 </div>
-<a href="#" class="btn-checkout" id="btn-order">
-Valider la commande
-</a>
+
+<!-- FORMULAIRE FORMSPREE CONFIGURÉ AVEC TON LIEN EN DIRECT -->
+<form action="https://formspree.io/f/mjyypbrl" method="POST" class="checkout-form-container" id="form-coordonnees">
+  <div>
+    <label for="client-name">Nom & Prénom</label>
+    <input type="text" name="Nom" id="client-name" required placeholder="Ex: Jean Dupont">
+  </div>
+  <div>
+    <label for="client-email">Adresse E-mail</label>
+    <input type="email" name="_replyto" id="client-email" required placeholder="Ex: jean.dupont@gmail.com">
+  </div>
+  
+  <!-- Champs cachés complétés dynamiquement par panier.js -->
+  <input type="hidden" name="Commande" id="hidden-cart-data">
+  <input type="hidden" name="Total Prix" id="hidden-total-data">
+
+  <button type="submit" class="btn-checkout" id="btn-order">
+    Valider la commande
+  </button>
+</form>
+
 </div>
 </div>
 </main>
