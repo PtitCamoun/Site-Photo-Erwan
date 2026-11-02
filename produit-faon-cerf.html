@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 /* Positionnement et style de la flèche de retour */
@@ -112,9 +112,9 @@ main{
 @media(max-width:900px){
   main{flex-direction:column;padding:20px;}
 }
-/* MODIFICATION : Agrandissement de l'image de 1.4 à 2 */
+/* MODIFICATION : Image un poil plus petite (1.8 au lieu de 2) */
 .product-image-side{
-  flex: 2 !important;
+  flex: 1.8 !important;
   overflow:hidden;
   position:relative;
   cursor:zoom-in;
@@ -126,9 +126,8 @@ main{
   transition:transform 0.15s ease-out;
   transform-origin:center center;
 }
-/* MODIFICATION : Réduction proportionnelle de la zone texte */
 .product-details-side{
-  flex: 0.8 !important;
+  flex: 1 !important;
   display:flex;
   flex-direction:column;
   gap:20px;
@@ -176,24 +175,22 @@ main{
   letter-spacing:1px;
   color:#44403c;
 }
-/* MODIFICATION : Limitation de la largeur maximale pour le sélecteur */
+/* MODIFICATION : Le sélecteur reprend toute la largeur de sa colonne */
 .select-size{
   width:100%;
-  max-width:280px;
   padding:10px;
   font-size:12px;
   border:1px solid #e7e5e4;
   background:#fff;
   outline:none;
 }
-/* MODIFICATION : Alignement à gauche de la ligne de boutons pour éviter l'étirement */
+/* MODIFICATION : La ligne d'action reprend sa pleine largeur */
 .action-row{
   display:flex;
   align-items:center;
   gap:12px;
   margin-top:8px;
   width:100%;
-  max-width:280px;
 }
 .input-qty{
   width:50px;
@@ -202,7 +199,7 @@ main{
   border:1px solid #e7e5e4;
   font-size:12px;
 }
-/* MODIFICATION : Le bouton épouse proprement la largeur maximale définie par action-row */
+/* MODIFICATION : Le bouton redevient long jusqu'au bout de la ligne */
 .btn-submit-cart{
   flex-grow:1;
   padding:12px 20px;
