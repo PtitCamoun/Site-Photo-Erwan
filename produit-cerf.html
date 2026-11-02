@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
@@ -69,7 +69,11 @@ nav a:hover{color:#fff;}
   justify-content:center;
 }
 
-/* Style de la flèche de retour haut gauche */
+.top-action-bar {
+  position: relative;
+  width: 100%;
+  padding: 20px 40px 0 30px;
+}
 .back-arrow-container {
   display: flex;
   align-items: center;
@@ -78,7 +82,6 @@ nav a:hover{color:#fff;}
   color: #78716c;
   transition: color 0.2s ease;
   width: fit-content;
-  padding: 20px 0 0 30px;
 }
 .back-arrow-container svg {
   width: 14px;
@@ -97,14 +100,14 @@ nav a:hover{color:#fff;}
 
 main{
   width:100%;
-  padding:15px 40px 30px 30px; 
+  padding:30px 40px 30px 30px; 
   flex-grow:1;
   display:flex;
   gap:50px;
   align-items:start;
 }
 @media(max-width:900px){
-  .back-arrow-container { padding: 20px 20px 0 20px; }
+  .top-action-bar { padding: 20px 20px 0 20px; }
   main{flex-direction:column;padding:20px;}
 }
 .product-image-side{
@@ -205,7 +208,6 @@ main{
   border-color:#000;
 }
 
-/* CORRECTION ALIGNEMENT ET POLICE COMMUNE DU PIED DE PAGE */
 .product-footer{
   background:#000 !important;
   color:#a8a29e !important;
@@ -288,11 +290,12 @@ main{
 </nav>
 </header>
 
-<!-- Flèche de retour en haut à gauche -->
-<a href="galerie.html" class="back-arrow-container">
-  <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-  <span>Retour à la galerie</span>
-</a>
+<div class="top-action-bar">
+  <a href="galerie.html" class="back-arrow-container">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <span>Retour à la galerie</span>
+  </a>
+</div>
 
 <main>
 <div class="product-image-side" id="zoom-box">
@@ -358,5 +361,30 @@ Ajouter Au Panier
 </footer>
 
 <script src="panier.js"></script>
+
+<script>
+const zoomBox = document.getElementById('zoom-box');
+const zoomImg = document.getElementById('zoom-img');
+
+if (zoomBox && zoomImg) {
+  zoomBox.addEventListener('mousemove', (e) => {
+    const rect = zoomBox.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+    
+    zoomImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    zoomImg.style.transform = 'scale(1.5)';
+  });
+  
+  zoomBox.addEventListener('mouseleave', () => {
+    zoomImg.style.transform = 'scale(1)';
+    zoomImg.style.transformOrigin = 'center center';
+  });
+}
+</script>
+
 </body>
 </html>
