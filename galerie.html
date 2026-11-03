@@ -199,22 +199,7 @@ footer{
 </select>
 </div>
 </div>
-
 <div class="products-grid" id="products-container">
-<a href="produit-faon.html" class="product-card" data-date="1" data-title="Faon bord de lac">
-<div class="image-container"><img src="faon-lac.png" alt="Faon" draggable="false"></div>
-<div class="product-title">Faon bord de lac</div>
-</a>
-
-<a href="produit-cerf.html" class="product-card" data-date="2" data-title="Cerf qui brame">
-<div class="image-container"><img src="cerf-brame.JPG" alt="Cerf" draggable="false"></div>
-<div class="product-title">Cerf qui brame</div>
-</a>
-
-<a href="produit-faon-cerf.html" class="product-card" data-date="3" data-title="Faon avec Cerf">
-<div class="image-container"><img src="Faon-avec-Cerf.JPG" alt="Faon avec Cerf" draggable="false"></div>
-<div class="product-title">Faon avec Cerf</div>
-</a>
 </div>
 </main>
 <footer>
@@ -248,9 +233,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // - date : un numéro plus grand pour le tri récent (ex: 4, 5, 6...)
     // - ext : "jpg", "png", "JPG", etc. selon le format de ton fichier
     const futursProduits = [
-        { id: "Faon-avec-Cerf", titre: "Faon avec Cerf", date: "4", ext: "JPG" },
-        { id: "cerf-brame", titre: "Cerf qui brame", date: "5", ext: "JPG" },
-        { id: "faon-lac", titre: "Faon bord de lac", date: "6", ext: "png" }
+        { id: "Faon-avec-Cerf", titre: "Faon avec Cerf", date: "1", ext: "JPG" },
+        { id: "cerf-brame", titre: "Cerf qui brame", date: "2", ext: "JPG" },
+        { id: "faon-lac", titre: "Faon bord de lac", date: "3", ext: "png" }
     ];
 
     const container = document.getElementById("products-container");
