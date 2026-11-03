@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique Photographie - Erwan Gauriveau</title>
+    <style>
+        /* Style pro, aligné et calibré que tu as déjà */
+        .produit-container { display: flex; gap: 50px; max-width: 1100px; margin: 60px auto; padding: 20px; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .produit-image { flex: 1; }
+        .produit-image img { width: 100%; max-width: 550px; height: auto; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .produit-infos { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        h1 { font-size: 32px; color: #111; margin: 0 0 10px 0; text-transform: capitalize; }
+        .categorie { font-size: 14px; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .description { font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 30px; }
+        .prix { font-size: 28px; font-weight: bold; color: #111; margin-bottom: 30px; }
+        .action-block { display: flex; gap: 15px; align-items: center; }
+        .select-quantite { padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; width: 70px; background: #fff; }
+        .btn-panier { background: #111; color: #fff; font-size: 16px; font-weight: 500; padding: 14px 40px; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .btn-panier:hover { background: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="produit-container">
+        <!-- L'image change tout seule en fonction du clic -->
+        <div class="produit-image">
+            <img id="future-photo" src="" alt="Chargement...">
+        </div>
+        
+        <!-- Les textes changent tous seuls en fonction du clic -->
+        <div class="produit-infos">
+            <span class="categorie">Tirage d'Art Limité</span>
+            <h1 id="futur-titre">Chargement...</h1>
+            <p class="description">Chaque tirage est imprimé sur un papier d'art de haute qualité, sélectionné spécialement pour sublimer les textures et les lumières de la faune sauvage. Signé de la main de l'artiste Erwan Gauriveau.</p>
+            <div class="prix"><span id="futur-prix">--</span> €</div>
+            
+            <div class="action-block">
+                <select class="select-quantite">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <button class="btn-panier">Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 🗂️ TA SEULE ET UNIQUE BASE DE DONNÉES DE FUTURS PRODUITS
+    // Quand tu as une nouvelle photo, tu as JUSTE à rajouter un bloc ici !
+    const futursProduits = {
+        "cerf-elaphe-bramant": {
+            titre: "Le Brame du Cerf Élaphe",
+            image: "cerf-elaphe-bramant.jpg",
+            prix: "49"
+        },
+        "renard-roux-neige": {
+            titre: "Affût du Renard Roux dans la Neige",
+            image: "renard-roux-neige.jpg",
+            prix: "45"
+        },
+        "brocard-chevreuil-printemps": {
+            titre: "Brocard au Printemps",
+            image: "brocard-chevreuil-printemps.jpg",
+            prix: "39"
+        }
+    };
+
+    // Le script magique automatique
+    const urlParams = new URLSearchParams(window.location.search);
+    const idPhoto = urlParams.get('id');
+
+    if (idPhoto && futursProduits[idPhoto]) {
+        const p = futursProduits[idPhoto];
+        document.getElementById('futur-titre').textContent = p.titre;
+        document.getElementById('future-photo').src = "images/" + p.image;
+        document.getElementById('future-photo').alt = p.titre;
+        document.getElementById('futur-prix').textContent = p.prix;
+        document.title = p.titre + " - Boutique Erwan Gauriveau";
+    } else {
+        document.getElementById('futur-titre').textContent = "Photographie non trouvée";
+    }
+    </script>
+</body>
+</html>
