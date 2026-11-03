@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
@@ -115,14 +115,10 @@ main{
   max-width:calc(33.333% - 22px);
 }
 @media(max-width:900px){
-  .product-card{
-    max-width:calc(50% - 16px);
-  }
+  .product-card{max-width:calc(50% - 16px);}
 }
 @media(max-width:600px){
-  .product-card{
-    max-width:100%;
-  }
+  .product-card{max-width:100%;}
 }
 .image-container{
   width:100%;
@@ -221,7 +217,6 @@ footer{
 </a>
 </div>
 </main>
-
 <footer>
 <a href="contact.html" class="contact-link">
 <p>Une question sur un tirage ?</p>
@@ -245,25 +240,62 @@ footer{
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var conteneur = document.getElementById('products-container');
-    var photos = Array.from(conteneur.querySelectorAll('.product-card'));
-    var n = photos.length;
-    var txt = n <= 1 ? " œuvre affichée" : " œuvres affichées";
-    document.getElementById('txt-c').textContent = n + txt;
-    
-    var selectTri = document.getElementById('select-tri');
-    selectTri.addEventListener('change', function() {
-        var critere = this.value;
-        photos.sort(function(a, b) {
-            if (critere === 'recent') return parseInt(b.getAttribute('data-date')) - parseInt(a.getAttribute('data-date'));
-            if (critere === 'ancien') return parseInt(a.getAttribute('data-date')) - parseInt(b.getAttribute('data-date'));
-            if (critere === 'alphabetique') return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
+    // 🚨 AJOUTE TES NOUVELLES PHOTOS ICI (ZÉRO PRISE DE TÊTE)
+    // - id : l'identifiant exact (ex: "renard-neige" ira chercher "images/renard-neige.jpg")
+    // - titre : le nom exact affiché sous l'image
+    // - date : un numéro plus grand pour le tri récent (ex: 4, 5, 6...)
+    // - ext : "jpg", "png", "JPG", etc. selon le format de ton fichier
+    const futursProduits = [
+        { id: "renard-roux-affut", titre: "Renard roux à l'affût", date: "4", ext: "jpg" },
+        { id: "ecureuil-roux-arbre", titre: "Écureuil roux sur sa branche", date: "5", ext: "png" }
+    ];
+
+    const container = document.getElementById("products-container");
+
+    // Génération automatique des nouvelles vignettes dans la grille
+    futursProduits.forEach(p => {
+        const card = document.createElement("a");
+        card.href = `produit.html?id=${p.id}`;
+        card.className = "product-card";
+        card.setAttribute("data-date", p.date);
+        card.setAttribute("data-title", p.titre);
+        
+        card.innerHTML = `
+            <div class="image-container">
+                <img src="images/${p.id}.${p.ext}" alt="${p.titre}" draggable="false" loading="lazy">
+            </div>
+            <div class="product-title">${p.titre}</div>
+        `;
+        container.appendChild(card);
+    });
+
+    // Moteur de tri et mise à jour du compteur global
+    const selectTri = document.getElementById("select-tri");
+    const txtCompteur = document.getElementById("txt-c");
+
+    function appliquerTriEtCompteur() {
+        const cards = Array.from(container.getElementsByClassName("product-card"));
+        
+        txtCompteur.textContent = cards.length + (cards.length > 1 ? " photographies disponibles" : " photographie disponible");
+
+        const critere = selectTri.value;
+        cards.sort((a, b) => {
+            if (critere === "recent") {
+                return parseInt(b.getAttribute("data-date")) - parseInt(a.getAttribute("data-date"));
+            } else if (critere === "ancien") {
+                return parseInt(a.getAttribute("data-date")) - parseInt(b.getAttribute("data-date"));
+            } else if (critere === "alphabetique") {
+                return a.getAttribute("data-title").localeCompare(b.getAttribute("data-title"), 'fr');
+            }
             return 0;
         });
-        photos.forEach(function(photo) { conteneur.appendChild(photo); });
-    });
+
+        cards.forEach(card => container.appendChild(card));
+    }
+
+    selectTri.addEventListener("change", appliquerTriEtCompteur);
+    appliquerTriEtCompteur();
 });
 </script>
-<script src="panier.js"></script>
 </body>
 </html>
